@@ -1,4 +1,4 @@
-# Section 11 — AI Coach Protocol
+# Section 11 — AI Coach Protocol- Andy Astfalck Version
 
 **Protocol Version:** 11.33  
 **Last Updated:** 2026-04-15
