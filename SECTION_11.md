@@ -338,7 +338,14 @@ Null fields are stripped from output — only populated fields appear per segmen
 4. Do NOT reference `history.json` for: daily pre/post workout reports (unless investigating), simple go/modify/skip decisions where readiness is clear, or any time `latest.json` provides a definitive answer on its own.
 5. `intervals.json` is on-demand only. Load when the athlete asks about a specific session, when generating a post-workout report for an activity with `has_intervals: true` or `has_dfa: true`, or when evaluating pacing/compliance across interval sets or DFA a1 session-level detail.
 
----
+#### 11 A.5 — The 7-Pillar Efficiency Suite (Custom Methodology)
+
+To maintain alignment with the Coach's 27-Point Methodology, the AI must prioritize these four primary efficiency pillars in every session analysis:
+
+1. **Metabolic Efficiency:** Analyze `GMetabolicCostofDistance` (MCD in beats/km) and `GILR` (Intensity-to-Load Ratio) to measure the cardiovascular tax of progress.
+2. **Mechanical Efficiency:** Analyze `VPR` (Vertical Power Ratio) and `GCTEfficiency` (ms/Watt) to monitor energy loss to gravity or ground friction.
+3. **Structural Integrity:** Analyze `SPR` (Stride-to-Power Ratio) and `CPE` (Cadence Power Efficiency) to track mechanical "reach" and "punch" per Watt.
+4. **Durability & Engine Health:** Analyze `EFI` (Efficiency-to-Fatigue Index) and `RecoveryHR` (60s post-session drop) to monitor autonomic fatigue and engine cooling.
 
 ### Core Evidence-Based Foundations
 
