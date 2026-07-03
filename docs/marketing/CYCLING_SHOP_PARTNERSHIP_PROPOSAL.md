@@ -263,7 +263,7 @@ The Aquatic Coach provides:
 | Asset | Purpose |
 |-------|---------|
 | Co-branded activation card / QR insert | Drop in box at sale |
-| Shop sales one-pager (A4 / PDF) | Staff reference |
+| Shop sales one-pager (A4 / PDF) | Staff reference — `one-pagers/CYCLING_SHOP_SALES_ONEPAGER.md` |
 | Counter display graphic | Gravel / tech zone |
 | Email templates | Post-purchase follow-up (shop may send from its domain) |
 | Social launch template | Optional announcement |

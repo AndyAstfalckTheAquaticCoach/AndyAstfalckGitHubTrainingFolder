@@ -449,6 +449,7 @@ Complimentary platform access — company partnership disclosure.
 ## Appendix A — Related Documents
 
 - **Corporate Team Building Partnership Agreement** — `CORPORATE_TEAM_BUILDING_AGREEMENT.md`
+- **Decision Maker One-Pager** — `one-pagers/CORPORATE_TEAM_BUILDING_ONEPAGER.md`
 - **Ambassador Program Proposal** — `AMBASSADOR_PROGRAM_PROPOSAL.md` (individual athlete advocacy, separate track)
 
 ---

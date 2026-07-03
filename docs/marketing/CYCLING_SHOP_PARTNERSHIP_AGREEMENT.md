@@ -345,7 +345,7 @@ The Aquatic Coach and the Shop are each a **“Party”** and together the **“
 
 ## SCHEDULE D — APPROVED SHOP SALES ONE-PAGER
 
-*Attached at signing or linked: `CYCLING_SHOP_SALES_ONEPAGER.pdf`*
+*Attached at signing or linked: `one-pagers/CYCLING_SHOP_SALES_ONEPAGER.md` (export to PDF for print)*
 
 Key approved statements only. Staff must not deviate without written approval.
 

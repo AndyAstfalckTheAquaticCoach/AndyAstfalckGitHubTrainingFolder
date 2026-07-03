@@ -354,6 +354,7 @@ fee if you sign up. #AquaticCoachAmbassador
 - **Ambassador Agreement (Contract)** — `AMBASSADOR_AGREEMENT_CONTRACT.md`
 - **Brand Guidelines** — [To be supplied at onboarding]
 - **Ambassador Application Form** — [To be published]
+- **Ambassador One-Pager** — `one-pagers/AMBASSADOR_PROGRAM_ONEPAGER.md`
 
 ---
 
