@@ -241,7 +241,9 @@ Wellness body-composition fields are **coaching context only** — not wired int
 
 ## 7. Shape Library
 
-Visual components are not limited to circles and pie charts. Use the following shape vocabulary:
+Visual components are not limited to circles and pie charts. The performance dashboard should draw from a broad shape vocabulary — choosing the form that best matches the data structure (proportion, trend, comparison, distribution, or sequence).
+
+### 7.1 Core Shapes (Already in Use)
 
 | Shape | Typical use |
 |-------|-------------|
@@ -256,6 +258,135 @@ Visual components are not limited to circles and pie charts. Use the following s
 | **Sparkline** | Mini trends on dashboard cards |
 | **Shaded reference bands** | BMI categories, TSB target ranges |
 
+### 7.2 Proportional & Part-to-Whole Shapes
+
+| Shape | Description | Dashboard use |
+|-------|-------------|---------------|
+| **Waffle chart** | 10×10 grid of coloured cells (= 100%) | Zone % at a glance; polarisation ratio (easy vs hard cells) |
+| **Radial bar / sunburst** | Segments radiating from centre | Multi-sport time split; nested zone breakdown per sport |
+| **Treemap** | Nested rectangles sized by value | Weekly TSS or hours by sport family (cycling / run / swim) |
+| **100% stacked column** | Vertical stacked bars summing to 100% | Compare zone profiles across multiple sessions side by side |
+| **Semi-circle gauge** | Half-arc with coloured segments | Weekly polarisation index or easy-time ratio |
+
+### 7.3 Comparison & Target Shapes
+
+| Shape | Description | Dashboard use |
+|-------|-------------|---------------|
+| **Bullet chart** | Thin bar with target marker and background bands | Planned vs actual TSS; session compliance; ACWR vs target range |
+| **Diverging bar** | Bar extending left/right from a centre zero | Delta from 28d baseline (HRV, RHR, weight, FTP change) |
+| **Slope chart** | Two-point line per entity (before → after) | Pre/post block comparison; threshold test results |
+| **Grouped bar** | Side-by-side bars per category | Indoor vs outdoor FTP; power vs HR zone basis; 7d vs 28d TID |
+| **Floating / range bar** | Bar showing min–max span | Interval power range per rep; HR range within a zone block |
+| **Lollipop chart** | Dot on a stem | Highlight single values (today's TSB, latest CSS) against a scale |
+
+### 7.4 Time & Sequence Shapes
+
+| Shape | Description | Dashboard use |
+|-------|-------------|---------------|
+| **Calendar heatmap** | Grid of days coloured by intensity | Training consistency; daily TSS or hours (GitHub-style) |
+| **Waterfall chart** | Cumulative steps up/down | How daily TSS builds to weekly total; fatigue accumulation |
+| **Step chart** | Horizontal steps at threshold change points | FTP / CSS / LTHR timeline when values jump |
+| **Gantt / swimlane** | Horizontal bars on a time axis | Week plan: planned vs completed sessions by day |
+| **Ridge / joy plot** | Stacked density curves | Distribution of session durations or intensities across weeks |
+| **Event timeline** | Vertical line with diamond/triangle nodes | Threshold tests, races, deloads, illness markers |
+
+### 7.5 Distribution & Density Shapes
+
+| Shape | Description | Dashboard use |
+|-------|-------------|---------------|
+| **Histogram** | Bar bins along a continuous axis | Power or pace distribution within a session |
+| **Box plot** | Median, quartiles, whiskers | Interval power consistency across reps |
+| **Hex bin / heatmap scatter** | Density-coloured hexagons | Where most training time falls (power × HR) |
+| **Violin plot** | Mirrored density curves | Compare power output spread between two sessions (desktop) |
+| **Strip plot** | Individual dots along an axis | Every interval rep's power on one scale |
+
+### 7.6 Multi-Metric & Profile Shapes
+
+| Shape | Description | Dashboard use |
+|-------|-------------|---------------|
+| **Radar / spider chart** | Axes radiating from centre | Readiness snapshot: HRV, RHR, sleep, TSB, feel, soreness |
+| **Power-duration curve** | Line through anchor durations (5s–60min) | MMP profile; compare 28d windows (capability metric) |
+| **HR-duration curve** | Same form for sustained HR anchors | HR curve delta across two 28d windows |
+| **Area-under-curve fill** | Line chart with gradient fill below | Fitness (CTL) growth; muscle mass trend |
+| **Parallel coordinates** | Multiple vertical axes linked by lines | Compare last 5 key sessions across 6+ metrics |
+| **Profile overlay** | Two lines on same axes | Route elevation + power; decoupling drift (first vs last third) |
+
+### 7.7 Flow & Relationship Shapes
+
+| Shape | Description | Dashboard use |
+|-------|-------------|---------------|
+| **Sankey / flow diagram** | Width-proportional flows between nodes | Total hours → sport → zone → session type |
+| **Chord diagram** | Circular flows between categories | Cross-sport load transfer (which sports contribute most TSS) |
+| **Network / node graph** | Connected nodes sized by weight | Workout library usage; which session types dominate the block |
+| **Correlation matrix** | Grid of coloured cells | HRV vs TSB vs sleep vs performance (coach deep-dive) |
+
+### 7.8 Marker & Indicator Shapes
+
+Use distinct shapes so alerts and landmarks are scannable without reading labels:
+
+| Shape | Meaning |
+|-------|---------|
+| **Triangle ▲** | Alert, threshold breach, spike (water retention, ACWR alarm) |
+| **Diamond ◆** | Personal record, new threshold, race result |
+| **Circle ●** | Normal data point, session marker |
+| **Square ■** | Planned session (vs completed circle) |
+| **Chevron ▶** | Trend direction on a card (improving / declining) |
+| **Star ★** | A-race or key benchmark session |
+| **Hexagon ⬡** | Phase badge (Base, Build, Peak, Taper, Recovery) |
+| **Cross ✕** | Skipped session, failed rep, insufficient data |
+
+### 7.9 Mobile-Optimised Shape Rules
+
+| Rule | Rationale |
+|------|-----------|
+| Prefer **horizontal** bars and strips on iPhone | More readable in portrait; thumb-friendly tap targets |
+| Limit radar charts to **≤6 axes** | Legibility on small screens |
+| Use **sparklines + one number** on dashboard cards | Glanceable; detail on tap |
+| Reserve **Sankey, chord, parallel coords, violin** for desktop or drill-down | Too dense for primary mobile view |
+| **Calendar heatmap** works well on mobile | One cell per day; tap for session list |
+| **Bullet charts** replace full gauges when space is tight | Same information in less height |
+| Animate **timeline strips** on session open only | Avoid motion on dashboard scroll |
+
+### 7.10 Shape-to-Metric Mapping (Extended)
+
+Recommended shapes for metrics not covered in sections 1–5:
+
+| Metric | Recommended shape(s) |
+|--------|---------------------|
+| **Seiler TID classification** | Waffle or 100% stacked bar (Z1 / Z2 / Z3 easy-grey-hard) |
+| **Polarisation index (Treff PI)** | Semi-circle gauge with PI scale |
+| **Easy time ratio** | Bullet chart vs 0.75–0.9 target band |
+| **Grey zone %** | Single diverging bar from 5% target |
+| **Hard days per week** | Row of 7 squares (filled = hard day) |
+| **Decoupling / durability** | Slope chart (first third → last third) or profile overlay |
+| **Variability index (VI)** | Lollipop vs 1.05 threshold |
+| **Efficiency factor (EF)** | Line + 7d/28d trendline |
+| **HRRc (heart rate recovery)** | Sparkline with triangle on declining trend |
+| **Power curve delta** | Dual power-duration curves (current vs prior 28d) |
+| **Sustainability profile anchors** | Grouped bar (actual vs Coggan vs CP model) |
+| **Phase detection** | Hexagon badge + step timeline of phase changes |
+| **Race calendar proximity** | Event timeline with star markers |
+| **Plan adherence** | Bullet chart (completed vs planned TSS) |
+| **DFA a1 band split** | Secondary stacked bar below power zones (4 bands) |
+| **Environmental heat stress** | Shaded band on session timeline (temperature tier) |
+| **Nutrition / carbs used** | Waterfall (session kJ → carbs g → deficit vs target) |
+| **Multi-sport weekly volume** | Treemap or radial bar |
+
+### 7.11 Shape Selection Guide
+
+Choose shape by the question the athlete is asking:
+
+| Question type | Best shapes |
+|---------------|-------------|
+| "How much time in each zone?" | Stacked bar, donut, waffle, timeline strip |
+| "Am I on target?" | Bullet chart, gauge, diverging bar |
+| "Is it getting better or worse?" | Line + trendline, slope chart, sparkline, chevron |
+| "How does this session compare?" | Grouped bar, slope chart, dual curve overlay |
+| "What did the week look like?" | Calendar heatmap, Gantt, waterfall, treemap |
+| "Where are my limits?" | Power-duration curve, threshold ladder, gauge |
+| "What's the overall picture?" | Radar chart, Sankey, dashboard card grid |
+| "What needs attention?" | Triangle markers, bullet chart with red band, alert badges |
+
 ---
 
 ## 8. Priority Build Order
@@ -267,7 +398,7 @@ If building incrementally:
 3. **Wellness trendlines** (BMI, fat%, muscle, water)
 4. **Threshold ladder** per sport
 5. **Swim-specific** (CSS reference + SR/DPC scatter)
-6. **Shape variety** (triangles for alerts, donuts for summaries, timelines for sessions)
+6. **Shape variety** — calendar heatmap, bullet charts, marker shapes (see §7)
 
 ---
 
