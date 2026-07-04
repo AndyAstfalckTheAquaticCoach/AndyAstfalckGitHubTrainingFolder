@@ -5,7 +5,7 @@
 ---
 
 **Agreement reference:** ACP-AMB-[YYYY]-[####]  
-**Version:** 1.1  
+**Version:** 1.2  
 **Effective date:** ____________________
 
 ---
@@ -300,6 +300,8 @@ The Ambassador shall not:
 
 | Item | Terms |
 |------|-------|
+| Cohort size (pilot) | 10–12 ambassadors |
+| Priority markets | Netherlands, Germany, Belgium, Scandinavia, UK, Spain |
 | Follower minimum (at application) | More than 3,000 on primary channel |
 | Pre-program posting habit | ≥3 posts/week (verified at application) |
 | Weekly posting minimum | ≥3 posts/week total; 1 Recommended Post |
@@ -330,6 +332,7 @@ The Ambassador shall not:
 
 | Field | Detail |
 |-------|--------|
+| **Country of residence** | ________________________________ |
 | **Primary Social Platform** | ________________________________ |
 | **Follower count (at signing)** | ________________________________ |
 | **Primary Sport Lens** | ☐ Open-water swim ☐ Pool swim ☐ Run ☐ Triathlon ☐ Swim-run / hybrid ☐ Other: ______ |

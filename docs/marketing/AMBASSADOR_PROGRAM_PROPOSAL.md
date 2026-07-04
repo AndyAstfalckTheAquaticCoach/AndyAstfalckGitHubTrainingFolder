@@ -1,7 +1,7 @@
 # The Aquatic Coach Platform  
 ## Ambassador Marketing Program — Proposal Document
 
-**Document version:** 1.1  
+**Document version:** 1.2  
 **Effective date:** [Effective Date]  
 **Prepared for:** Marketing & Community Growth  
 **Prepared by:** The Aquatic Coach  
@@ -26,7 +26,7 @@ This program is designed to grow the platform through credible peer advocacy —
 | **Women-led visibility** | Build a cohort where **at least 60% of ambassadors identify as women**, reflecting aquatic and endurance audiences |
 | **Quality over volume** | Prioritise engaged followers (**3,000+**) and consistent creators over raw reach |
 | **Brand integrity** | Ensure all public content reflects the platform’s evidence-based, data-driven coaching philosophy |
-| **Community building** | Represent swimming, triathlon, open-water, and mixed-sport endurance with **one clear sport/race focus per ambassador** |
+| **Community building** | Represent swimming, triathlon, open-water, and mixed-sport endurance with **one clear sport/race focus per ambassador** across **Northwest Europe** |
 
 ---
 
@@ -118,22 +118,56 @@ Each approved ambassador receives **one professional photoshoot session** per 6-
 | **Co-branding** | Subtle Aquatic Coach / platform branding where agreed (e.g. kit, cap, overlay) |
 | **Usage rights** | Ambassador receives licence to use all assets for personal social media; The Aquatic Coach receives licence to repost with credit |
 | **Timing** | Scheduled within **first 8 weeks** of term, ideally **before Target Race** so assets fuel race-build content |
-| **Location** | Netherlands / Randstad where possible; travel beyond agreed radius at ambassador’s cost unless otherwise agreed |
+| **Location** | Ambassador’s home region (see Section 4.7); Netherlands-based shoots where logistically practical; regional photographer network or travel-day shoots for other markets |
 
 The photoshoot is a **program benefit**, not payment in lieu of Commission. Missed sessions without 48-hour notice may be forfeited.
 
-### 4.6 Cohort composition (pilot intake example)
+### 4.6 Cohort composition (pilot intake — 10–12 ambassadors)
 
-For a first cohort of **10 ambassadors**:
+The first intake targets **10–12 ambassadors** with **majority women (≥60%)**, each with a distinct **Primary Sport Lens** and **Target Race**, spread across six priority markets:
 
-| Slot | Profile example |
-|------|-----------------|
-| 4 | Women — open-water / swim → OW race |
-| 3 | Women — run or tri → 5k–10k or sprint tri |
-| 1 | Woman — hybrid swim-run |
-| 2 | Open — any gender, any eligible primary lens |
+| Priority market | Target slots (10–12 cohort) | Notes |
+|-----------------|------------------------------|-------|
+| **Netherlands** | 2–3 | Home market; anchor for photoshoot logistics and Randstad OW/run events |
+| **Germany** | 2 | Strong tri, OW, and business-run calendar |
+| **Belgium** | 1–2 | Flanders OW / run; bilingual content welcome (NL/FR) |
+| **Scandinavia** | 2 | Denmark, Sweden, Norway, or Finland — OW and tri-heavy audiences |
+| **United Kingdom** | 2 | Pool swim, OW, and run — ASA/advertising disclosure rules apply |
+| **Spain** | 1–2 | OW, tri, and trail/run — Spanish-language content welcome |
 
-Adjust per intake while keeping **women ≥60%**.
+**Example 12-person cohort (sport × region):**
+
+| # | Region | Gender target | Primary lens | Example race types |
+|---|--------|---------------|--------------|-------------------|
+| 1 | Netherlands | Woman | Open-water swim | 1 km / 3 km OW |
+| 2 | Netherlands | Woman | Run | 5 km / 10 km |
+| 3 | Germany | Woman | Triathlon | Sprint / Olympic |
+| 4 | Germany | Open | Run | 10 km / half-marathon build |
+| 5 | Belgium | Woman | Open-water swim | OW charity / 1 km |
+| 6 | Scandinavia | Woman | Triathlon or swim | OW or sprint tri |
+| 7 | Scandinavia | Open | Run | 10 km / trail |
+| 8 | UK | Woman | Pool swim / OW | Masters meet or OW |
+| 9 | UK | Woman | Run | 5 km / 10 km business run |
+| 10 | Spain | Woman | Triathlon or OW | Mediterranean OW / sprint tri |
+| 11 | Spain | Open | Run / hybrid | Coastal trail or aquathlon prep |
+| 12 | Any (fill gap) | As needed | Best fit open slot | Race aligned to local calendar |
+
+Adjust per intake while keeping **women ≥60%**, **10–12 total**, and **no more than 3 ambassadors from a single country** unless otherwise agreed.
+
+### 4.7 Geographic scope & localisation
+
+**Eligible countries (pilot):** Netherlands, Germany, Belgium, Scandinavia (Denmark, Sweden, Norway, Finland), United Kingdom, Spain.
+
+| Requirement | Detail |
+|-------------|--------|
+| **Residence** | Ambassador must be **based in** one of the eligible countries for the majority of the Term |
+| **Target Race** | Should be a **real, named event** the ambassador is training for — ideally in their region or one they will travel to for the Term |
+| **Language** | Primary content may be in **English, Dutch, German, French, Spanish, or a Scandinavian language** — disclosure and brand mention must remain clear |
+| **Referral payments** | Must be legally permitted to receive referral commission in country of residence (EU/EEA + UK) |
+| **Photoshoot** | Delivered **in ambassador’s home region** where possible; The Aquatic Coach coordinates local photographer/videographer or agreed travel-day |
+| **Time zones** | Onboarding calls scheduled across CET / GMT / EET as needed |
+
+**Scandinavia** is treated as one recruitment region for cohort planning; each Scandinavian ambassador still declares their **country of residence** at application.
 
 ---
 
@@ -148,9 +182,9 @@ To qualify as an Ambassador, an applicant must meet **all** of the following:
 | **Target Race declared** | Named event + date within 6 months; training plan on Platform aligned to that race |
 | **Social following** | **More than 3,000** followers/subscribers on primary public account (Instagram, TikTok, YouTube, or Strava — primary channel declared at application) |
 | **Posting habit** | **≥3 posts/week** documented over prior 8 of 12 weeks; mix of **Reels/video and photos** |
-| **Cohort fit** | Primary sport lens and race target fits an open ambassador slot (Section 4.2); women applicants prioritised to achieve majority-women cohort |
+| **Cohort fit** | Primary sport lens and race target fits an open ambassador slot (Section 4.6); women applicants prioritised to achieve majority-women cohort; **geographic slot available** in Netherlands, Germany, Belgium, Scandinavia, UK, or Spain |
 | **Brand alignment** | Professional, evidence-based, safety-first conduct |
-| **Geographic compliance** | Legally permitted to receive referral payments (EU/EEA preferred) |
+| **Geographic eligibility** | Based in **Netherlands, Germany, Belgium, Scandinavia (DK/SE/NO/FI), UK, or Spain**; legally permitted to receive referral payments |
 | **Disclosure willingness** | Clear partnership disclosure on all program-related posts |
 | **Photoshoot availability** | Can attend one half-day photoshoot within first 8 weeks of term |
 
@@ -372,9 +406,9 @@ The Aquatic Coach may update disclosure templates when regulations change.
 
 ## 12. Onboarding Process
 
-1. **Application** — Form captures: name, primary sport, **Target Race** (name + date), secondary sports, social handles, **follower count**, posting frequency self-assessment, sample post links, gender (optional — for cohort balance)
-2. **Profile review** — Verify **3,000+ followers**, **≥3 posts/week** habit, Reels/photo mix, authentic race-prep narrative
-3. **Cohort fit** — Confirm gender balance target (≥60% women) and sport/race diversity for upcoming intake
+1. **Application** — Form captures: name, **country of residence**, primary sport, **Target Race** (name + date), secondary sports, social handles, **follower count**, posting frequency self-assessment, sample post links, gender (optional — for cohort balance)
+2. **Profile review** — Verify **3,000+ followers**, **≥3 posts/week** habit, Reels/photo mix, authentic race-prep narrative, **eligible geography**
+3. **Cohort fit** — Confirm gender balance target (≥60% women), **regional slot** (NL/DE/BE/Scandinavia/UK/ES), and sport/race diversity for upcoming intake
 4. **Agreement** — Sign Ambassador Agreement including **Schedule C: Target Race & Profile**
 5. **Setup** — Referral link, dashboard access, brand asset pack, disclosure templates
 6. **Orientation** — 30-minute onboarding call covering content guidelines, attribution, **photoshoot scheduling**, and support contacts
@@ -428,6 +462,8 @@ Ambassadors do **not** receive free subscription extensions solely for participa
 
 | Item | Value |
 |------|-------|
+| Cohort size (pilot) | **10–12 ambassadors** |
+| Priority markets | **NL · DE · BE · Scandinavia · UK · ES** |
 | Follower minimum | **More than 3,000** on primary channel |
 | Cohort gender target | **≥60% women** per intake |
 | Pre-program posting | **≥3 posts/week** (8 of prior 12 weeks) |
@@ -448,7 +484,7 @@ Ambassadors do **not** receive free subscription extensions solely for participa
 
 1. Review this proposal with stakeholders and confirm the standard first month subscription fee referenced in the Agreement
 2. Finalise Ambassador Application Form (including Target Race and follower verification fields) and referral tracking infrastructure
-3. Recruit initial cohort of **10 ambassadors** — majority women, each with a distinct primary sport/race focus
+3. Recruit initial cohort of **10–12 ambassadors** — majority women, distinct primary sport/race focus, spread across **Netherlands, Germany, Belgium, Scandinavia, UK, and Spain**
 4. Execute Ambassador Agreements with Schedule C completed for each athlete
 5. Schedule photoshoots within first 8 weeks of term
 6. Launch pilot with 90-day performance review
