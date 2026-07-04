@@ -5,7 +5,7 @@
 ---
 
 **Agreement reference:** ACP-AMB-[YYYY]-[####]  
-**Version:** 1.2  
+**Version:** 1.3  
 **Effective date:** ____________________
 
 ---
@@ -88,9 +88,11 @@ The Aquatic Coach and the Ambassador are each a **“Party”** and together the
 
 **1.15** **“Target Race”** means the named event, date, and distance declared in Schedule C and used as the Ambassador’s primary race narrative for the Term.
 
-**1.16** **“Primary Sport Lens”** means the lead sport declared in Schedule C (e.g. open-water swim, run, triathlon) under which program content is primarily framed.
+**1.16** **“Primary Sport Lens”** means the lead endurance discipline declared in Schedule C (e.g. triathlon, road running, trail running, gravel, open-water swim, pool swim, swim-run, hybrid).
 
 **1.17** **“Photoshoot Deliverables”** means still images and short-form video clips provided to the Ambassador under Section 3.9 and Schedule C.
+
+**1.18** **“Eligible Race Format”** means any race or event category listed in the Ambassador Program Proposal (Section 4.2), not limited to beginner or entry-level distances.
 
 ---
 
@@ -302,6 +304,8 @@ The Ambassador shall not:
 | Item | Terms |
 |------|-------|
 | Cohort size (pilot) | 10–12 ambassadors |
+| Discipline diversity | Tri, road run, trail, gravel, OW, swim-run, pool, hybrid |
+| Experience level | Experienced athletes — not beginner-only |
 | Priority markets | Netherlands, Germany, Belgium, Scandinavia, UK, Spain |
 | Follower minimum (at application) | More than 3,000 on primary channel |
 | Pre-program posting habit | ≥3 posts/week (verified at application) |
@@ -336,17 +340,20 @@ The Ambassador shall not:
 | **Country of residence** | ________________________________ |
 | **Primary Social Platform** | ________________________________ |
 | **Follower count (at signing)** | ________________________________ |
-| **Primary Sport Lens** | ☐ Open-water swim ☐ Pool swim ☐ Run ☐ Triathlon ☐ Swim-run / hybrid ☐ Other: ______ |
+| **Primary Sport Lens** | ☐ Triathlon ☐ Road running ☐ Trail running ☐ Gravel ☐ Open-water swim ☐ Pool swim ☐ Swim-run / aquathlon ☐ Hybrid / multi-sport ☐ Other: ______ |
+| **Experience level (self-declared)** | ☐ Intermediate ☐ Advanced ☐ Elite amateur |
 | **Secondary sports (cross-training)** | ________________________________ |
 | **Target Race — official name** | ________________________________ |
 | **Target Race — date** | ________________________________ |
 | **Target Race — distance / category** | ________________________________ |
+| **Target Race format** | ☐ Tri ☐ Road run ☐ Trail ☐ Gravel ☐ OW swim ☐ Pool ☐ Swim-run / aquathlon ☐ Other: ______ |
 | **Platform training plan aligned?** | ☐ Yes — start date: ______ |
 | **Photoshoot — preferred location** | ________________________________ |
 | **Photoshoot — availability window** | ________________________________ |
 
 **Ambassador confirms:**
 
+- [ ] I am an **experienced athlete** in my declared discipline (this is **not** a beginner-only program)  
 - [ ] I have **more than 3,000 followers** on my primary channel  
 - [ ] I already post **at least 3 times per week** with a mix of Reels/video and photos  
 - [ ] I am training on the Platform toward the Target Race named above  

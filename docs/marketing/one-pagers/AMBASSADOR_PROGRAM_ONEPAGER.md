@@ -1,7 +1,7 @@
 # The Aquatic Coach Platform  
 ## Ambassador Program — Athlete One-Pager
 
-**Version 1.2 · For active platform athletes considering ambassador application**
+**Version 1.3 · For active platform athletes considering ambassador application**
 
 ---
 
@@ -17,7 +17,7 @@ Train on the platform toward a **named target race**, share your **real journey 
 |---|---|
 | **Cohort size** | **10–12 ambassadors** (pilot intake) |
 | **Markets** | **Netherlands · Germany · Belgium · Scandinavia · UK · Spain** |
-| **Who** | Race-focused, multi-sport athletes — **majority women** cohort (≥60%) |
+| **Who** | **Experienced**, race-focused, multi-sport athletes — **majority women** (≥60%) · **not beginner-only** |
 | **Followers** | **More than 3,000** on Instagram or TikTok (primary channel) |
 | **Your habit** | Already post **≥3 times/week** with a **mix of Reels and photos** |
 | **Your focus** | One **Target Race** + one **primary sport lens** per ambassador |
@@ -44,6 +44,26 @@ You must be **based in** one of these countries. Content may be in English, Dutc
 
 ---
 
+### DISCIPLINES & RACE FORMATS — WIDE VARIETY
+
+Ambassadors are **not limited** to beginner open-water distances or entry-level events. We want a **diverse cohort** across endurance sport:
+
+| Primary lens | Example Target Races |
+|--------------|---------------------|
+| **Triathlon** | Sprint, Olympic, half-Ironman, relay |
+| **Road running** | 5 km – marathon, business runs |
+| **Trail running** | Trail races, sky/mountain builds, ultras |
+| **Gravel** | Gravel races, mixed-surface endurance events |
+| **Open-water swimming** | 1 km – 10 km+ OW, sea/lake swims |
+| **Pool swimming** | Masters meets, 400 m – 1500 m+ |
+| **Swim-run / aquathlon** | SwimRun, aquathlon, run-swim events |
+
+Each ambassador picks **one primary lens** and **one Target Race** — the cohort should cover **at least 6 different lenses**.
+
+**Experience:** Intermediate, advanced, and elite amateur athletes welcome. You do **not** need to be new to sport.
+
+---
+
 ### IDEAL AMBASSADOR PROFILE
 
 | Criterion | What we look for |
@@ -54,6 +74,7 @@ You must be **based in** one of these countries. Content may be in English, Dutc
 | **Format mix** | Already uses **Reels/video and photos** — not photo-only |
 | **Multi-sport** | Cross-trains in real life, but **one clear race story** |
 | **Race narrative** | Publicly documents **training for a named event** in your region |
+| **Experience** | **Experienced athlete** in your discipline — not a beginner-only program |
 | **Platform use** | Active subscriber with plan aligned to Target Race |
 
 ---

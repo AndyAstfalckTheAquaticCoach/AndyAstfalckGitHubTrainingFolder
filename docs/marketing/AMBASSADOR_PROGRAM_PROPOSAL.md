@@ -1,7 +1,7 @@
 # The Aquatic Coach Platform  
 ## Ambassador Marketing Program — Proposal Document
 
-**Document version:** 1.2  
+**Document version:** 1.3  
 **Effective date:** [Effective Date]  
 **Prepared for:** Marketing & Community Growth  
 **Prepared by:** The Aquatic Coach  
@@ -13,7 +13,9 @@
 
 The Aquatic Coach Platform Ambassador Program is a structured referral and advocacy initiative for athletes who already train with the platform. Ambassadors share authentic, weekly social media content about their experience with evidence-based, data-integrated coaching. When a post they recommend directly leads to a new athlete signing up and paying their first month subscription, the ambassador receives **€100** from that first month fee.
 
-This program is designed to grow the platform through credible peer advocacy — not generic advertising. Ambassadors are **race-focused, multi-sport athletes** — predominantly women — who already publish regularly and document their training journey toward a **named target event**. The Aquatic Coach provides each ambassador with a **professional photoshoot including video assets** for Reels, alongside referral commission when recommended posts convert.
+This program is designed to grow the platform through credible peer advocacy — not generic advertising. Ambassadors are **experienced, race-focused, multi-sport athletes** — predominantly women — who already publish regularly and document their training journey toward a **named target event**. They are **not required to be beginners**; we welcome athletes at intermediate, advanced, and elite amateur level across a **wide range of endurance disciplines**. The Aquatic Coach provides each ambassador with a **professional photoshoot including video assets** for Reels, alongside referral commission when recommended posts convert.
+
+**Note:** The ambassador program is **not limited** to the short-distance open-water events used for beginner swimmer recruitment elsewhere. Ambassadors may target any eligible race format listed in Section 4.2.
 
 ---
 
@@ -26,7 +28,8 @@ This program is designed to grow the platform through credible peer advocacy —
 | **Women-led visibility** | Build a cohort where **at least 60% of ambassadors identify as women**, reflecting aquatic and endurance audiences |
 | **Quality over volume** | Prioritise engaged followers (**3,000+**) and consistent creators over raw reach |
 | **Brand integrity** | Ensure all public content reflects the platform’s evidence-based, data-driven coaching philosophy |
-| **Community building** | Represent swimming, triathlon, open-water, and mixed-sport endurance with **one clear sport/race focus per ambassador** across **Northwest Europe** |
+| **Discipline diversity** | Recruit across **triathlon, road run, trail, gravel, swim-run, open water, pool swim, and hybrid events** — not limited to beginner distances |
+| **Community building** | Represent swimming, triathlon, open-water, trail, gravel, and mixed-sport endurance with **one clear sport/race focus per ambassador** across **Northwest Europe** |
 
 ---
 
@@ -53,10 +56,11 @@ Ambassadors must describe benefits accurately and from personal experience. They
 
 ### 4.1 Who we are looking for
 
-Ambassadors are **creators who already train in public**. They mix sports in real life (e.g. swim + run, triathlon, run + strength) but each ambassador is recruited with **one primary race target** and **one lead sport narrative** for the program term.
+Ambassadors are **experienced creators who already train in public** — not beginners. They may be intermediate, advanced, or elite amateur athletes. They mix sports in real life (e.g. swim + run, triathlon, trail + gravel, swim-run) but each ambassador is recruited with **one primary race target** and **one lead sport narrative** for the program term.
 
 | Cohort design rule | Target |
 |--------------------|--------|
+| **Experience level** | **Any level except beginner-only** — ambassadors must have meaningful race or event experience in their discipline; no requirement to be new to sport |
 | **Gender balance** | **Majority women** — aim for **≥60% women** in each intake cohort (remaining places open to all genders) |
 | **Follower minimum** | **More than 3,000** followers/subscribers on primary channel (Instagram or TikTok preferred; YouTube/Strava considered case-by-case) |
 | **Pre-program posting** | Already posts **at least 3 times per week** (any mix of content) for minimum **8 of the prior 12 weeks** — verified at application |
@@ -64,17 +68,35 @@ Ambassadors are **creators who already train in public**. They mix sports in rea
 | **Content format habit** | Already uses a **mix of Reels/video and static photos** — not photo-only or text-only accounts |
 | **Platform use** | Active Aquatic Coach Platform subscriber using prescribed training toward that race |
 
-### 4.2 Multi-sport athletes — one primary focus each
+### 4.2 Endurance disciplines & race formats — wide variety welcome
 
-We welcome athletes who **cross-train**, but each ambassador slot is defined by a **single race story** and **primary sport lens**:
+We recruit across the **full endurance spectrum**. The ambassador program is **not restricted** to beginner-friendly open-water distances or entry-level events used in other Aquatic Coach recruitment channels. Each ambassador declares **one Primary Sport Lens** and **one Target Race** — but the cohort as a whole should span diverse activities.
 
-| Ambassador type | Primary sport lens | Typical mixed training | Example target races |
-|-----------------|-------------------|------------------------|----------------------|
-| **Open-water swimmer** | Swim | Pool technique, light run for fitness | 1 km / 3 km OW, charity swim |
-| **Triathlete** | Triathlon (swim-led narrative OK) | Bike, run, swim | Sprint/Olympic tri, relay |
-| **Runner** | Run | Strength, occasional cross-train | 5 km, 10 km, 15 km business run |
-| **Swim-run / hybrid** | Swim or run (declared at signup) | Second sport supporting race | OW + trail, aquathlon prep |
-| **Pool swimmer (masters)** | Swim | Dryland, mobility | Masters meet, 1500m focus |
+| Primary sport lens | Race / event formats (examples) | Typical experience level |
+|--------------------|-----------------------------------|--------------------------|
+| **Triathlon** | Sprint, Olympic, half-Ironman, relay, cross-tri | Any — from first Olympic to experienced long-course |
+| **Road running** | 5 km, 10 km, 15 km, half-marathon, marathon, business runs | Any — club runner to competitive amateur |
+| **Trail running** | Short trail, sky/trail ultra build, mountain races, fell runs | Intermediate+ typical; beginners with race history OK |
+| **Gravel cycling / gravel races** | Gravel sportive, gravel race, mixed-surface endurance events | Any with bike race or sportive experience |
+| **Open-water swimming** | 1 km, 3 km, 5 km, 10 km OW, channel/build swims, charity swims | **Any distance** — not limited to 500 m / 1 km entry events |
+| **Pool swimming** | Masters meets, 400 m–1500 m+, national masters, pool open | Masters and competitive pool swimmers welcome |
+| **Swim-run / aquathlon / run-swim** | SwimRun (ÖTILLÖ-style), aquathlon, aquabike, run-swim relays | Any — short format to long swim-run |
+| **Hybrid / multi-sport** | Duathlon, cross duathlon, swim-bike-run adventure races | Declared primary lens at signup |
+
+**Cohort diversity goal:** The 10–12 ambassador intake should include **at least 6 distinct primary lenses** across the table above (e.g. not all road runners or all OW swimmers).
+
+**Multi-sport in practice:** Athletes cross-train (bike for tri, strength for trail, pool for OW), but each ambassador slot is defined by a **single race story** and **primary sport lens**:
+
+| Example ambassador | Primary lens | Cross-training | Example Target Race |
+|--------------------|--------------|----------------|---------------------|
+| OW specialist | Open-water swim | Pool technique, dryland | 5 km OW or 3 km sea swim |
+| Triathlete | Triathlon | Bike, run, swim | Olympic or half-Ironman |
+| Road runner | Road running | Strength, occasional swim | Half-marathon or 10 km |
+| Trail athlete | Trail running | Hiking, strength | 30 km trail or mountain race |
+| Gravel rider | Gravel | Road base, run cross-train | Local gravel race or 100 km gravel event |
+| Swim-run athlete | Swim-run | Run volume, OW skills | Sprint or middle-distance SwimRun |
+| Masters swimmer | Pool swim | OW optional, gym | Masters 800 m / 1500 m |
+| Aquathlon | Swim-run / hybrid | Run + swim blocks | Aquathlon or short swim-run |
 
 **Rule:** Cross-training may appear in posts, but **≥70% of program-tagged ambassador content** must relate to the declared **Target Race** and **primary sport lens**.
 
@@ -84,9 +106,10 @@ Every ambassador must declare at application:
 
 | Field | Requirement |
 |-------|-------------|
-| **Target Race name** | Official event name (e.g. “ZOZ Duckrace 1 km”, “NN CPC Loop Den Haag 10 km Business”) |
+| **Target Race name** | Official event name (e.g. “ÖTILLÖ Sprint Catalina”, “Gravel Lutte 100”, “NN CPC Loop Den Haag 10 km”, “ZOZ Duckrace 3 km”, “UTMB index trail — [named race]”) |
 | **Race date** | Within **6 months** of ambassador start (extendable by agreement) |
-| **Race distance** | Aligned to training plan on Platform |
+| **Race distance / category** | Aligned to training plan on Platform — **any eligible distance or format** (Section 4.2) |
+| **Experience level** | Self-declared — beginner / intermediate / advanced / elite amateur (for cohort planning only; **beginner-only athletes are not the target**) |
 | **Narrative commitment** | Publicly document **training for this race** in weekly ambassador posts |
 
 Posts that only discuss generic fitness **without race progression** do not meet program standards. Recommended posts should reference race countdown, key sessions, taper, or lessons learned in build phases.
@@ -135,24 +158,24 @@ The first intake targets **10–12 ambassadors** with **majority women (≥60%)*
 | **United Kingdom** | 2 | Pool swim, OW, and run — ASA/advertising disclosure rules apply |
 | **Spain** | 1–2 | OW, tri, and trail/run — Spanish-language content welcome |
 
-**Example 12-person cohort (sport × region):**
+**Example 12-person cohort (sport × region — diverse disciplines):**
 
-| # | Region | Gender target | Primary lens | Example race types |
-|---|--------|---------------|--------------|-------------------|
-| 1 | Netherlands | Woman | Open-water swim | 1 km / 3 km OW |
-| 2 | Netherlands | Woman | Run | 5 km / 10 km |
-| 3 | Germany | Woman | Triathlon | Sprint / Olympic |
-| 4 | Germany | Open | Run | 10 km / half-marathon build |
-| 5 | Belgium | Woman | Open-water swim | OW charity / 1 km |
-| 6 | Scandinavia | Woman | Triathlon or swim | OW or sprint tri |
-| 7 | Scandinavia | Open | Run | 10 km / trail |
-| 8 | UK | Woman | Pool swim / OW | Masters meet or OW |
-| 9 | UK | Woman | Run | 5 km / 10 km business run |
-| 10 | Spain | Woman | Triathlon or OW | Mediterranean OW / sprint tri |
-| 11 | Spain | Open | Run / hybrid | Coastal trail or aquathlon prep |
-| 12 | Any (fill gap) | As needed | Best fit open slot | Race aligned to local calendar |
+| # | Region | Gender target | Primary lens | Example Target Race types |
+|---|--------|---------------|--------------|---------------------------|
+| 1 | Netherlands | Woman | Open-water swim | 3 km / 5 km OW (not entry-level only) |
+| 2 | Netherlands | Woman | Road running | Half-marathon or 15 km |
+| 3 | Germany | Woman | Triathlon | Olympic or half-Ironman |
+| 4 | Germany | Open | Gravel | Gravel race or 100 km sportive |
+| 5 | Belgium | Woman | Swim-run | SwimRun or aquathlon |
+| 6 | Scandinavia | Woman | Trail running | Trail ultra build or sky race |
+| 7 | Scandinavia | Open | Triathlon | Sprint / Olympic |
+| 8 | UK | Woman | Open-water swim | Sea swim or lake 5 km |
+| 9 | UK | Woman | Road running | 10 km / marathon build |
+| 10 | Spain | Woman | Triathlon or OW | Mediterranean OW or long-course tri |
+| 11 | Spain | Open | Trail / hybrid | Coastal trail or swim-run |
+| 12 | Any (fill gap) | As needed | **Distinct lens not yet covered** | e.g. masters pool, gravel, duathlon |
 
-Adjust per intake while keeping **women ≥60%**, **10–12 total**, and **no more than 3 ambassadors from a single country** unless otherwise agreed.
+Adjust per intake while keeping **women ≥60%**, **10–12 total**, **≥6 distinct primary lenses**, and **no more than 3 ambassadors from a single country** unless otherwise agreed.
 
 ### 4.7 Geographic scope & localisation
 
@@ -182,7 +205,8 @@ To qualify as an Ambassador, an applicant must meet **all** of the following:
 | **Target Race declared** | Named event + date within 6 months; training plan on Platform aligned to that race |
 | **Social following** | **More than 3,000** followers/subscribers on primary public account (Instagram, TikTok, YouTube, or Strava — primary channel declared at application) |
 | **Posting habit** | **≥3 posts/week** documented over prior 8 of 12 weeks; mix of **Reels/video and photos** |
-| **Cohort fit** | Primary sport lens and race target fits an open ambassador slot (Section 4.6); women applicants prioritised to achieve majority-women cohort; **geographic slot available** in Netherlands, Germany, Belgium, Scandinavia, UK, or Spain |
+| **Cohort fit** | Primary sport lens and race target fits an open ambassador slot (Section 4.6); **discipline diversity** across cohort (Section 4.2); women applicants prioritised to achieve majority-women cohort; **geographic slot available** in Netherlands, Germany, Belgium, Scandinavia, UK, or Spain |
+| **Athlete experience** | **Not a beginner-only program** — meaningful event experience in declared discipline; intermediate, advanced, and elite amateur athletes all welcome |
 | **Brand alignment** | Professional, evidence-based, safety-first conduct |
 | **Geographic eligibility** | Based in **Netherlands, Germany, Belgium, Scandinavia (DK/SE/NO/FI), UK, or Spain**; legally permitted to receive referral payments |
 | **Disclosure willingness** | Clear partnership disclosure on all program-related posts |
@@ -463,6 +487,8 @@ Ambassadors do **not** receive free subscription extensions solely for participa
 | Item | Value |
 |------|-------|
 | Cohort size (pilot) | **10–12 ambassadors** |
+| Discipline diversity | **≥6 distinct primary lenses** (tri, road, trail, gravel, OW, swim-run, pool, hybrid) |
+| Experience level | **Experienced athletes** — not beginner-only |
 | Priority markets | **NL · DE · BE · Scandinavia · UK · ES** |
 | Follower minimum | **More than 3,000** on primary channel |
 | Cohort gender target | **≥60% women** per intake |
@@ -484,7 +510,7 @@ Ambassadors do **not** receive free subscription extensions solely for participa
 
 1. Review this proposal with stakeholders and confirm the standard first month subscription fee referenced in the Agreement
 2. Finalise Ambassador Application Form (including Target Race and follower verification fields) and referral tracking infrastructure
-3. Recruit initial cohort of **10–12 ambassadors** — majority women, distinct primary sport/race focus, spread across **Netherlands, Germany, Belgium, Scandinavia, UK, and Spain**
+3. Recruit initial cohort of **10–12 ambassadors** — majority women, **diverse disciplines** (tri, road, trail, gravel, OW, swim-run, pool), **experienced athletes**, spread across **Netherlands, Germany, Belgium, Scandinavia, UK, and Spain**
 4. Execute Ambassador Agreements with Schedule C completed for each athlete
 5. Schedule photoshoots within first 8 weeks of term
 6. Launch pilot with 90-day performance review
