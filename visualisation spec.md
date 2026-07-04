@@ -1,6 +1,7 @@
 # Visualisation Specification
 
 **Protocol alignment:** Section 11 AI Coach Protocol (Intervals.icu data mirror)  
+**Companion doc:** `design rules.md` — expert-derived rules for how to present data well on screen  
 **Last updated:** 2026-07-04  
 **Target platform:** Mobile-first (iPhone); adaptable to desktop
 
