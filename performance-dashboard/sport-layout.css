@@ -1,0 +1,122 @@
+:root { --sport-accent: #3dff8f; }
+body.sport-page {
+  background: linear-gradient(160deg, #0a0e14 0%, #0f1620 100%);
+  padding: 1.5rem;
+  padding-top: 3.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.sport-banner {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sport-accent);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.sport-banner.runner { color: #4da3ff; }
+.sport-banner.trail { color: #7cb342; }
+.sport-banner.gravel { color: #e8a838; }
+.sport-banner.tri { color: #b388ff; }
+.sport-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.sport-header h1 { font-size: 1.5rem; font-weight: 800; }
+.athlete-line { color: var(--muted); font-size: 0.85rem; margin-top: 0.2rem; }
+#pageSub { color: var(--sport-accent); font-size: 0.8rem; font-weight: 600; margin-top: 0.35rem; }
+.badges { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.rings-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.ring-wrap {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ring-sub { font-size: 0.65rem; color: var(--muted); margin-top: 0.2rem; text-align: center; }
+.insights { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+.main-grid { display: grid; grid-template-columns: 1fr 280px; gap: 1.25rem; }
+.chart-box { height: 280px; position: relative; }
+.chart-box.tall { height: 300px; }
+.chart-box.short { height: 220px; }
+.chart-badge { position: absolute; top: 0; right: 0; z-index: 1; }
+.trend-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.65rem 0; border-bottom: 1px solid rgba(42,53,68,0.5);
+}
+.trend-row:last-child { border-bottom: none; }
+.trend-name { font-size: 0.75rem; color: var(--muted); }
+.trend-val { font-size: 0.95rem; font-weight: 700; }
+.trend-delta { font-size: 0.7rem; font-weight: 600; }
+.trend-spark { width: 80px; height: 28px; margin: 0 0.75rem; }
+.table-card { margin-top: 1.25rem; }
+.narrative {
+  margin-top: 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--muted);
+  border-color: rgba(61,255,143,0.2);
+}
+.narrative::before {
+  content: "Coach summary";
+  display: block;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sport-accent);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+.exec-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+.exec-card { text-align: center; }
+.exec-name { font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.exec-val { font-size: 1.1rem; font-weight: 700; margin: 0.35rem 0; }
+.tri-sports {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.tri-col {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--sport-color);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+.tri-head { font-weight: 700; font-size: 0.9rem; color: var(--sport-color); margin-bottom: 0.75rem; }
+.tri-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 0.75rem; }
+.tri-metric { background: var(--card2); border-radius: 8px; padding: 0.5rem; }
+.tri-k { display: block; font-size: 0.6rem; color: var(--muted); text-transform: uppercase; }
+.tri-v { display: block; font-size: 0.95rem; font-weight: 700; }
+.tri-d { font-size: 0.65rem; color: var(--green); font-weight: 600; }
+.tri-chart { height: 100px; }
+@media (max-width: 900px) {
+  .rings-row, .tri-sports, .exec-grid { grid-template-columns: repeat(2, 1fr); }
+  .main-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 500px) {
+  .rings-row { grid-template-columns: 1fr; }
+  .tri-sports { grid-template-columns: 1fr; }
+}

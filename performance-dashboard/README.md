@@ -1,29 +1,39 @@
 # Performance Dashboard Mocks
 
-Five high-end **Performance tab** mockups for the athlete portal (separate from Wellness).
+Ten interactive **Performance tab** mockups for the athlete portal.
 
-## Open in Canvas / browser
+## Open at home
 
-**Start here:** [index.html](./index.html)
+1. Pull branch `cursor/performance-dashboard-mocks-7491` (or merge PR #3)
+2. Open **`performance-dashboard/index.html`** in your browser (double-click the file)
 
-Click any tile to open full-screen Canvas preview. Use ← → keys or Prev/Next to compare variations.
+## Gallery sections
 
-| # | File | Style |
-|---|------|--------|
-| 1 | [v1-rings-hero.html](./v1-rings-hero.html) | Sonar-style rings + area chart + trend sparklines |
-| 2 | [v2-split-command.html](./v2-split-command.html) | Sidebar command panel + hero curve |
-| 3 | [v3-bento-grid.html](./v3-bento-grid.html) | Asymmetric bento card grid |
-| 4 | [v4-timeline-story.html](./v4-timeline-story.html) | Vertical fitness narrative timeline |
-| 5 | [v5-minimal-pro.html](./v5-minimal-pro.html) | Whoop/Apple minimal mobile-first |
+### Layout variations (V1–V5)
+Same road-cycling athlete — pick a visual style (rings, sidebar, bento, timeline, minimal).
 
-## Mock data
+### Sport-specific dashboards (V6–V10)
+Metrics tailored per athlete type (Section 11 per-sport rules):
 
-Shared in `mock-data.js` — cycling athlete, FTP 258W, DFA AeT, power curve delta, aligned with Section 11 fields.
+| # | Athlete | Hero metrics | De-emphasised |
+|---|---------|--------------|---------------|
+| **V6** | Road runner | Threshold pace, AeT pace, LTHR, weekly km | Power curve |
+| **V7** | Trail runner | Uphill AeT, vert/week, flat threshold | Track 5k speed |
+| **V8** | Gravel cyclist | FTP, 2h sustainable W, durability, vert | 5s sprint |
+| **V9** | Triathlete | Swim CSS, bike FTP, run pace + 3-column detail | Single-sport FTP only |
+| **V10** | Road cyclist | FTP, AeT, AnT, VO₂/W′ + coach summary | — |
 
-## Local preview
+## Files
+
+- `index.html` — gallery + full-screen viewer (← → to compare)
+- `mock-profiles.js` — sport-specific mock data
+- `sport-dashboard.js` — shared renderer for V6–V10
+- `v1`–`v10` — individual dashboards
+
+## Local server (optional)
 
 ```bash
 cd performance-dashboard
 python3 -m http.server 8080
-# Open http://localhost:8080
+# http://localhost:8080
 ```

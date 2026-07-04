@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Performance Dashboard — Gallery (5 Variations)</title>
+  <title>Performance Dashboard — Gallery (10 Variations)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
@@ -89,6 +89,17 @@
       color: var(--green);
       font-weight: 600;
     }
+    .tag.sport-run { background: rgba(77,163,255,0.12); color: #4da3ff; }
+    .tag.sport-trail { background: rgba(124,179,66,0.12); color: #7cb342; }
+    .tag.sport-gravel { background: rgba(232,168,56,0.12); color: #e8a838; }
+    .tag.sport-tri { background: rgba(179,136,255,0.12); color: #b388ff; }
+    .section-head {
+      grid-column: 1 / -1;
+      padding: 0.5rem 0 0.25rem;
+      margin-top: 0.5rem;
+    }
+    .section-head h2 { font-size: 1rem; font-weight: 700; letter-spacing: -0.02em; }
+    .section-head p { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
     .canvas-bar {
       position: sticky;
       bottom: 0;
@@ -145,13 +156,13 @@
 <body>
   <header>
     <h1>Performance Tab — Mock Dashboards</h1>
-    <p>Five high-end layout variations for your athlete portal. Click a tile to open full-screen in Canvas preview.</p>
+    <p>Ten variations — five layout styles plus five sport-specific dashboards with metrics tailored to each athlete type. Click a tile for full-screen preview.</p>
   </header>
 
   <div class="gallery" id="gallery"></div>
 
   <div class="canvas-bar">
-    <span>Mock data: Olivia Jones · Cycling · FTP 258W · Build phase</span>
+    <span>Layouts V1–V5 · Sport dashboards V6–V10 (runner, trail, gravel, tri, road)</span>
   </div>
 
   <div id="viewer">
@@ -167,43 +178,37 @@
   </div>
 
   <script>
-    var variations = [
+    var sections = [
       {
-        id: "v1-rings-hero.html",
-        num: "01",
-        title: "Rings Hero",
-        desc: "Sonar-style four threshold rings, power curve area chart, vital trends column. Best match to your wellness reference.",
-        tags: ["Rings", "Area chart", "Sparklines"],
+        title: "Layout variations",
+        subtitle: "Same road-cycling data — pick the visual style you prefer.",
+        items: [
+          { id: "v1-rings-hero.html", num: "01", title: "Rings Hero", desc: "Sonar-style rings, power curve, trend sparklines.", tags: ["Rings", "Road cycling", "Charts"] },
+          { id: "v2-split-command.html", num: "02", title: "Split Command", desc: "Sidebar thresholds + hero power curve.", tags: ["Sidebar", "Coach view"] },
+          { id: "v3-bento-grid.html", num: "03", title: "Bento Grid", desc: "Asymmetric metric tiles with mini charts.", tags: ["Bento", "Modular"] },
+          { id: "v4-timeline-story.html", num: "04", title: "Timeline Story", desc: "Vertical FTP/threshold evolution narrative.", tags: ["Timeline", "Narrative"] },
+          { id: "v5-minimal-pro.html", num: "05", title: "Minimal Pro", desc: "Whoop/Apple minimal single-column layout.", tags: ["Minimal", "Mobile"] },
+        ],
       },
       {
-        id: "v2-split-command.html",
-        num: "02",
-        title: "Split Command",
-        desc: "Left command panel with athlete profile and threshold list; right hero power curve and sustainability table.",
-        tags: ["Sidebar", "Data-dense", "Coach view"],
-      },
-      {
-        id: "v3-bento-grid.html",
-        num: "03",
-        title: "Bento Grid",
-        desc: "Asymmetric card grid — each metric owns a tile with embedded mini charts. Modern SaaS aesthetic.",
-        tags: ["Bento", "Modular", "Scannable"],
-      },
-      {
-        id: "v4-timeline-story.html",
-        num: "04",
-        title: "Timeline Story",
-        desc: "Vertical narrative: FTP history timeline, block progression, and curve evolution. Tells the fitness story.",
-        tags: ["Timeline", "Narrative", "Longitudinal"],
-      },
-      {
-        id: "v5-minimal-pro.html",
-        num: "05",
-        title: "Minimal Pro",
-        desc: "Ultra-clean Whoop/Apple-inspired layout. Fewer elements, maximum whitespace, subtle motion.",
-        tags: ["Minimal", "Premium", "Mobile-first"],
+        title: "Sport-specific dashboards",
+        subtitle: "Metrics change per athlete — pace for runners, vert for trail, three sports for tri.",
+        items: [
+          { id: "v6-runner.html", num: "06", title: "Road Runner", desc: "Threshold pace, AeT pace, LTHR, weekly km. Pace-duration chart — no power required.", tags: ["Running", "Pace", "HM prep"], tagClass: "sport-run" },
+          { id: "v7-trail-runner.html", num: "07", title: "Trail Runner", desc: "Uphill AeT, vert/week, long-run decoupling. Elevation vs durability chart.", tags: ["Trail", "Vert", "Ultra"], tagClass: "sport-trail" },
+          { id: "v8-gravel-cyclist.html", num: "08", title: "Gravel Cyclist", desc: "Long-duration power, 2h sustainable watts, weekly vert. Sprint de-emphasised.", tags: ["Gravel", "Durability", "3h+"], tagClass: "sport-gravel" },
+          { id: "v9-triathlete.html", num: "09", title: "Triathlete", desc: "Swim CSS, bike FTP, run threshold — three columns, isolated per sport.", tags: ["Triathlon", "70.3", "Multi-sport"], tagClass: "sport-tri" },
+          { id: "v10-road-cyclist.html", num: "10", title: "Road Cyclist (sport)", desc: "Full power dashboard with coach summary — FTP, AeT, curve, sustainability.", tags: ["Cycling", "FTP", "DFA"] },
+        ],
       },
     ];
+
+    var variations = [];
+    sections.forEach(function (sec) {
+      sec.items.forEach(function (item) {
+        variations.push(item);
+      });
+    });
 
     var currentIdx = 0;
     var gallery = document.getElementById("gallery");
@@ -211,24 +216,34 @@
     var frame = document.getElementById("viewerFrame");
     var viewerTitle = document.getElementById("viewerTitle");
 
-    variations.forEach(function (v, i) {
-      var a = document.createElement("a");
-      a.className = "tile";
-      a.href = v.id;
-      a.onclick = function (e) {
-        e.preventDefault();
-        openViewer(i);
-      };
-      a.innerHTML =
-        '<div class="tile-preview"><iframe src="' + v.id + '" loading="lazy"></iframe></div>' +
-        '<div class="tile-body">' +
-        '<div class="tile-num">Variation ' + v.num + '</div>' +
-        "<h2>" + v.title + "</h2>" +
-        "<p>" + v.desc + "</p>" +
-        '<div class="tile-tags">' +
-        v.tags.map(function (t) { return '<span class="tag">' + t + "</span>"; }).join("") +
-        "</div></div>";
-      gallery.appendChild(a);
+    var tileIndex = 0;
+    sections.forEach(function (sec) {
+      var head = document.createElement("div");
+      head.className = "section-head";
+      head.innerHTML = "<h2>" + sec.title + "</h2><p>" + sec.subtitle + "</p>";
+      gallery.appendChild(head);
+      sec.items.forEach(function (v) {
+        var idx = tileIndex++;
+        var a = document.createElement("a");
+        a.className = "tile";
+        a.href = v.id;
+        a.onclick = function (e) {
+          e.preventDefault();
+          openViewer(idx);
+        };
+        a.innerHTML =
+          '<div class="tile-preview"><iframe src="' + v.id + '" loading="lazy"></iframe></div>' +
+          '<div class="tile-body">' +
+          '<div class="tile-num">Variation ' + v.num + '</div>' +
+          "<h2>" + v.title + "</h2>" +
+          "<p>" + v.desc + "</p>" +
+          '<div class="tile-tags">' +
+          v.tags.map(function (t) {
+            return '<span class="tag' + (v.tagClass ? " " + v.tagClass : "") + '">' + t + "</span>";
+          }).join("") +
+          "</div></div>";
+        gallery.appendChild(a);
+      });
     });
 
     function openViewer(i) {
