@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Performance Dashboard — Gallery (5 Variations)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #070a0f;
+      --card: #121820;
+      --border: #243044;
+      --text: #e8edf4;
+      --muted: #6b7c93;
+      --green: #3dff8f;
+      --blue: #4da3ff;
+    }
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    header {
+      padding: 2.5rem 2rem 1.5rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, #0d1219 0%, var(--bg) 100%);
+    }
+    header h1 { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.03em; }
+    header p { color: var(--muted); margin-top: 0.5rem; font-size: 0.95rem; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .tile {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .tile:hover {
+      transform: translateY(-4px);
+      border-color: rgba(77, 163, 255, 0.5);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    .tile-preview {
+      height: 220px;
+      background: #0a0e14;
+      position: relative;
+      overflow: hidden;
+    }
+    .tile-preview iframe {
+      width: 200%;
+      height: 200%;
+      border: none;
+      transform: scale(0.5);
+      transform-origin: top left;
+      pointer-events: none;
+    }
+    .tile-body { padding: 1.25rem 1.5rem 1.5rem; }
+    .tile-num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--blue);
+      margin-bottom: 0.35rem;
+    }
+    .tile-body h2 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .tile-body p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+    .tile-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.75rem; }
+    .tag {
+      font-size: 0.65rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      background: rgba(61,255,143,0.1);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .canvas-bar {
+      position: sticky;
+      bottom: 0;
+      background: rgba(7,10,15,0.95);
+      border-top: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      backdrop-filter: blur(12px);
+    }
+    .canvas-bar span { color: var(--muted); font-size: 0.85rem; }
+    .canvas-bar a {
+      color: var(--green);
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    #viewer {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: var(--bg);
+      flex-direction: column;
+    }
+    #viewer.open { display: flex; }
+    .viewer-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--card);
+    }
+    .viewer-top h3 { font-size: 0.9rem; font-weight: 600; }
+    .viewer-actions { display: flex; gap: 0.5rem; }
+    .btn {
+      padding: 0.45rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .btn-primary { background: var(--blue); border-color: var(--blue); color: #0a0e14; }
+    .btn:hover { opacity: 0.9; }
+    #viewerFrame { flex: 1; border: none; width: 100%; background: #0a0e14; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Performance Tab — Mock Dashboards</h1>
+    <p>Five high-end layout variations for your athlete portal. Click a tile to open full-screen in Canvas preview.</p>
+  </header>
+
+  <div class="gallery" id="gallery"></div>
+
+  <div class="canvas-bar">
+    <span>Mock data: Olivia Jones · Cycling · FTP 258W · Build phase</span>
+  </div>
+
+  <div id="viewer">
+    <div class="viewer-top">
+      <h3 id="viewerTitle">Variation</h3>
+      <div class="viewer-actions">
+        <button class="btn" type="button" id="prevBtn">← Prev</button>
+        <button class="btn" type="button" id="nextBtn">Next →</button>
+        <button class="btn btn-primary" type="button" id="closeBtn">Close Canvas</button>
+      </div>
+    </div>
+    <iframe id="viewerFrame" title="Dashboard preview"></iframe>
+  </div>
+
+  <script>
+    var variations = [
+      {
+        id: "v1-rings-hero.html",
+        num: "01",
+        title: "Rings Hero",
+        desc: "Sonar-style four threshold rings, power curve area chart, vital trends column. Best match to your wellness reference.",
+        tags: ["Rings", "Area chart", "Sparklines"],
+      },
+      {
+        id: "v2-split-command.html",
+        num: "02",
+        title: "Split Command",
+        desc: "Left command panel with athlete profile and threshold list; right hero power curve and sustainability table.",
+        tags: ["Sidebar", "Data-dense", "Coach view"],
+      },
+      {
+        id: "v3-bento-grid.html",
+        num: "03",
+        title: "Bento Grid",
+        desc: "Asymmetric card grid — each metric owns a tile with embedded mini charts. Modern SaaS aesthetic.",
+        tags: ["Bento", "Modular", "Scannable"],
+      },
+      {
+        id: "v4-timeline-story.html",
+        num: "04",
+        title: "Timeline Story",
+        desc: "Vertical narrative: FTP history timeline, block progression, and curve evolution. Tells the fitness story.",
+        tags: ["Timeline", "Narrative", "Longitudinal"],
+      },
+      {
+        id: "v5-minimal-pro.html",
+        num: "05",
+        title: "Minimal Pro",
+        desc: "Ultra-clean Whoop/Apple-inspired layout. Fewer elements, maximum whitespace, subtle motion.",
+        tags: ["Minimal", "Premium", "Mobile-first"],
+      },
+    ];
+
+    var currentIdx = 0;
+    var gallery = document.getElementById("gallery");
+    var viewer = document.getElementById("viewer");
+    var frame = document.getElementById("viewerFrame");
+    var viewerTitle = document.getElementById("viewerTitle");
+
+    variations.forEach(function (v, i) {
+      var a = document.createElement("a");
+      a.className = "tile";
+      a.href = v.id;
+      a.onclick = function (e) {
+        e.preventDefault();
+        openViewer(i);
+      };
+      a.innerHTML =
+        '<div class="tile-preview"><iframe src="' + v.id + '" loading="lazy"></iframe></div>' +
+        '<div class="tile-body">' +
+        '<div class="tile-num">Variation ' + v.num + '</div>' +
+        "<h2>" + v.title + "</h2>" +
+        "<p>" + v.desc + "</p>" +
+        '<div class="tile-tags">' +
+        v.tags.map(function (t) { return '<span class="tag">' + t + "</span>"; }).join("") +
+        "</div></div>";
+      gallery.appendChild(a);
+    });
+
+    function openViewer(i) {
+      currentIdx = i;
+      var v = variations[i];
+      frame.src = v.id;
+      viewerTitle.textContent = "Variation " + v.num + " — " + v.title;
+      viewer.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeViewer() {
+      viewer.classList.remove("open");
+      frame.src = "about:blank";
+      document.body.style.overflow = "";
+    }
+
+    document.getElementById("closeBtn").onclick = closeViewer;
+    document.getElementById("prevBtn").onclick = function () {
+      openViewer((currentIdx + variations.length - 1) % variations.length);
+    };
+    document.getElementById("nextBtn").onclick = function () {
+      openViewer((currentIdx + 1) % variations.length);
+    };
+    document.addEventListener("keydown", function (e) {
+      if (!viewer.classList.contains("open")) return;
+      if (e.key === "Escape") closeViewer();
+      if (e.key === "ArrowLeft") document.getElementById("prevBtn").click();
+      if (e.key === "ArrowRight") document.getElementById("nextBtn").click();
+    });
+  </script>
+</body>
+</html>

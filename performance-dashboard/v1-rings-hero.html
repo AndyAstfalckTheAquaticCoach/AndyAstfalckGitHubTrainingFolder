@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>V1 — Rings Hero | Performance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    body { background: linear-gradient(160deg, #0a0e14 0%, #0f1620 50%, #0a1218 100%); padding: 1.5rem; padding-top: 3.5rem; }
+    .top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+    .top h1 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; }
+    .top-meta { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+    .rings-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.25rem; }
+    .ring-wrap { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; display: flex; flex-direction: column; align-items: center; }
+    .ring-sub { font-size: 0.65rem; color: var(--muted); margin-top: 0.2rem; }
+    .insights { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+    .main-grid { display: grid; grid-template-columns: 1fr 280px; gap: 1.25rem; }
+    @media (max-width: 900px) { .main-grid { grid-template-columns: 1fr; } .rings-row { grid-template-columns: repeat(2, 1fr); } }
+    .chart-box { height: 280px; position: relative; }
+    .chart-badge { position: absolute; top: 0; right: 0; }
+    .trend-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.65rem 0; border-bottom: 1px solid rgba(42,53,68,0.5);
+    }
+    .trend-row:last-child { border-bottom: none; }
+    .trend-left { flex: 1; }
+    .trend-name { font-size: 0.75rem; color: var(--muted); }
+    .trend-val { font-size: 0.95rem; font-weight: 700; }
+    .trend-delta { font-size: 0.7rem; font-weight: 600; }
+    .trend-spark { width: 80px; height: 28px; margin: 0 0.75rem; }
+    .exec-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1.25rem; }
+    @media (max-width: 800px) { .exec-grid { grid-template-columns: repeat(2, 1fr); } }
+    .exec-card { text-align: center; }
+    .exec-val { font-size: 1.1rem; font-weight: 700; margin: 0.35rem 0; }
+    .exec-name { font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <a class="nav-back" href="index.html">← All variations</a>
+  <span class="variation-tag">V1 · Rings Hero</span>
+
+  <div class="top">
+    <div>
+      <h1>Performance</h1>
+      <p style="color:var(--muted);font-size:0.85rem;margin-top:0.25rem">Olivia Jones · Cycling</p>
+    </div>
+    <div class="top-meta">
+      <span class="badge badge-green">Build · Wk 3</span>
+      <span class="badge badge-blue">Synced 2h ago</span>
+    </div>
+  </div>
+
+  <div class="rings-row" id="heroRings"></div>
+
+  <div class="insights" id="insights"></div>
+
+  <div class="main-grid">
+    <div class="card">
+      <div class="card-title">Power curve · 28d vs previous</div>
+      <div class="chart-box">
+        <span class="chart-badge badge badge-green" id="rotBadge"></span>
+        <canvas id="powerChart"></canvas>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Threshold trends</div>
+      <div id="trendList"></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:1.25rem">
+    <div class="card-title">Sustainability · race-relevant durations</div>
+    <table class="data">
+      <thead><tr><th>Duration</th><th>Actual</th><th>Coggan</th><th>CP/W′</th><th>HR</th><th>Trend</th></tr></thead>
+      <tbody id="sustBody"></tbody>
+    </table>
+  </div>
+
+  <div class="exec-grid" id="execGrid"></div>
+
+  <script src="mock-data.js"></script>
+  <script src="helpers.js"></script>
+  <script>
+    var d = window.PERFORMANCE_MOCK;
+    var t = d.thresholds;
+    DashHelpers.renderRings(document.getElementById("heroRings"), [
+      { label: "FTP / LT2", value: t.ftp, unit: "W", pct: 86, color: "#3dff8f", delta: "+" + t.ftpDelta + "W", sub: t.ftpWkg + " W/kg" },
+      { label: "AeT / LT1", value: t.aet, unit: "W", pct: 72, color: "#4da3ff", delta: "+" + t.aetDelta + "W", sub: t.aetPctFtp + "% FTP · DFA" },
+      { label: "AnT", value: t.ant, unit: "W", pct: 86, color: "#3dff8f", delta: "stable", sub: "LTHR " + t.lthr },
+      { label: "VO₂ / W′", value: t.vo2max, unit: "ml/kg", pct: 78, color: "#ffb020", delta: "W′ " + t.wPrime + "kJ", sub: "high confidence" },
+    ]);
+    DashHelpers.renderChips(document.getElementById("insights"), d.insights);
+    document.getElementById("rotBadge").textContent = d.powerCurve.rotationLabel + " " + d.powerCurve.rotationIndex;
+
+    DashHelpers.areaChart(document.getElementById("powerChart"), d.powerCurve.labels, d.powerCurve.current, d.powerCurve.previous);
+
+    var trendHtml = d.trends.map(function (tr) {
+      var dc = DashHelpers.deltaClass(tr.delta);
+      return '<div class="trend-row"><div class="trend-left"><div class="trend-name">' + tr.name + '</div><div class="trend-val">' + tr.value + '</div></div>' +
+        '<canvas class="trend-spark" data-series="' + tr.series.join(",") + '"></canvas>' +
+        '<div class="trend-delta ' + dc + '">' + tr.delta + '</div></div>';
+    }).join("");
+    document.getElementById("trendList").innerHTML = trendHtml;
+    document.querySelectorAll(".trend-spark").forEach(function (c) {
+      c.width = 80; c.height = 28;
+      var s = c.dataset.series.split(",").map(Number);
+      DashHelpers.sparkline(c, s, "#3dff8f");
+    });
+
+    document.getElementById("sustBody").innerHTML = d.sustainability.map(function (r) {
+      return "<tr><td>" + r.dur + "</td><td><strong>" + r.actual + "W</strong></td><td>" + r.coggan + "W</td><td>" + r.cp + "W</td><td>" + r.hr + "</td><td class='trend-" + r.trend + "'>" + (r.trend === "up" ? "↑" : "→") + "</td></tr>";
+    }).join("");
+
+    document.getElementById("execGrid").innerHTML = d.execution.map(function (e) {
+      return '<div class="card exec-card"><div class="exec-name">' + e.name + '</div><div class="exec-val">' + e.value + '</div><span class="badge badge-green">' + e.trend + '</span></div>';
+    }).join("");
+  </script>
+</body>
+</html>
