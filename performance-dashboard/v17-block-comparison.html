@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>V17 — Block Comparison | Performance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    body { padding: 3.5rem 1.5rem 2rem; background: #0a0e14; max-width: 1000px; margin: 0 auto; }
+    h1 { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.25rem; }
+    .sub { color: var(--muted); font-size: 0.85rem; margin-bottom: 1.5rem; }
+    .compare { display: grid; grid-template-columns: 1fr 60px 1fr; gap: 0; align-items: stretch; }
+    .block { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; }
+    .block.prev { opacity: 0.85; }
+    .block.curr { border-color: rgba(61,255,143,0.35); }
+    .block-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.5rem; }
+    .block-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; }
+    .metric { display: flex; justify-content: space-between; padding: 0.6rem 0; border-bottom: 1px solid rgba(42,53,68,0.4); font-size: 0.85rem; }
+    .metric:last-child { border: none; }
+    .arrow-col { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; color: var(--muted); font-size: 0.75rem; }
+    .delta-up { color: var(--green); font-weight: 700; }
+    .summary { margin-top: 1.25rem; padding: 1rem; background: var(--green-dim); border: 1px solid rgba(61,255,143,0.3); border-radius: var(--radius); font-size: 0.9rem; line-height: 1.6; }
+    @media (max-width: 700px) { .compare { grid-template-columns: 1fr; } .arrow-col { flex-direction: row; padding: 0.5rem 0; } }
+  </style>
+</head>
+<body>
+  <a class="nav-back" href="index.html">← Gallery</a>
+  <span class="variation-tag">V17 · Block comparison</span>
+  <h1>Performance · This block vs last</h1>
+  <p class="sub">Olivia Jones · Road cycling · 28-day windows</p>
+  <div class="compare">
+    <div class="block prev">
+      <div class="block-label">Previous block</div>
+      <div class="block-title">Feb 4 – Mar 3</div>
+      <div class="metric"><span>FTP</span><strong>255W</strong></div>
+      <div class="metric"><span>AeT (DFA)</span><strong>192W</strong></div>
+      <div class="metric"><span>20min MMP</span><strong>236W</strong></div>
+      <div class="metric"><span>60min MMP</span><strong>215W</strong></div>
+      <div class="metric"><span>CTL peak</span><strong>74</strong></div>
+      <div class="metric"><span>Durability 28d</span><strong>2.5%</strong></div>
+      <div class="metric"><span>Easy ratio</span><strong>80%</strong></div>
+    </div>
+    <div class="arrow-col"><span>→</span><span class="delta-up">+Δ</span></div>
+    <div class="block curr">
+      <div class="block-label">Current block</div>
+      <div class="block-title">Mar 4 – Apr 3</div>
+      <div class="metric"><span>FTP</span><strong>258W <span class="delta-up">+3W</span></strong></div>
+      <div class="metric"><span>AeT (DFA)</span><strong>195W <span class="delta-up">+3W</span></strong></div>
+      <div class="metric"><span>20min MMP</span><strong>241W <span class="delta-up">+5W</span></strong></div>
+      <div class="metric"><span>60min MMP</span><strong>218W <span class="delta-up">+3W</span></strong></div>
+      <div class="metric"><span>CTL peak</span><strong>78 <span class="delta-up">+4</span></strong></div>
+      <div class="metric"><span>Durability 28d</span><strong>2.1% <span class="delta-up">↓ better</span></strong></div>
+      <div class="metric"><span>Easy ratio</span><strong>82% <span class="delta-up">+2%</span></strong></div>
+    </div>
+  </div>
+  <div class="summary"><strong>Block verdict:</strong> Endurance-biased gains — threshold and long-duration power up without sprint regression. AeT tracking FTP upward suggests aerobic base is converting to sustainable power. Suitable to continue Build phase.</div>
+</body>
+</html>

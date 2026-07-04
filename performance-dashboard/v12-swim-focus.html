@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>V12 — Swim Focus | Performance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="sport-layout.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body class="sport-page">
+  <a class="nav-back" href="index.html">← Gallery</a>
+  <span class="variation-tag">V12 · Swim focus</span>
+  <div class="sport-banner runner">CSS · AeT pace/100m · SWOLF · no bike/run FTP</div>
+  <header class="sport-header"><div><h1>Performance</h1><p id="pageSub"></p><p class="athlete-line" id="pageTitle"></p></div><div class="badges"><span class="badge badge-blue" id="phaseBadge"></span><span class="badge badge-green" id="syncBadge"></span></div></header>
+  <div class="rings-row" id="heroRings"></div><div class="insights" id="insights"></div>
+  <div class="main-grid"><div class="card"><div class="card-title" id="chartTitle"></div><div class="chart-box"><span class="chart-badge badge badge-green" id="rotBadge"></span><canvas id="mainChart"></canvas></div></div><div class="card"><div class="card-title">Swim trends</div><div id="trendList"></div></div></div>
+  <div class="card table-card"><div class="card-title" id="tableTitle"></div><table class="data"><thead><tr></tr></thead><tbody id="tableBody"></tbody></table></div>
+  <div class="narrative card" id="narrative"></div><div class="exec-grid" id="execGrid"></div>
+  <script src="mock-profiles.js"></script><script src="helpers.js"></script><script src="sport-dashboard.js"></script>
+  <script>SportDashboard.init("swimOnly", { tag: "V12 · Swim · Priya Nair" });</script>
+</body>
+</html>

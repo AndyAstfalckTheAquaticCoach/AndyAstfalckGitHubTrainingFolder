@@ -92,6 +92,8 @@
 
   function renderChart(canvas, chart, accent) {
     if (!canvas || !chart || typeof Chart === "undefined") return;
+    var existing = Chart.getChart(canvas);
+    if (existing) existing.destroy();
     accent = accent || "#3dff8f";
     if (chart.type === "power" || chart.type === "pace" || !chart.type) {
       DashHelpers.areaChart(canvas, chart.labels, chart.current, chart.previous);
@@ -232,7 +234,14 @@
     var narrative = document.getElementById("narrative");
     if (narrative) narrative.textContent = profile.narrative;
 
-    if (opts.tri && profile.sports) renderTriSport(document.getElementById("triSports"), profile.sports);
+    if (opts.tri && profile.sports) {
+      renderTriSport(document.getElementById("triSports"), profile.sports);
+      var triEl = document.getElementById("triSports");
+      if (triEl) triEl.style.display = "grid";
+    } else {
+      var triHide = document.getElementById("triSports");
+      if (triHide) { triHide.style.display = "none"; triHide.innerHTML = ""; }
+    }
 
     var tag = document.getElementById("variationTag");
     if (tag && opts.tag) tag.textContent = opts.tag;

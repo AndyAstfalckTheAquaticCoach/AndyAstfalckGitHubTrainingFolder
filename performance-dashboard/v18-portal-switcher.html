@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>V18 — Portal Sport Switcher | Performance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="sport-layout.css" />
+  <style>
+    body.sport-page { max-width: 1100px; }
+    .sport-tabs {
+      display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem;
+      padding: 0.35rem; background: var(--card2); border-radius: 12px; border: 1px solid var(--border);
+    }
+    .sport-tab {
+      padding: 0.5rem 0.85rem; border: none; border-radius: 8px; background: transparent;
+      color: var(--muted); font-size: 0.75rem; font-weight: 600; cursor: pointer; font-family: inherit;
+    }
+    .sport-tab.active { background: var(--card); color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+    .portal-note { font-size: 0.75rem; color: var(--muted); margin-bottom: 1rem; text-align: center; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body class="sport-page">
+  <a class="nav-back" href="index.html">← Gallery</a>
+  <span class="variation-tag">V18 · Portal switcher</span>
+  <p class="portal-note">Portal concept — one Performance tab, sport profile switches metrics automatically</p>
+  <div class="sport-tabs" id="tabs"></div>
+  <header class="sport-header"><div><h1>Performance</h1><p id="pageSub"></p><p class="athlete-line" id="pageTitle"></p></div><div class="badges"><span class="badge badge-green" id="phaseBadge"></span><span class="badge badge-green" id="syncBadge"></span></div></header>
+  <div class="rings-row" id="heroRings"></div>
+  <div class="tri-sports" id="triSports" style="display:none"></div>
+  <div class="insights" id="insights"></div>
+  <div class="main-grid"><div class="card"><div class="card-title" id="chartTitle"></div><div class="chart-box"><span class="chart-badge badge badge-green" id="rotBadge"></span><canvas id="mainChart"></canvas></div></div><div class="card"><div class="card-title">Trends</div><div id="trendList"></div></div></div>
+  <div class="card table-card"><div class="card-title" id="tableTitle"></div><table class="data"><thead><tr></tr></thead><tbody id="tableBody"></tbody></table></div>
+  <div class="narrative card" id="narrative"></div>
+  <div class="exec-grid" id="execGrid"></div>
+  <script src="mock-profiles.js"></script><script src="helpers.js"></script><script src="sport-dashboard.js"></script>
+  <script>
+    var keys = ["roadCyclist", "gravelCyclist", "runner", "trailRunner", "ultraRunner", "triathlete", "duathlon", "swimOnly", "rower"];
+    var current = "roadCyclist";
+    var tabs = document.getElementById("tabs");
+    keys.forEach(function (k) {
+      var p = ATHLETE_PROFILES[k];
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "sport-tab" + (k === current ? " active" : "");
+      btn.textContent = p.label;
+      btn.onclick = function () {
+        current = k;
+        document.querySelectorAll(".sport-tab").forEach(function (b) { b.classList.remove("active"); });
+        btn.classList.add("active");
+        var triEl = document.getElementById("triSports");
+        triEl.style.display = k === "triathlete" ? "grid" : "none";
+        var oldChart = Chart.getChart("mainChart");
+        if (oldChart) oldChart.destroy();
+        SportDashboard.init(k, { tri: k === "triathlete", tag: "V18 · Portal · " + p.label });
+      };
+      tabs.appendChild(btn);
+    });
+    SportDashboard.init(current, { tri: false, tag: "V18 · Portal switcher" });
+  </script>
+</body>
+</html>

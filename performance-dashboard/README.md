@@ -1,39 +1,43 @@
 # Performance Dashboard Mocks
 
-Ten interactive **Performance tab** mockups for the athlete portal.
+**20 interactive mockups** for the athlete portal Performance tab.
 
-## Open at home
+## At home — start here
 
-1. Pull branch `cursor/performance-dashboard-mocks-7491` (or merge PR #3)
-2. Open **`performance-dashboard/index.html`** in your browser (double-click the file)
+Read **`HOW_TO_VIEW.md`** if you see a blank page or cannot find the files.
+
+1. Checkout branch `cursor/performance-dashboard-mocks-7491`
+2. Double-click **`index.html`**
+3. Click tiles to compare; use ← → between variations
 
 ## Gallery sections
 
-### Layout variations (V1–V5)
-Same road-cycling athlete — pick a visual style (rings, sidebar, bento, timeline, minimal).
+### V1–V5 · Layout styles (road cycling)
+Rings, sidebar, bento, timeline, minimal — pick a **look**.
 
-### Sport-specific dashboards (V6–V10)
-Metrics tailored per athlete type (Section 11 per-sport rules):
+### V6–V10 · Sport dashboards
+Runner, trail, gravel, tri, road — metrics match **athlete type**.
 
-| # | Athlete | Hero metrics | De-emphasised |
-|---|---------|--------------|---------------|
-| **V6** | Road runner | Threshold pace, AeT pace, LTHR, weekly km | Power curve |
-| **V7** | Trail runner | Uphill AeT, vert/week, flat threshold | Track 5k speed |
-| **V8** | Gravel cyclist | FTP, 2h sustainable W, durability, vert | 5s sprint |
-| **V9** | Triathlete | Swim CSS, bike FTP, run pace + 3-column detail | Single-sport FTP only |
-| **V10** | Road cyclist | FTP, AeT, AnT, VO₂/W′ + coach summary | — |
+### V11–V20 · More sports & concepts
+Swim, rowing, duathlon, ultra, tri bento, block comparison, **portal sport switcher (V18)**, mobile carousel.
 
-## Files
+## Sport → recommended mocks
 
-- `index.html` — gallery + full-screen viewer (← → to compare)
-- `mock-profiles.js` — sport-specific mock data
-- `sport-dashboard.js` — shared renderer for V6–V10
-- `v1`–`v10` — individual dashboards
+| Athlete | Try |
+|---------|-----|
+| Road cyclist | V1, V10, V17 |
+| Runner | V6, V11 |
+| Trail / ultra | V7, V15 |
+| Gravel | V8, V19 |
+| Triathlon | V9, V16, V18 |
+| Swim-only | V12 |
+| Rowing | V13 |
+| Duathlon | V14 |
+| Portal (multi-sport) | **V18** |
+| Mobile | V5, V11, V20 |
 
-## Local server (optional)
+## Data
 
-```bash
-cd performance-dashboard
-python3 -m http.server 8080
-# http://localhost:8080
-```
+`mock-profiles.js` — nine sport profiles aligned with Section 11 per-sport thresholds.
+
+No backend required — static HTML + Chart.js.

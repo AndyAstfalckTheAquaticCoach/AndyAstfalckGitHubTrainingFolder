@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>V20 — Mobile Sports Carousel | Performance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    body { background: #0a0e14; padding: 3.5rem 0 2rem; overflow-x: hidden; }
+    .mobile-wrap { max-width: 390px; margin: 0 auto; padding: 0 1rem; }
+    h1 { font-size: 1.25rem; font-weight: 800; margin-bottom: 0.25rem; }
+    .hint { font-size: 0.75rem; color: var(--muted); margin-bottom: 1rem; }
+    .carousel { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 1rem; -webkit-overflow-scrolling: touch; }
+    .carousel::-webkit-scrollbar { display: none; }
+    .slide {
+      flex: 0 0 85%; scroll-snap-align: center;
+      background: var(--card); border: 1px solid var(--border); border-radius: 20px;
+      padding: 1.25rem; border-top: 4px solid var(--accent);
+    }
+    .slide-sport { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+    .slide-name { font-size: 1rem; font-weight: 700; margin: 0.25rem 0 1rem; }
+    .hero { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.03em; }
+    .hero-lbl { font-size: 0.7rem; color: var(--muted); margin-bottom: 0.75rem; }
+    .slide-metrics { font-size: 0.8rem; }
+    .slide-metrics div { display: flex; justify-content: space-between; padding: 0.4rem 0; border-bottom: 1px solid rgba(42,53,68,0.4); }
+    .dots { display: flex; justify-content: center; gap: 6px; margin-top: 0.5rem; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); }
+    .dot.active { background: var(--green); }
+  </style>
+</head>
+<body>
+  <a class="nav-back" href="index.html">← Gallery</a>
+  <span class="variation-tag">V20 · Mobile carousel</span>
+  <div class="mobile-wrap">
+    <h1>Performance</h1>
+    <p class="hint">Swipe → — mobile-first multi-sport preview</p>
+    <div class="carousel" id="carousel"></div>
+    <div class="dots" id="dots"></div>
+  </div>
+  <script src="mock-profiles.js"></script>
+  <script>
+    var slides = ["roadCyclist", "runner", "trailRunner", "gravelCyclist", "triathlete", "swimOnly"];
+    var carousel = document.getElementById("carousel");
+    slides.forEach(function (k, i) {
+      var p = ATHLETE_PROFILES[k];
+      var h = p.heroMetrics[0];
+      var el = document.createElement("div");
+      el.className = "slide";
+      el.style.setProperty("--accent", p.accent);
+      el.innerHTML =
+        '<div class="slide-sport">' + p.label + '</div><div class="slide-name">' + p.athlete.name + '</div>' +
+        '<div class="hero-lbl">' + h.label + '</div><div class="hero">' + h.value + '<span style="font-size:1rem;color:var(--muted)"> ' + (h.unit || "") + '</span></div>' +
+        '<div class="slide-metrics">' +
+        p.heroMetrics.slice(1, 4).map(function (m) { return "<div><span>" + m.label + "</span><strong>" + m.value + " " + (m.unit || "") + "</strong></div>"; }).join("") +
+        "</div>";
+      carousel.appendChild(el);
+      var dot = document.createElement("div");
+      dot.className = "dot" + (i === 0 ? " active" : "");
+      document.getElementById("dots").appendChild(dot);
+    });
+  </script>
+</body>
+</html>

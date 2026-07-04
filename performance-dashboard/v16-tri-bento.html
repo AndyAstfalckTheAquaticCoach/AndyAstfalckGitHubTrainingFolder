@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>V16 — Tri Bento | Performance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    body { padding: 3.5rem 1rem 2rem; background: #0b0f15; max-width: 1200px; margin: 0 auto; }
+    .tri-bento { display: grid; grid-template-columns: repeat(12, 1fr); gap: 12px; }
+    .tb { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 1rem; }
+    .tb-swim { grid-column: span 4; border-top: 3px solid #4da3ff; }
+    .tb-bike { grid-column: span 4; border-top: 3px solid #3dff8f; }
+    .tb-run { grid-column: span 4; border-top: 3px solid #ff6b6b; }
+    .tb-combined { grid-column: span 6; }
+    .tb-chart { grid-column: span 6; height: 200px; }
+    .tb-insights { grid-column: span 12; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .sport-title { font-weight: 800; font-size: 0.85rem; margin-bottom: 0.75rem; }
+    .m-row { display: flex; justify-content: space-between; font-size: 0.8rem; padding: 0.35rem 0; border-bottom: 1px solid rgba(42,53,68,0.4); }
+    .m-row:last-child { border: none; }
+    @media (max-width: 800px) { .tb-swim, .tb-bike, .tb-run, .tb-combined, .tb-chart { grid-column: span 12; } }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <a class="nav-back" href="index.html">← Gallery</a>
+  <span class="variation-tag">V16 · Tri bento</span>
+  <header style="display:flex;justify-content:space-between;margin-bottom:1.25rem"><h1 style="font-size:1.4rem;font-weight:800">Triathlon · Bento</h1><span class="badge badge-blue">70.3 prep</span></header>
+  <div class="tri-bento" id="bento"></div>
+  <script src="mock-profiles.js"></script>
+  <script>
+    var p = ATHLETE_PROFILES.triathlete;
+    var sports = p.sports;
+    ["swim", "bike", "run"].forEach(function (k) {
+      var s = sports[k];
+      var el = document.createElement("div");
+      el.className = "tb tb-" + k;
+      el.innerHTML = '<div class="sport-title" style="color:' + s.color + '">' + s.label + '</div>' +
+        s.metrics.map(function (m) { return '<div class="m-row"><span>' + m.k + '</span><span><strong>' + m.v + '</strong> <span style="color:var(--green);font-size:0.7rem">' + m.d + '</span></span></div>'; }).join("");
+      document.getElementById("bento").appendChild(el);
+    });
+    var comb = document.createElement("div");
+    comb.className = "tb tb-combined";
+    comb.innerHTML = "<div class=\"sport-title\">Combined</div>" + p.trends.map(function (t) {
+      return '<div class="m-row"><span>' + t.name + '</span><span><strong>' + t.value + '</strong> <span style="color:var(--green);font-size:0.7rem">' + t.delta + '</span></span></div>';
+    }).join("");
+    document.getElementById("bento").appendChild(comb);
+    var chartBox = document.createElement("div");
+    chartBox.className = "tb tb-chart";
+    chartBox.innerHTML = "<div class=\"sport-title\">CTL split by sport</div><canvas id=\"ctlDonut\"></canvas>";
+    document.getElementById("bento").appendChild(chartBox);
+    new Chart(document.getElementById("ctlDonut"), {
+      type: "doughnut",
+      data: { labels: p.chart.labels, datasets: [{ data: p.chart.current, backgroundColor: ["#4da3ff", "#3dff8f", "#ff6b6b"] }] },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: "bottom", labels: { color: "#7a8a9e" } } } },
+    });
+    var ins = document.createElement("div");
+    ins.className = "tb tb-insights";
+    p.insights.forEach(function (i) {
+      var c = document.createElement("span");
+      c.className = "chip " + i.dir;
+      c.textContent = i.label + ": " + i.value;
+      ins.appendChild(c);
+    });
+    document.getElementById("bento").appendChild(ins);
+  </script>
+</body>
+</html>
