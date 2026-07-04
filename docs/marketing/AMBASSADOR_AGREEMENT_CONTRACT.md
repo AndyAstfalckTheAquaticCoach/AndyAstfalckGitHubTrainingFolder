@@ -30,6 +30,7 @@
 | Full legal name | ________________________________ |
 | Address | ________________________________ |
 | City / Postcode / Country | ________________________________ |
+| Country of residence (program region) | ☐ NL ☐ DE ☐ BE ☐ Scandinavia ☐ UK ☐ ES |
 | Email | ________________________________ |
 | Phone | ________________________________ |
 | Date of birth | ________________________________ |
