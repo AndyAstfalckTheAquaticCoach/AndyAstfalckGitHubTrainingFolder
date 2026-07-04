@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>V5 — Minimal Pro | Performance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    :root {
+      --bg: #000000;
+      --card: transparent;
+      --border: rgba(255,255,255,0.08);
+      --text: #f5f5f7;
+      --muted: #86868b;
+      --green: #30d158;
+    }
+    body {
+      background: var(--bg);
+      min-height: 100vh;
+      padding: 4rem 1.5rem 3rem;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .nav-back { background: rgba(255,255,255,0.06); border-color: var(--border); color: var(--muted); }
+    .variation-tag { background: rgba(255,255,255,0.06); border-color: var(--border); color: var(--muted); }
+    .date { font-size: 0.75rem; color: var(--muted); font-weight: 500; letter-spacing: 0.02em; }
+    h1 { font-size: 2.75rem; font-weight: 300; letter-spacing: -0.04em; margin: 0.5rem 0 0.25rem; }
+    .phase { font-size: 0.85rem; color: var(--green); font-weight: 500; margin-bottom: 2.5rem; }
+    .hero-metric {
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 0;
+    }
+    .hero-metric .label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.14em; font-weight: 500; }
+    .hero-metric .value {
+      font-size: 4.5rem; font-weight: 300; letter-spacing: -0.05em;
+      line-height: 1; margin: 0.35rem 0;
+      background: linear-gradient(180deg, #fff 30%, #86868b);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-metric .meta { font-size: 0.9rem; color: var(--muted); }
+    .hero-metric .meta em { color: var(--green); font-style: normal; font-weight: 500; }
+    .row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.35rem 0; border-bottom: 1px solid var(--border);
+    }
+    .row:last-of-type { border-bottom: none; }
+    .row-label { font-size: 1rem; font-weight: 400; color: var(--text); }
+    .row-right { text-align: right; }
+    .row-val { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.02em; }
+    .row-delta { font-size: 0.75rem; color: var(--green); font-weight: 500; margin-top: 0.15rem; }
+    .row-delta.flat { color: var(--muted); }
+    .section-label {
+      font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.16em;
+      color: var(--muted); margin: 2.5rem 0 0.75rem; font-weight: 600;
+    }
+    .insight-line {
+      font-size: 0.95rem; line-height: 1.55; color: var(--muted);
+      padding: 1rem 0; border-left: 2px solid var(--green);
+      padding-left: 1rem; margin: 1rem 0 2rem;
+    }
+    .insight-line strong { color: var(--text); font-weight: 500; }
+    .curve-minimal { height: 140px; margin: 1rem 0 2rem; opacity: 0.9; }
+    .pill-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .pill {
+      padding: 0.4rem 0.85rem; border-radius: 999px;
+      border: 1px solid var(--border); font-size: 0.75rem; color: var(--muted);
+    }
+    .pill.active { border-color: rgba(48,209,88,0.4); color: var(--green); }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-metric, .row { animation: fadeUp 0.6s ease backwards; }
+    .row:nth-child(2) { animation-delay: 0.05s; }
+    .row:nth-child(3) { animation-delay: 0.1s; }
+    .row:nth-child(4) { animation-delay: 0.15s; }
+    .row:nth-child(5) { animation-delay: 0.2s; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <a class="nav-back" href="index.html">← Gallery</a>
+  <span class="variation-tag">V5 · Minimal Pro</span>
+
+  <p class="date">Saturday, 4 Jul · Synced 2h ago</p>
+  <h1>Performance</h1>
+  <p class="phase">Build phase · Week 3</p>
+
+  <div class="hero-metric">
+    <div class="label">Functional threshold</div>
+    <div class="value">258</div>
+    <div class="meta"><em>+3W</em> this month · 4.1 W/kg</div>
+  </div>
+
+  <div class="section-label">Thresholds</div>
+  <div id="rows"></div>
+
+  <div class="section-label">Adaptation</div>
+  <div class="insight-line">
+    Your power curve is shifting <strong>endurance-biased</strong> — 20min power up 2.1% while 5s sprint is slightly down. Durability improving.
+  </div>
+  <div class="curve-minimal"><canvas id="powerChart"></canvas></div>
+
+  <div class="section-label">Focus</div>
+  <div class="pill-row">
+    <span class="pill active">↑ Threshold</span>
+    <span class="pill active">↑ Durability</span>
+    <span class="pill">→ FTP</span>
+    <span class="pill">↓ Sprint</span>
+  </div>
+
+  <script src="mock-data.js"></script>
+  <script src="helpers.js"></script>
+  <script>
+    var t = window.PERFORMANCE_MOCK.thresholds;
+    var rows = [
+      ["Aerobic threshold", t.aet + " W", "+" + t.aetDelta + "W", false],
+      ["Anaerobic threshold", t.ant + " W", "Stable", true],
+      ["LTHR", t.lthr + " bpm", "—", true],
+      ["VO₂max", t.vo2max + " ml/kg", "Est.", true],
+      ["W′ anaerobic", t.wPrime + " kJ", "High conf.", false],
+    ];
+    document.getElementById("rows").innerHTML = rows.map(function (r) {
+      return '<div class="row"><span class="row-label">' + r[0] + '</span><div class="row-right"><div class="row-val">' + r[1] + '</div><div class="row-delta' + (r[2] === "Stable" || r[2] === "—" ? " flat" : "") + '">' + r[2] + '</div></div></div>';
+    }).join("");
+
+    var pc = window.PERFORMANCE_MOCK.powerCurve;
+    new Chart(document.getElementById("powerChart"), {
+      type: "line",
+      data: {
+        labels: pc.labels,
+        datasets: [{
+          data: pc.current,
+          borderColor: "#30d158",
+          borderWidth: 2,
+          pointRadius: 0,
+          tension: 0.4,
+          fill: false,
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { display: false },
+          y: { display: false },
+        },
+      },
+    });
+  </script>
+</body>
+</html>

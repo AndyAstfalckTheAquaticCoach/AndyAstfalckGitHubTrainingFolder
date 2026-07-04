@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>V3 — Bento Grid | Performance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    body { padding: 3.5rem 1.25rem 2rem; background: #0b0f15; max-width: 1200px; margin: 0 auto; }
+    header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+    header h1 { font-size: 1.4rem; font-weight: 800; }
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: minmax(100px, auto);
+      gap: 12px;
+    }
+    .b { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 1.15rem; overflow: hidden; }
+    .b-label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 0.5rem; }
+    .b-val { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+    .b-sub { font-size: 0.75rem; color: var(--muted); margin-top: 0.35rem; }
+    .b-ftp { grid-column: span 3; grid-row: span 2; background: linear-gradient(145deg, #1a2838, #121820); border-color: rgba(61,255,143,0.25); }
+    .b-aet { grid-column: span 3; }
+    .b-ant { grid-column: span 3; }
+    .b-vo2 { grid-column: span 3; }
+    .b-curve { grid-column: span 8; grid-row: span 2; }
+    .b-curve canvas { height: 200px !important; }
+    .b-insights { grid-column: span 4; grid-row: span 2; display: flex; flex-direction: column; gap: 0.5rem; }
+    .b-ctl { grid-column: span 4; }
+    .b-dur { grid-column: span 4; }
+    .b-tid { grid-column: span 4; }
+    .b-table { grid-column: span 12; }
+    @media (max-width: 800px) {
+      .bento { grid-template-columns: 1fr 1fr; }
+      .b-ftp, .b-curve, .b-insights, .b-table { grid-column: span 2; }
+      .b-aet, .b-ant, .b-vo2, .b-ctl, .b-dur, .b-tid { grid-column: span 1; }
+    }
+    .mini-chart { height: 48px; margin-top: 0.5rem; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <a class="nav-back" href="index.html">← Gallery</a>
+  <span class="variation-tag">V3 · Bento Grid</span>
+  <header>
+    <h1>Performance · Bento</h1>
+    <span class="badge badge-green">Build Wk 3</span>
+  </header>
+  <div class="bento">
+    <div class="b b-ftp">
+      <div class="b-label">FTP · LT2</div>
+      <div class="b-val" style="color:var(--green)">258<small style="font-size:1rem">W</small></div>
+      <div class="b-sub">+3W · 4.1 W/kg · eFTP 261</div>
+      <canvas class="mini-chart" id="ftpSpark"></canvas>
+    </div>
+    <div class="b b-aet">
+      <div class="b-label">AeT · LT1</div>
+      <div class="b-val" style="font-size:1.5rem">195W</div>
+      <div class="b-sub">76% FTP · DFA moderate</div>
+    </div>
+    <div class="b b-ant">
+      <div class="b-label">AnT</div>
+      <div class="b-val" style="font-size:1.5rem">258W</div>
+      <div class="b-sub">LTHR 164 bpm</div>
+    </div>
+    <div class="b b-vo2">
+      <div class="b-label">VO₂max / W′</div>
+      <div class="b-val" style="font-size:1.5rem">51</div>
+      <div class="b-sub">W′ 18.2 kJ · high</div>
+    </div>
+    <div class="b b-curve">
+      <div class="b-label">Power curve delta · 28d</div>
+      <canvas id="powerChart"></canvas>
+    </div>
+    <div class="b b-insights">
+      <div class="b-label">Improving</div>
+      <div id="chipCol"></div>
+      <div style="margin-top:auto;padding-top:1rem;border-top:1px solid var(--border)">
+        <div class="b-label">Rotation</div>
+        <div style="font-weight:700;color:var(--green)">Endurance-biased −2.1</div>
+      </div>
+    </div>
+    <div class="b b-ctl">
+      <div class="b-label">CTL · Fitness</div>
+      <div class="b-val" style="font-size:1.75rem">78</div>
+      <div class="b-sub">+4 this block</div>
+      <canvas class="mini-chart" id="ctlSpark"></canvas>
+    </div>
+    <div class="b b-dur">
+      <div class="b-label">Durability</div>
+      <div class="b-val" style="font-size:1.75rem">2.1%</div>
+      <div class="b-sub">7d decoupling · improving</div>
+    </div>
+    <div class="b b-tid">
+      <div class="b-label">TID · 7d / 28d</div>
+      <div class="b-val" style="font-size:1.25rem">Polarized</div>
+      <div class="b-sub">82% easy time · consistent</div>
+    </div>
+    <div class="b b-table">
+      <div class="b-label">Sustainability anchors</div>
+      <table class="data"><thead><tr><th>Duration</th><th>Actual MMP</th><th>Coggan</th><th>CP model</th><th>HR</th></tr></thead>
+      <tbody id="sustBody"></tbody></table>
+    </div>
+  </div>
+  <script src="mock-data.js"></script>
+  <script src="helpers.js"></script>
+  <script>
+    var d = window.PERFORMANCE_MOCK;
+    DashHelpers.renderChips(document.getElementById("chipCol"), d.insights);
+    document.querySelectorAll("#chipCol .chip").forEach(function (c) { c.style.display = "block"; c.style.width = "100%"; });
+    DashHelpers.areaChart(document.getElementById("powerChart"), d.powerCurve.labels, d.powerCurve.current, d.powerCurve.previous);
+    ["ftpSpark", "ctlSpark"].forEach(function (id, i) {
+      var c = document.getElementById(id);
+      c.width = 200; c.height = 48;
+      DashHelpers.sparkline(c, i ? d.trends[3].series : d.trends[0].series, i ? "#4da3ff" : "#3dff8f");
+    });
+    document.getElementById("sustBody").innerHTML = d.sustainability.map(function (r) {
+      return "<tr><td>" + r.dur + "</td><td><strong>" + r.actual + "W</strong></td><td>" + r.coggan + "W</td><td>" + r.cp + "W</td><td>" + r.hr + "</td></tr>";
+    }).join("");
+  </script>
+</body>
+</html>

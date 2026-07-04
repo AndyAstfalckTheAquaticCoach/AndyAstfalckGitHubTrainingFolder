@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>V2 — Split Command | Performance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    body { display: flex; min-height: 100vh; background: #080c12; }
+    .sidebar {
+      width: 320px; flex-shrink: 0; background: #0e141c;
+      border-right: 1px solid var(--border); padding: 3.5rem 1.25rem 1.5rem;
+      display: flex; flex-direction: column; gap: 1.25rem;
+    }
+    .avatar {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, #3dff8f, #4da3ff);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1.25rem; color: #0a0e14;
+    }
+    .athlete-name { font-size: 1.2rem; font-weight: 700; margin-top: 0.75rem; }
+    .goal-pill {
+      display: inline-block; margin-top: 0.5rem; padding: 0.35rem 0.75rem;
+      background: var(--green-dim); color: var(--green); border-radius: 999px;
+      font-size: 0.7rem; font-weight: 700;
+    }
+    .metric-block {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 1rem;
+    }
+    .metric-block h3 { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.75rem; }
+    .thresh-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.5rem 0; border-bottom: 1px solid rgba(42,53,68,0.4);
+    }
+    .thresh-item:last-child { border-bottom: none; }
+    .thresh-label { font-size: 0.8rem; color: var(--muted); }
+    .thresh-val { font-size: 1rem; font-weight: 700; }
+    .main {
+      flex: 1; padding: 3.5rem 1.5rem 1.5rem; overflow: auto;
+    }
+    .main-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+    .main-header h1 { font-size: 1.75rem; font-weight: 800; }
+    .hero-chart { height: 340px; margin-bottom: 1.25rem; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    @media (max-width: 1000px) { body { flex-direction: column; } .sidebar { width: 100%; } .two-col { grid-template-columns: 1fr; } }
+    .big-stat { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.03em; }
+    .big-stat span { font-size: 1rem; color: var(--muted); font-weight: 500; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <a class="nav-back" href="index.html" style="left:1rem">← Gallery</a>
+  <span class="variation-tag">V2 · Split Command</span>
+
+  <aside class="sidebar">
+    <div>
+      <div class="avatar">OJ</div>
+      <div class="athlete-name">Olivia Jones</div>
+      <span class="goal-pill">Gran Fondo · Jul 26</span>
+    </div>
+    <div class="metric-block">
+      <h3>Thresholds</h3>
+      <div id="threshList"></div>
+    </div>
+    <div class="metric-block">
+      <h3>Phase</h3>
+      <p style="font-size:1.1rem;font-weight:700">Build <span style="color:var(--muted);font-weight:500">· Week 3</span></p>
+      <p style="font-size:0.8rem;color:var(--muted);margin-top:0.35rem">High confidence · CTL rising</p>
+    </div>
+    <div class="metric-block">
+      <h3>What's improving</h3>
+      <div id="sideChips" style="display:flex;flex-direction:column;gap:0.4rem;align-items:flex-start"></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="main-header">
+      <h1>Performance Command</h1>
+      <span class="badge badge-blue">Cycling · Outdoor</span>
+    </div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:1rem">
+        <div>
+          <div class="card-title" style="margin:0">Power profile</div>
+          <div class="big-stat" id="ftpBig">258<span>W FTP</span></div>
+        </div>
+        <span class="badge badge-green" id="rotBadge"></span>
+      </div>
+      <div class="hero-chart"><canvas id="powerChart"></canvas></div>
+    </div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">FTP history</div>
+        <div style="height:160px"><canvas id="ftpChart"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Sustainability table</div>
+        <table class="data"><thead><tr><th>Dur</th><th>Actual</th><th>Model</th><th>HR</th></tr></thead><tbody id="sustBody"></tbody></table>
+      </div>
+    </div>
+  </main>
+
+  <script src="mock-data.js"></script>
+  <script src="helpers.js"></script>
+  <script>
+    var d = window.PERFORMANCE_MOCK, t = d.thresholds;
+    document.getElementById("ftpBig").innerHTML = t.ftp + '<span>W FTP</span>';
+    document.getElementById("rotBadge").textContent = d.powerCurve.rotationLabel;
+    document.getElementById("threshList").innerHTML = [
+      ["FTP", t.ftp + "W", "+" + t.ftpDelta + "W"],
+      ["AeT (DFA)", t.aet + "W", "+" + t.aetDelta + "W"],
+      ["AnT / LT2", t.ant + "W", "stable"],
+      ["LTHR", t.lthr + " bpm", "—"],
+      ["eFTP", t.eftp + "W", "model"],
+      ["W′", t.wPrime + " kJ", t.wPrimeConfidence],
+    ].map(function (r) {
+      return '<div class="thresh-item"><span class="thresh-label">' + r[0] + '</span><span><span class="thresh-val">' + r[1] + '</span> <span style="font-size:0.7rem;color:var(--green)">' + r[2] + '</span></span></div>';
+    }).join("");
+    d.insights.slice(0, 4).forEach(function (i) {
+      var el = document.createElement("span");
+      el.className = "chip " + i.dir;
+      el.textContent = i.label + ": " + i.value;
+      document.getElementById("sideChips").appendChild(el);
+    });
+    DashHelpers.areaChart(document.getElementById("powerChart"), d.powerCurve.labels, d.powerCurve.current, d.powerCurve.previous);
+    new Chart(document.getElementById("ftpChart"), {
+      type: "bar",
+      data: {
+        labels: d.ftpHistory.map(function (h) { return h.date; }),
+        datasets: [{ data: d.ftpHistory.map(function (h) { return h.value; }), backgroundColor: "rgba(61,255,143,0.5)", borderColor: "#3dff8f", borderWidth: 1, borderRadius: 6 }],
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: { color: "#7a8a9e", font: { size: 10 } }, grid: { display: false } },
+          y: { min: 240, ticks: { color: "#7a8a9e" }, grid: { color: "rgba(42,53,68,0.5)" } },
+        },
+      },
+    });
+    document.getElementById("sustBody").innerHTML = d.sustainability.map(function (r) {
+      return "<tr><td>" + r.dur + "</td><td><strong>" + r.actual + "W</strong></td><td>" + r.cp + "W</td><td>" + r.hr + "</td></tr>";
+    }).join("");
+  </script>
+</body>
+</html>
