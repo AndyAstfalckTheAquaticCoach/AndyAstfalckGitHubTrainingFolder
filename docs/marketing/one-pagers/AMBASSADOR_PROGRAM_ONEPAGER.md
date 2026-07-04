@@ -1,13 +1,13 @@
 # The Aquatic Coach Platform  
 ## Ambassador Program — Athlete One-Pager
 
-**Version 1.0 · For active platform athletes considering ambassador application**
+**Version 1.1 · For active platform athletes considering ambassador application**
 
 ---
 
 ### THE PROGRAM IN ONE SENTENCE
 
-Train on the platform, share your **real experience once a week** on social media, and earn **€100** every time a recommended post directly leads to a new athlete signing up and paying their first month.
+Train on the platform toward a **named target race**, share your **real journey at least once a week** (plus your usual 3+ posts/week), and earn **€100** every time a recommended post directly leads to a new athlete signing up — plus a **professional photoshoot with video for Reels**.
 
 ---
 
@@ -15,11 +15,36 @@ Train on the platform, share your **real experience once a week** on social medi
 
 | | |
 |---|---|
-| **Who** | Active Aquatic Coach Platform athletes |
-| **Your commitment** | **1 recommended post per week** |
-| **Your reward** | **€100 per qualified referral** (from first month fee) |
-| **Relationship** | Independent ambassador — not an employee |
+| **Who** | Race-focused, multi-sport athletes — **majority women** cohort (≥60%) |
+| **Followers** | **More than 3,000** on Instagram or TikTok (primary channel) |
+| **Your habit** | Already post **≥3 times/week** with a **mix of Reels and photos** |
+| **Your focus** | One **Target Race** + one **primary sport lens** per ambassador |
+| **Your commitment** | **1 recommended post per week** + race-training narrative |
+| **Your reward** | **€100 per qualified referral** + **1 photoshoot per term** |
 | **Term** | 6 months (auto-renewing) |
+
+---
+
+### IDEAL AMBASSADOR PROFILE
+
+| Criterion | What we look for |
+|-----------|------------------|
+| **Gender balance** | We aim for **≥60% women** per intake cohort |
+| **Followers** | **>3,000** on primary channel (no purchased followers) |
+| **Posting cadence** | **≥3 posts/week** for 8 of the prior 12 weeks |
+| **Format mix** | Already uses **Reels/video and photos** — not photo-only |
+| **Multi-sport** | Cross-trains in real life, but **one clear race story** |
+| **Race narrative** | Publicly documents **training for a named event** |
+| **Platform use** | Active subscriber with plan aligned to Target Race |
+
+**Example ambassador slots (10-person pilot cohort):**
+
+| Slots | Profile |
+|-------|---------|
+| 4 | Women — open-water / swim → OW race |
+| 3 | Women — run or tri → 5k–10k or sprint tri |
+| 1 | Woman — hybrid swim-run |
+| 2 | Open — any gender, eligible primary lens |
 
 ---
 
@@ -27,19 +52,33 @@ Train on the platform, share your **real experience once a week** on social medi
 
 | Obligation | Detail |
 |------------|--------|
-| **Post weekly** | 1 post per calendar week (Mon–Sun) |
-| **Share honestly** | Personal training experience — readiness calls, sessions, reports, race prep |
-| **Recommend** | Clear call-to-action to join + your **referral link/code** |
+| **Keep posting** | Maintain your **≥3 posts/week** rhythm on primary channel |
+| **Recommended Post** | **1 per week** (Mon–Sun) — commission-eligible |
+| **Reels mix** | **≥1 Reel/video per week** on average across all posts |
+| **Race story** | Reference **Target Race** progression in weekly content |
+| **Share honestly** | Personal training experience — readiness, sessions, race build |
+| **Recommend** | Clear call-to-action + your **referral link/code** |
 | **Disclose** | State ambassador relationship on every qualifying post |
+| **Photoshoot Reel** | Publish **≥1 Reel** from photoshoot within 30 days of delivery |
 | **Stay active** | Remain a subscribed, training platform user |
 
 ---
 
-### WHAT YOU EARN
+### WHAT YOU GET
+
+| Benefit | Detail |
+|---------|--------|
+| **Commission** | **€100** per qualified sign-up |
+| **Photoshoot** | **1 session per term** — still photos + **video clips for Reels** (min. 5 clips) |
+| **Brand kit** | Logos, templates, referral dashboard |
+| **Timing** | Photoshoot scheduled within **first 8 weeks**, ideally before Target Race |
+
+---
+
+### WHAT YOU EARN (REFERRALS)
 
 | Term | Detail |
 |------|--------|
-| **Commission** | **€100** per qualified sign-up |
 | **Qualification** | New athlete clicks **your link/code from a recommended post** → registers → pays first month → no refund within 30 days |
 | **Attribution window** | **14 days** from post publication |
 | **Monthly cap** | €1,000 (10 referrals) |
@@ -52,47 +91,16 @@ Train on the platform, share your **real experience once a week** on social medi
 
 Must include **all** of:
 
-1. Personal experience training on the platform  
-2. Mention of **The Aquatic Coach Platform**  
-3. Explicit recommendation to sign up / join  
-4. Your **referral link or code**  
-5. **Partnership disclosure**  
-6. Original photo or video  
-7. Stays public for **≥30 days**
+1. Personal experience training on the platform **toward your Target Race**  
+2. Reference to **Target Race** or race-build progression  
+3. Mention of **The Aquatic Coach Platform**  
+4. Explicit recommendation to sign up / join  
+5. Your **referral link or code**  
+6. **Partnership disclosure**  
+7. Original **Reel, photo, or video**  
+8. Stays public for **≥30 days**
 
 *Casual mentions without a CTA or referral link do not earn commission.*
-
----
-
-### REQUIRED DISCLOSURE (COPY & ADAPT)
-
-> *“I’m an ambassador for The Aquatic Coach Platform and may earn a referral fee if you sign up.”*
-
-Must appear in the **first 3 lines** of caption (or first 3 seconds of video).
-
----
-
-### WHAT YOU CAN TALK ABOUT ✓
-
-| Theme | Example angle |
-|-------|---------------|
-| Readiness | How a go/modify/skip decision changed your week |
-| Data coaching | What Intervals.icu metrics informed a session |
-| Swim / multi-sport | Technique focus, open-water prep, triathlon load |
-| Race prep | Taper, pacing, sustainability insights |
-| Honest setbacks | Modifications, fatigue, learning moments |
-
-**Describe only what you have genuinely experienced. No invented results.**
-
----
-
-### WHAT YOU MUST NOT SAY ✗
-
-- Guaranteed race times, weight loss, or injury prevention  
-- Medical claims or “ replaces your physio/doctor”  
-- Fabricated metrics or outcomes  
-- Competitor bashing  
-- Content without disclosure  
 
 ---
 
@@ -102,31 +110,35 @@ Must appear in the **first 3 lines** of caption (or first 3 seconds of video).
 |-------------|---------|
 | Platform tenure | **30 days** active subscription before applying |
 | Training engagement | **~3 sessions/week** average (prior 4 weeks) |
-| Social following | **500+** on Instagram, LinkedIn, Strava, YouTube, TikTok, or Facebook |
-| Location | EU/EEA preferred · others case-by-case |
+| **Target Race** | Named event + date within **6 months** of start |
+| Social following | **More than 3,000** on Instagram or TikTok (primary) |
+| Posting habit | **≥3 posts/week** · mix of **Reels and photos** |
+| Photoshoot | Available for half-day shoot within **first 8 weeks** |
+| Location | EU/EEA preferred · Netherlands / Randstad ideal |
 | Conduct | Professional, evidence-aligned, safety-first |
 
 ---
 
-### WEEKLY POST CHECKLIST
+### WEEKLY POST CHECKLIST (RECOMMENDED POST)
 
 - [ ] Personal training detail from this week  
+- [ ] **Target Race** or race-build reference  
 - [ ] “The Aquatic Coach Platform” mentioned  
 - [ ] Referral link or code included  
 - [ ] Disclosure in first 3 lines  
-- [ ] Original image or video  
+- [ ] Original Reel, photo, or video  
 - [ ] Call to action to sign up  
 
 ---
 
-### SAMPLE CAPTION (SHORT)
+### SAMPLE REEL CAPTION (RACE BUILD)
 
 ```
-Readiness said “modify” yesterday — shortened the main set, focused on 
-catch timing. Exactly what I want from coaching that reads my 
-Intervals.icu data.
+Week 6 of my [Target Race Name] build 🏊‍♀️
+Readiness said “modify” yesterday — shortened the main set, focused on catch timing.
+Exactly what I want from coaching that reads my Intervals.icu data.
 
-Training with The Aquatic Coach Platform — link in bio / code AMB-XXXX.
+Training for [Target Race] with The Aquatic Coach Platform — link in bio / code AMB-XXXX.
 
 I’m an ambassador and may earn a referral fee if you sign up.
 #AquaticCoachAmbassador
@@ -134,24 +146,16 @@ I’m an ambassador and may earn a referral fee if you sign up.
 
 ---
 
-### MISSED POSTS
-
-| Occurrence | Consequence |
-|------------|-------------|
-| 1 miss / quarter | No penalty |
-| 2nd miss in 12 weeks | Written reminder |
-| 3rd miss in 12 weeks | Possible suspension |
-
----
-
 ### APPLICATION PROCESS
 
-1. Submit ambassador application (name, handles, platform username)  
-2. Review within **10 business days**  
-3. Sign Ambassador Agreement  
-4. Receive referral link, code, dashboard, brand assets  
-5. **30-min onboarding call**  
-6. First post within **7 days** of onboarding  
+1. Submit application — include **Target Race**, follower count, sample posts  
+2. Profile review — **3k+ followers**, **3 posts/week**, Reels/photo mix, race narrative  
+3. Cohort fit — gender balance + sport/race diversity  
+4. Sign Ambassador Agreement (**Schedule C** completed)  
+5. Receive referral link, code, dashboard, brand assets  
+6. **30-min onboarding call** + **photoshoot scheduling**  
+7. First race-focused Recommended Post within **7 days**  
+8. Photoshoot within **8 weeks** · publish Reel from session within **30 days**
 
 ---
 

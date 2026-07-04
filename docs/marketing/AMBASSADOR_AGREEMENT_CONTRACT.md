@@ -5,7 +5,7 @@
 ---
 
 **Agreement reference:** ACP-AMB-[YYYY]-[####]  
-**Version:** 1.0  
+**Version:** 1.1  
 **Effective date:** ____________________
 
 ---
@@ -35,6 +35,8 @@
 | Date of birth | ________________________________ |
 | Platform athlete ID / username | ________________________________ |
 | Primary social handle(s) | ________________________________ |
+| Primary social platform | ☐ Instagram ☐ TikTok ☐ YouTube ☐ Strava ☐ Other: ______ |
+| Follower count (primary channel) | ________________________________ |
 | Bank account (IBAN) / PayPal | ________________________________ |
 
 The Aquatic Coach and the Ambassador are each a **“Party”** and together the **“Parties.”**
@@ -83,6 +85,12 @@ The Aquatic Coach and the Ambassador are each a **“Party”** and together the
 
 **1.14** **“Term”** means the period specified in Section 10.
 
+**1.15** **“Target Race”** means the named event, date, and distance declared in Schedule C and used as the Ambassador’s primary race narrative for the Term.
+
+**1.16** **“Primary Sport Lens”** means the lead sport declared in Schedule C (e.g. open-water swim, run, triathlon) under which program content is primarily framed.
+
+**1.17** **“Photoshoot Deliverables”** means still images and short-form video clips provided to the Ambassador under Section 3.9 and Schedule C.
+
 ---
 
 ## 2. APPOINTMENT
@@ -101,38 +109,47 @@ The Aquatic Coach and the Ambassador are each a **“Party”** and together the
 
 **3.1 Active use.** The Ambassador shall remain an active, paying Platform subscriber throughout the Term, except during approved medical leave of up to sixty (60) consecutive days with prior notice.
 
-**3.2 Weekly posts.** The Ambassador shall publish at least **one (1) Recommended Post per calendar week** (Monday through Sunday) on at least one approved Social Media channel.
+**3.2 Posting habit.** The Ambassador shall maintain an average of at least **three (3) posts per calendar week** on their primary Social Media channel throughout the Term, consistent with the posting habit verified at application.
 
-**3.3 Referral tools.** The Ambassador shall use the assigned Referral Link and/or Referral Code in every Recommended Post.
+**3.3 Weekly Recommended Post.** The Ambassador shall publish at least **one (1) Recommended Post per calendar week** (Monday through Sunday) on at least one approved Social Media channel.
 
-**3.4 Disclosure.** The Ambassador shall include clear, conspicuous disclosure of the commercial relationship in every Recommended Post and any other post that mentions the Platform in exchange for potential Commission, in compliance with Section 5 and applicable law.
+**3.4 Target Race narrative.** The Ambassador shall publicly document training toward the **Target Race** in Recommended Posts and in other program-related content. At least **seventy percent (70%)** of program-tagged Ambassador content during the Term shall relate to the Target Race and Primary Sport Lens declared in Schedule C.
 
-**3.5 Accuracy.** The Ambassador shall ensure all statements about the Platform are truthful, based on personal experience, and consistent with Brand Guidelines. The Ambassador shall not make guarantees regarding performance outcomes.
+**3.5 Content format mix.** Across all weekly Social Media content, the Ambassador shall maintain a mix of **Reels/short video and static photos or carousels**, including an average of at least **one (1) Reel or short video per week**. The Ambassador shall publish at least **one (1) Reel** using Photoshoot Deliverables within **thirty (30) days** of receipt.
 
-**3.6 Professional conduct.** The Ambassador shall not engage in conduct that could harm The Aquatic Coach’s reputation, including harassment, discrimination, doping promotion, or unsafe training advocacy.
+**3.6 Referral tools.** The Ambassador shall use the assigned Referral Link and/or Referral Code in every Recommended Post.
 
-**3.7 Reporting.** The Ambassador shall notify The Aquatic Coach within forty-eight (48) hours of becoming aware of misinformation, technical issues affecting referrals, or compliance complaints related to their content.
+**3.7 Disclosure.** The Ambassador shall include clear, conspicuous disclosure of the commercial relationship in every Recommended Post and any other post that mentions the Platform in exchange for potential Commission, in compliance with Section 5 and applicable law.
 
-**3.8 Cooperation.** The Ambassador shall reasonably cooperate with The Aquatic Coach’s quarterly program reviews and compliance checks.
+**3.8 Accuracy.** The Ambassador shall ensure all statements about the Platform are truthful, based on personal experience, and consistent with Brand Guidelines. The Ambassador shall not make guarantees regarding performance outcomes.
+
+**3.9 Photoshoot.** The Aquatic Coach shall provide one (1) professional photoshoot session per Term, including still photography and short-form video clips suitable for Reels, as described in Schedule C. The Ambassador shall attend the photoshoot within **eight (8) weeks** of the Effective Date unless otherwise agreed in writing. Missed sessions without at least forty-eight (48) hours’ notice may be forfeited.
+
+**3.10 Professional conduct.** The Ambassador shall not engage in conduct that could harm The Aquatic Coach’s reputation, including harassment, discrimination, doping promotion, or unsafe training advocacy.
+
+**3.11 Reporting.** The Ambassador shall notify The Aquatic Coach within forty-eight (48) hours of becoming aware of misinformation, technical issues affecting referrals, or compliance complaints related to their content.
+
+**3.12 Cooperation.** The Ambassador shall reasonably cooperate with The Aquatic Coach’s quarterly program reviews and compliance checks.
 
 ---
 
 ## 4. CONTENT STANDARDS
 
-**4.1 Ownership.** The Ambassador retains ownership of their original content. The Ambassador grants The Aquatic Coach a non-exclusive, royalty-free, worldwide licence to repost, share, or feature Ambassador content (with credit) for marketing purposes during and for twelve (12) months after the Term.
+**4.1 Ownership.** The Ambassador retains ownership of their original content and Photoshoot Deliverables created for the Ambassador. The Ambassador grants The Aquatic Coach a non-exclusive, royalty-free, worldwide licence to repost, share, or feature Ambassador content and Photoshoot Deliverables (with credit) for marketing purposes during and for twelve (12) months after the Term.
 
 **4.2 Brand assets.** The Aquatic Coach grants the Ambassador a limited, revocable licence to use approved Brand Guidelines and logos solely for Recommended Posts during the Term.
 
 **4.3 Recommended Post requirements.** Each Recommended Post must:
 
 (a) be published during the Term;  
-(b) include a personal account of training with the Platform;  
-(c) name “The Aquatic Coach Platform” or “The Aquatic Coach”;  
-(d) include a call to action to sign up or join;  
-(e) include the Referral Link or Referral Code;  
-(f) include disclosure per Section 3.4;  
-(g) include at least one original image or video; and  
-(h) remain publicly visible for at least thirty (30) days.
+(b) include a personal account of training with the Platform **toward the Target Race**;  
+(c) reference the **Target Race** or race-build progression (countdown, key session, taper, or reflection);  
+(d) name “The Aquatic Coach Platform” or “The Aquatic Coach”;  
+(e) include a call to action to sign up or join;  
+(f) include the Referral Link or Referral Code;  
+(g) include disclosure per Section 3.7;  
+(h) include at least one original image, Reel, or video; and  
+(i) remain publicly visible for at least thirty (30) days.
 
 **4.4 Pre-approval.** During the first four (4) weeks of the Term, the Ambassador may (and if requested by The Aquatic Coach, shall) submit drafts to marketing@andyastfalck.com at least forty-eight (48) hours before publication.
 
@@ -283,7 +300,12 @@ The Ambassador shall not:
 
 | Item | Terms |
 |------|-------|
-| Weekly posting minimum | 1 Recommended Post |
+| Follower minimum (at application) | More than 3,000 on primary channel |
+| Pre-program posting habit | ≥3 posts/week (verified at application) |
+| Weekly posting minimum | ≥3 posts/week total; 1 Recommended Post |
+| Reels / video target | ≥1 Reel or short video per week on average |
+| Target Race | As declared in Schedule C |
+| Photoshoot | 1 session per Term (still + video for Reels) |
 | Commission per Referred Athlete | €100 |
 | First Month Subscription Fee (current) | €[AMOUNT] |
 | Attribution window | 14 days |
@@ -301,6 +323,39 @@ The Ambassador shall not:
 **Self-billing:** ☐ Agreed — The Aquatic Coach may issue invoices on the Ambassador’s behalf  
 **VAT number (if applicable):** ________________________________  
 **Tax status:** ☐ B2B / ☐ Consumer / ☐ Other: __________
+
+---
+
+## SCHEDULE C — TARGET RACE & AMBASSADOR PROFILE
+
+| Field | Detail |
+|-------|--------|
+| **Primary Social Platform** | ________________________________ |
+| **Follower count (at signing)** | ________________________________ |
+| **Primary Sport Lens** | ☐ Open-water swim ☐ Pool swim ☐ Run ☐ Triathlon ☐ Swim-run / hybrid ☐ Other: ______ |
+| **Secondary sports (cross-training)** | ________________________________ |
+| **Target Race — official name** | ________________________________ |
+| **Target Race — date** | ________________________________ |
+| **Target Race — distance / category** | ________________________________ |
+| **Platform training plan aligned?** | ☐ Yes — start date: ______ |
+| **Photoshoot — preferred location** | ________________________________ |
+| **Photoshoot — availability window** | ________________________________ |
+
+**Ambassador confirms:**
+
+- [ ] I have **more than 3,000 followers** on my primary channel  
+- [ ] I already post **at least 3 times per week** with a mix of Reels/video and photos  
+- [ ] I am training on the Platform toward the Target Race named above  
+- [ ] I can attend one half-day photoshoot within the first 8 weeks of the Term  
+
+**Photoshoot deliverables (The Aquatic Coach to provide):**
+
+| Included | Minimum standard |
+|----------|------------------|
+| Still photography | Training-themed images aligned to Primary Sport Lens |
+| Video clips for Reels | Minimum **5 usable vertical clips** (15–60 seconds each) |
+| Delivery | Digital files within **14 days** of shoot |
+| Usage | Ambassador licence for personal social media; The Aquatic Coach may repost with credit |
 
 ---
 
