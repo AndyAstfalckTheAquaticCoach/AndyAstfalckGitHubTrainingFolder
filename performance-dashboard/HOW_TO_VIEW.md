@@ -13,7 +13,9 @@ Or merge Pull Request #4 on GitHub, then pull `main`.
 
 1. Open your project folder in Finder (Mac) or File Explorer (Windows)
 2. Go into the **`performance-dashboard`** folder
-3. **Double-click `index.html`**
+Then open either:
+- **`index.html`** — 20 full dashboard layouts
+- **`components/index.html`** — 6 ring + 6 chart + 6 viz styles to mix per metric
 
 It should open in Chrome, Safari, or Edge.
 

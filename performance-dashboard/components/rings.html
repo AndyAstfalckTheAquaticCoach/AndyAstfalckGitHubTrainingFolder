@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Component Gallery — Rings (6 styles)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="component-demo.css" />
+  <style>
+    .ring-svg { display: block; margin: 0 auto; }
+    .ring-classic-wrap { position: relative; width: 120px; height: 120px; }
+    .ring-classic-wrap .center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .ring-donut-legend { display: flex; gap: 0.5rem; justify-content: center; font-size: 0.6rem; color: var(--muted); margin-top: 0.5rem; }
+    .ring-donut-legend span::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 4px; vertical-align: middle; }
+    .ring-dual { position: relative; width: 130px; height: 130px; }
+    .ring-dual svg { position: absolute; inset: 0; }
+    .ring-dual .center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .gauge-wrap { width: 160px; }
+    .gauge-wrap svg { width: 100%; height: auto; }
+    .ring-glow { filter: drop-shadow(0 0 8px rgba(61,255,143,0.6)); }
+    .ring-minimal-ticks { position: relative; width: 100px; height: 100px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="nav-row">
+      <a class="nav-pill" href="index.html">← Component hub</a>
+      <span class="nav-pill active">Rings</span>
+      <a class="nav-pill" href="charts.html">Charts</a>
+      <a class="nav-pill" href="viz.html">Other viz</a>
+    </div>
+    <div class="page-header">
+      <h1>Ring & gauge presentations · 6 styles</h1>
+      <p>Same metrics (FTP 258W, AeT 195W, CTL 78) in each style. Pick one ring type per hero metric on your Performance tab.</p>
+    </div>
+
+    <!-- R1 Classic arc -->
+    <div class="demo-block">
+      <div class="demo-block-header">
+        <div><div class="demo-num">Ring 01</div><div class="demo-title">Classic arc ring</div>
+        <div class="demo-meta">Single stroke, open center. Clean and familiar — matches wellness Recovery/Strain rings.</div></div>
+        <div class="demo-tags"><span class="tag">FTP</span><span class="tag">AeT</span><span class="tag blue">CTL</span></div>
+      </div>
+      <div class="demo-stage"><div class="demo-row-3" id="r1"></div></div>
+      <p class="best-for"><strong>Best for:</strong> Primary thresholds (FTP, threshold pace, CSS). Hero row at top of Performance tab.</p>
+    </div>
+
+    <!-- R2 Zone donut -->
+    <div class="demo-block">
+      <div class="demo-block-header">
+        <div><div class="demo-num">Ring 02</div><div class="demo-title">Zone-segment donut</div>
+        <div class="demo-meta">Ring split into green / amber / red zones. Shows where current value sits in training range.</div></div>
+        <div class="demo-tags"><span class="tag">Readiness bands</span><span class="tag amber">Benchmark zone</span></div>
+      </div>
+      <div class="demo-stage"><div class="demo-row-3" id="r2"></div></div>
+      <p class="best-for"><strong>Best for:</strong> Metrics with clear target bands — CTL vs phase target, weekly volume vs plan, easy-time ratio.</p>
+    </div>
+
+    <!-- R3 Dual ring -->
+    <div class="demo-block">
+      <div class="demo-block-header">
+        <div><div class="demo-num">Ring 03</div><div class="demo-title">Dual ring — target vs actual</div>
+        <div class="demo-meta">Outer ring = goal/dossier value. Inner ring = current measured value. Gap visible at a glance.</div></div>
+        <div class="demo-tags"><span class="tag">FTP vs goal</span><span class="tag">DFA vs dossier</span></div>
+      </div>
+      <div class="demo-stage"><div class="demo-row-3" id="r3"></div></div>
+      <p class="best-for"><strong>Best for:</strong> Calibration deltas — AeT estimate vs dossier FTP, CSS vs race target, benchmark index vs seasonal band.</p>
+    </div>
+
+    <!-- R4 Semi gauge -->
+    <div class="demo-block">
+      <div class="demo-block-header">
+        <div><div class="demo-num">Ring 04</div><div class="demo-title">Semi-circle gauge</div>
+        <div class="demo-meta">Speedometer layout. Strong single-metric focus — less suited to a row of four equals.</div></div>
+        <div class="demo-tags"><span class="tag">Single hero</span><span class="tag blue">Mobile</span></div>
+      </div>
+      <div class="demo-stage"><div class="demo-row-3" id="r4"></div></div>
+      <p class="best-for"><strong>Best for:</strong> One headline metric per screen — mobile Performance tab, or FTP as the only giant number.</p>
+    </div>
+
+    <!-- R5 Neon glow -->
+    <div class="demo-block">
+      <div class="demo-block-header">
+        <div><div class="demo-num">Ring 05</div><div class="demo-title">Neon glow ring</div>
+        <div class="demo-meta">Thick stroke with glow. High-end / gaming aesthetic. Use sparingly (1–2 metrics max).</div></div>
+        <div class="demo-tags"><span class="tag">Premium feel</span><span class="tag amber">Accent only</span></div>
+      </div>
+      <div class="demo-stage"><div class="demo-row-3" id="r5"></div></div>
+      <p class="best-for"><strong>Best for:</strong> Highlighting the one metric that improved most this block — or race-week FTP freshness.</p>
+    </div>
+
+    <!-- R6 Minimal ticks -->
+    <div class="demo-block">
+      <div class="demo-block-header">
+        <div><div class="demo-num">Ring 06</div><div class="demo-title">Minimal tick ring</div>
+        <div class="demo-meta">Thin arc + tick marks, Apple Watch aesthetic. Quiet, precise, pairs with Minimal Pro layout (V5).</div></div>
+        <div class="demo-tags"><span class="tag blue">Minimal UI</span><span class="tag">Secondary metrics</span></div>
+      </div>
+      <div class="demo-stage"><div class="demo-row-3" id="r6"></div></div>
+      <p class="best-for"><strong>Best for:</strong> Secondary thresholds (LTHR, W′, weekly km) when FTP uses a larger hero treatment elsewhere.</p>
+    </div>
+  </div>
+
+  <script src="mock-metrics.js"></script>
+  <script>
+    var M = [COMPONENT_DEMO.cycling.primary, COMPONENT_DEMO.cycling.secondary, COMPONENT_DEMO.cycling.tertiary];
+
+    function arcRing(pct, color, size, sw) {
+      size = size || 120; sw = sw || 8;
+      var r = (size - sw) / 2, c = 2 * Math.PI * r, off = c - (pct / 100) * c;
+      return '<svg class="ring-svg" width="' + size + '" height="' + size + '"><circle cx="' + size/2 + '" cy="' + size/2 + '" r="' + r + '" fill="none" stroke="#2a3544" stroke-width="' + sw + '"/><circle cx="' + size/2 + '" cy="' + size/2 + '" r="' + r + '" fill="none" stroke="' + color + '" stroke-width="' + sw + '" stroke-dasharray="' + c + '" stroke-dashoffset="' + off + '" stroke-linecap="round" transform="rotate(-90 ' + size/2 + ' ' + size/2 + ')"/></svg>';
+    }
+
+    function metricCenter(m) {
+      return '<div class="val">' + m.value + '<span style="font-size:0.7rem;color:var(--muted)">' + m.unit + '</span></div><div class="lbl">' + m.label + '</div><div class="delta">' + m.delta + '</div>';
+    }
+
+    // R1
+    document.getElementById("r1").innerHTML = M.map(function (m, i) {
+      var colors = ["#3dff8f", "#4da3ff", "#ffb020"];
+      return '<div class="ring-demo"><div class="ring-classic-wrap">' + arcRing(m.pct, colors[i]) + '<div class="center">' + metricCenter(m) + '</div></div></div>';
+    }).join("");
+
+    // R2 zone donut
+    document.getElementById("r2").innerHTML = M.map(function (m) {
+      return '<div class="ring-demo"><svg class="ring-svg" width="120" height="120" viewBox="0 0 120 120"><circle cx="60" cy="60" r="48" fill="none" stroke="#2a3544" stroke-width="12"/><path d="M60 12 A48 48 0 0 1 108 60" fill="none" stroke="#3dff8f" stroke-width="12" stroke-linecap="butt"/><path d="M108 60 A48 48 0 0 1 60 108" fill="none" stroke="#ffb020" stroke-width="12"/><path d="M60 108 A48 48 0 0 1 12 60" fill="none" stroke="#ff6b6b" stroke-width="12" opacity="0.35"/><circle cx="60" cy="60" r="36" fill="#161f2b"/><text x="60" y="56" text-anchor="middle" fill="#e8edf4" font-size="18" font-weight="700">' + m.value + '</text><text x="60" y="72" text-anchor="middle" fill="#7a8a9e" font-size="9">' + m.unit + '</text></svg><div class="lbl">' + m.label + '</div><div class="ring-donut-legend"><span style="--c:#3dff8f">On track</span></div></div>';
+    }).join("");
+
+    // R3 dual
+    document.getElementById("r3").innerHTML = M.map(function (m) {
+      var outerPct = Math.min(100, (m.target / (m.value || 1)) * m.pct * 0.95);
+      return '<div class="ring-demo"><div class="ring-dual">' + arcRing(95, "#2a3544", 130, 6) + arcRing(m.pct, "#3dff8f", 130, 6) + arcRing(m.pct * 0.85, "#4da3ff", 100, 8) + '<div class="center">' + metricCenter(m) + '<div style="font-size:0.6rem;color:var(--muted)">target ' + m.target + m.unit + '</div></div></div></div>';
+    }).join("");
+
+    // R4 semi gauge
+    document.getElementById("r4").innerHTML = M.map(function (m, i) {
+      var angle = -180 + (m.pct / 100) * 180;
+      return '<div class="ring-demo gauge-wrap"><svg viewBox="0 0 160 90"><path d="M20 80 A60 60 0 0 1 140 80" fill="none" stroke="#2a3544" stroke-width="10" stroke-linecap="round"/><path d="M20 80 A60 60 0 0 1 140 80" fill="none" stroke="' + ["#3dff8f","#4da3ff","#ffb020"][i] + '" stroke-width="10" stroke-linecap="round" stroke-dasharray="188" stroke-dashoffset="' + (188 - (m.pct/100)*188) + '"/><text x="80" y="72" text-anchor="middle" fill="#e8edf4" font-size="20" font-weight="700">' + m.value + '</text><text x="80" y="86" text-anchor="middle" fill="#7a8a9e" font-size="8">' + m.label + '</text></svg><div class="delta">' + m.delta + '</div></div>';
+    }).join("");
+
+    // R5 glow
+    document.getElementById("r5").innerHTML = M.map(function (m, i) {
+      return '<div class="ring-demo"><div class="ring-classic-wrap ring-glow">' + arcRing(m.pct, ["#3dff8f","#4da3ff","#ffb020"][i], 120, 12) + '<div class="center">' + metricCenter(m) + '</div></div></div>';
+    }).join("");
+
+    // R6 minimal ticks
+    document.getElementById("r6").innerHTML = M.map(function (m) {
+      var ticks = "";
+      for (var t = 0; t < 12; t++) {
+        var a = (t / 12) * 360 - 90, rad = a * Math.PI / 180;
+        ticks += '<line x1="' + (50 + 42*Math.cos(rad)) + '" y1="' + (50 + 42*Math.sin(rad)) + '" x2="' + (50 + 46*Math.cos(rad)) + '" y2="' + (50 + 46*Math.sin(rad)) + '" stroke="#3a4555" stroke-width="1"/>';
+      }
+      return '<div class="ring-demo"><svg class="ring-minimal-ticks" viewBox="0 0 100 100">' + ticks + '<circle cx="50" cy="50" r="38" fill="none" stroke="#2a3544" stroke-width="2"/><circle cx="50" cy="50" r="38" fill="none" stroke="#e8edf4" stroke-width="2" stroke-dasharray="' + (2*Math.PI*38) + '" stroke-dashoffset="' + (2*Math.PI*38*(1-m.pct/100)) + '" transform="rotate(-90 50 50)"/><text x="50" y="48" text-anchor="middle" fill="#e8edf4" font-size="14" font-weight="600">' + m.value + '</text><text x="50" y="58" text-anchor="middle" fill="#7a8a9e" font-size="6">' + m.unit + '</text></svg><div class="lbl">' + m.label + '</div></div>';
+    }).join("");
+  </script>
+</body>
+</html>

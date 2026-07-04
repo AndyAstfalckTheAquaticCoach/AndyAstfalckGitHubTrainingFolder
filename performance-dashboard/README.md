@@ -10,6 +10,16 @@ Read **`HOW_TO_VIEW.md`** if you see a blank page or cannot find the files.
 2. Double-click **`index.html`**
 3. Click tiles to compare; use ← → between variations
 
+## Component picker (rings, charts, viz)
+
+Open **`components/index.html`** for **6 ring styles**, **6 chart styles**, and **6 other visual methods** — mix and match per metric type.
+
+| Category | File | Styles |
+|----------|------|--------|
+| Rings | `components/rings.html` | Classic, zone donut, dual, semi-gauge, neon, minimal ticks |
+| Charts | `components/charts.html` | Dual area, bars, gradient line, radar, horizontal bar, stepped |
+| Other | `components/viz.html` | Sparkline, bullet, stat card, heatmap, progress, delta tiles |
+
 ## Gallery sections
 
 ### V1–V5 · Layout styles (road cycling)

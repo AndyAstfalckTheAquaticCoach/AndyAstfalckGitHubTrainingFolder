@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Component Gallery — Charts (6 styles)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="component-demo.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="page">
+    <div class="nav-row">
+      <a class="nav-pill" href="index.html">← Component hub</a>
+      <a class="nav-pill" href="rings.html">Rings</a>
+      <span class="nav-pill active">Charts</span>
+      <a class="nav-pill" href="viz.html">Other viz</a>
+    </div>
+    <div class="page-header">
+      <h1>Chart presentations · 6 styles</h1>
+      <p>Power curve data (5s → 60m) shown six ways. Match chart type to the metric story — curve shape, comparison, or profile.</p>
+    </div>
+
+    <div class="demo-block">
+      <div class="demo-block-header">
+        <div><div class="demo-num">Chart 01</div><div class="demo-title">Dual area line</div>
+        <div class="demo-meta">Current 28d vs previous 28d with filled areas. Default for power curve delta.</div></div>
+        <div class="demo-tags"><span class="tag">Power curve</span><span class="tag">Pace curve</span></div>
+      </div>
+      <div class="demo-stage wide"><div class="chart-wrap tall"><canvas id="c1"></canvas></div></div>
+      <p class="best-for"><strong>Best for:</strong> Power curve delta, pace-duration profile, any current-vs-previous window comparison.</p>
+    </div>
+
+    <div class="demo-block">
+      <div class="demo-block-header">
+        <div><div class="demo-num">Chart 02</div><div class="demo-title">Vertical bar anchors</div>
+        <div class="demo-meta">MMP or best pace at each duration as bars. Easy to read absolute watts/pace per anchor.</div></div>
+        <div class="demo-tags"><span class="tag">MMP anchors</span><span class="tag blue">Sustainability table alt</span></div>
+      </div>
+      <div class="demo-stage wide"><div class="chart-wrap tall"><canvas id="c2"></canvas></div></div>
+      <p class="best-for"><strong>Best for:</strong> Sustainability profile anchors, swim distance bests, erg duration peaks.</p>
+    </div>
+
+    <div class="demo-block">
+      <div class="demo-block-header">
+        <div><div class="demo-num">Chart 03</div><div class="demo-title">Gradient line (no fill)</div>
+        <div class="demo-meta">Clean single-series line with colour gradient. Minimal chart noise.</div></div>
+        <div class="demo-tags"><span class="tag blue">Minimal layouts</span><span class="tag">CTL trend</span></div>
+      </div>
+      <div class="demo-stage wide"><div class="chart-wrap"><canvas id="c3"></canvas></div></div>
+      <p class="best-for"><strong>Best for:</strong> V5 Minimal Pro, single-metric trends (CTL, FTP history, weekly km).</p>
+    </div>
+
+    <div class="demo-block">
+      <div class="demo-block-header">
+        <div><div class="demo-num">Chart 04</div><div class="demo-title">Radar / spider profile</div>
+        <div class="demo-meta">Energy-system shape at a glance — sprint vs endurance bias visible as polygon shape.</div></div>
+        <div class="demo-tags"><span class="tag">Rotation index</span><span class="tag amber">Multi-anchor</span></div>
+      </div>
+      <div class="demo-stage wide"><div class="chart-wrap tall"><canvas id="c4"></canvas></div></div>
+      <p class="best-for"><strong>Best for:</strong> Power curve shape, tri sport balance, comparing athlete profile to target polygon.</p>
+    </div>
+
+    <div class="demo-block">
+      <div class="demo-block-header">
+        <div><div class="demo-num">Chart 05</div><div class="demo-title">Horizontal bar + target line</div>
+        <div class="demo-meta">Ranked metrics with dashed target marker. Good for race estimation rows.</div></div>
+        <div class="demo-tags"><span class="tag">70.3 legs</span><span class="tag">Block goals</span></div>
+      </div>
+      <div class="demo-stage wide"><div class="chart-wrap tall"><canvas id="c5"></canvas></div></div>
+      <p class="best-for"><strong>Best for:</strong> Sustainability vs target (20m/60m/90m), tri leg targets, benchmark vs actual list.</p>
+    </div>
+
+    <div class="demo-block">
+      <div class="demo-block-header">
+        <div><div class="demo-num">Chart 06</div><div class="demo-title">Stepped block / histogram</div>
+        <div class="demo-meta">Duration buckets as blocks — emphasises time-in-zone or load distribution.</div></div>
+        <div class="demo-tags"><span class="tag">TID zones</span><span class="tag amber">Weekly TSS</span></div>
+      </div>
+      <div class="demo-stage wide"><div class="chart-wrap tall"><canvas id="c6"></canvas></div></div>
+      <p class="best-for"><strong>Best for:</strong> Seiler zone time distribution, weekly load histogram, vert per day blocks.</p>
+    </div>
+  </div>
+
+  <script src="mock-metrics.js"></script>
+  <script>
+    var c = COMPONENT_DEMO.curve;
+    var opts = {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { labels: { color: "#7a8a9e", font: { size: 11 } } } },
+      scales: {
+        x: { ticks: { color: "#7a8a9e" }, grid: { color: "rgba(42,53,68,0.5)" } },
+        y: { ticks: { color: "#7a8a9e" }, grid: { color: "rgba(42,53,68,0.5)" } },
+      },
+    };
+
+    new Chart(document.getElementById("c1"), {
+      type: "line",
+      data: {
+        labels: c.labels,
+        datasets: [
+          { label: "Current 28d", data: c.current, borderColor: "#3dff8f", backgroundColor: "rgba(61,255,143,0.15)", fill: true, tension: 0.35 },
+          { label: "Previous 28d", data: c.previous, borderColor: "#4da3ff", backgroundColor: "rgba(77,163,255,0.08)", fill: true, tension: 0.35, borderDash: [4,4] },
+        ],
+      },
+      options: opts,
+    });
+
+    new Chart(document.getElementById("c2"), {
+      type: "bar",
+      data: {
+        labels: c.labels,
+        datasets: [
+          { label: "Current", data: c.current, backgroundColor: "rgba(61,255,143,0.7)", borderRadius: 6 },
+          { label: "Previous", data: c.previous, backgroundColor: "rgba(77,163,255,0.4)", borderRadius: 6 },
+        ],
+      },
+      options: opts,
+    });
+
+    new Chart(document.getElementById("c3"), {
+      type: "line",
+      data: {
+        labels: COMPONENT_DEMO.trend.map(function(_, i) { return "W" + (i+1); }),
+        datasets: [{ data: COMPONENT_DEMO.trend, borderColor: "#3dff8f", borderWidth: 2, pointRadius: 0, tension: 0.4, fill: false }],
+      },
+      options: { ...opts, plugins: { legend: { display: false } } },
+    });
+
+    new Chart(document.getElementById("c4"), {
+      type: "radar",
+      data: {
+        labels: c.labels,
+        datasets: [
+          { label: "Current", data: c.current.map(function(v) { return v / 10; }), borderColor: "#3dff8f", backgroundColor: "rgba(61,255,143,0.2)", pointBackgroundColor: "#3dff8f" },
+          { label: "Previous", data: c.previous.map(function(v) { return v / 10; }), borderColor: "#4da3ff", backgroundColor: "rgba(77,163,255,0.1)", pointBackgroundColor: "#4da3ff" },
+        ],
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        scales: { r: { ticks: { display: false }, grid: { color: "rgba(42,53,68,0.5)" }, pointLabels: { color: "#7a8a9e", font: { size: 10 } } } },
+        plugins: { legend: { labels: { color: "#7a8a9e" } } },
+      },
+    });
+
+    new Chart(document.getElementById("c5"), {
+      type: "bar",
+      data: {
+        labels: ["20 min", "60 min", "90 min", "FTP est."],
+        datasets: [{ label: "Sustainable W", data: [241, 218, 205, 258], backgroundColor: ["#3dff8f","#4da3ff","#ffb020","#3dff8f"] }],
+      },
+      options: {
+        indexAxis: "y", responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false }, annotation: {} },
+        scales: {
+          x: { ticks: { color: "#7a8a9e" }, grid: { color: "rgba(42,53,68,0.5)" } },
+          y: { ticks: { color: "#7a8a9e" }, grid: { display: false } },
+        },
+      },
+    });
+
+    new Chart(document.getElementById("c6"), {
+      type: "bar",
+      data: {
+        labels: ["Z1 easy", "Z2 grey", "Z3 quality", "Z4+", "Z5+"],
+        datasets: [{ label: "Hours", data: [8.2, 1.1, 2.4, 0.8, 0.3], backgroundColor: ["#3dff8f","#ffb020","#4da3ff","#ff6b6b","#b388ff"], borderRadius: 4 }],
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { stacked: true, ticks: { color: "#7a8a9e" }, grid: { display: false } },
+          y: { stacked: true, ticks: { color: "#7a8a9e" }, grid: { color: "rgba(42,53,68,0.5)" } },
+        },
+      },
+    });
+  </script>
+</body>
+</html>

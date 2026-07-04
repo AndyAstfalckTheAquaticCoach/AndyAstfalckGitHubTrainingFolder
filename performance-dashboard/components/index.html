@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Component Gallery — Pick rings, charts & viz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="component-demo.css" />
+  <style>
+    body { padding: 2rem 1.25rem 3rem; }
+    .hub { max-width: 900px; margin: 0 auto; text-align: center; }
+    .hub h1 { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.03em; }
+    .hub > p { color: var(--muted); margin: 0.75rem auto 2rem; max-width: 560px; font-size: 0.95rem; line-height: 1.55; }
+    .hub-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; text-align: left; }
+    @media (max-width: 700px) { .hub-grid { grid-template-columns: 1fr; } }
+    .hub-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 18px;
+      padding: 1.5rem; transition: border-color 0.2s, transform 0.2s; display: block; color: inherit;
+    }
+    .hub-card:hover { border-color: var(--blue); transform: translateY(-3px); text-decoration: none; color: inherit; }
+    .hub-card h2 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.35rem; }
+    .hub-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin-bottom: 1rem; }
+    .hub-card ul { font-size: 0.75rem; color: var(--muted); list-style: none; }
+    .hub-card li { padding: 0.2rem 0; }
+    .hub-card li::before { content: "· "; color: var(--green); font-weight: 700; }
+    .count { display: inline-block; background: rgba(77,163,255,0.15); color: var(--blue); font-size: 0.7rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 999px; margin-bottom: 0.75rem; }
+    .back { display: inline-block; margin-bottom: 1.5rem; font-size: 0.8rem; }
+    .matrix { margin-top: 2.5rem; text-align: left; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; overflow-x: auto; }
+    .matrix h3 { font-size: 0.9rem; margin-bottom: 0.75rem; }
+    .matrix table { width: 100%; border-collapse: collapse; font-size: 0.75rem; }
+    .matrix th, .matrix td { padding: 0.5rem; border-bottom: 1px solid var(--border); text-align: left; }
+    .matrix th { color: var(--muted); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="hub">
+    <a class="back" href="../index.html">← Full dashboard gallery (20 layouts)</a>
+    <h1>Component picker</h1>
+    <p>Six ring styles, six chart styles, six other visual methods — same mock data in each. When you review at home, pick one presentation per metric type and we combine them into your final Performance tab.</p>
+
+    <div class="hub-grid">
+      <a class="hub-card" href="rings.html">
+        <span class="count">6 styles</span>
+        <h2>Rings & gauges</h2>
+        <p>Hero thresholds — FTP, AeT, CTL, pace, CSS.</p>
+        <ul>
+          <li>01 Classic arc</li>
+          <li>02 Zone donut</li>
+          <li>03 Dual target vs actual</li>
+          <li>04 Semi-circle gauge</li>
+          <li>05 Neon glow</li>
+          <li>06 Minimal ticks</li>
+        </ul>
+      </a>
+      <a class="hub-card" href="charts.html">
+        <span class="count">6 styles</span>
+        <h2>Charts</h2>
+        <p>Curves, profiles, distributions.</p>
+        <ul>
+          <li>01 Dual area line</li>
+          <li>02 Vertical bars</li>
+          <li>03 Gradient line</li>
+          <li>04 Radar / spider</li>
+          <li>05 Horizontal bar + target</li>
+          <li>06 Stepped blocks</li>
+        </ul>
+      </a>
+      <a class="hub-card" href="viz.html">
+        <span class="count">6 styles</span>
+        <h2>Other visualizations</h2>
+        <p>Trends, goals, comparisons.</p>
+        <ul>
+          <li>01 Sparkline strip</li>
+          <li>02 Bullet chart</li>
+          <li>03 Stat card + delta</li>
+          <li>04 Calendar heatmap</li>
+          <li>05 Progress + milestones</li>
+          <li>06 Delta tiles</li>
+        </ul>
+      </a>
+    </div>
+
+    <div class="matrix">
+      <h3>Suggested pairings (mix & match)</h3>
+      <table>
+        <thead><tr><th>Metric type</th><th>Ring option</th><th>Chart / viz option</th></tr></thead>
+        <tbody>
+          <tr><td>FTP / threshold power</td><td>Ring 01 or 04</td><td>Chart 01 or Viz 03</td></tr>
+          <tr><td>AeT / LT1 calibration</td><td>Ring 03 dual</td><td>Viz 02 bullet</td></tr>
+          <tr><td>Power curve delta</td><td>—</td><td>Chart 01 or 04</td></tr>
+          <tr><td>CTL / fitness trend</td><td>Ring 02 zone</td><td>Chart 03 or Viz 01 sparkline</td></tr>
+          <tr><td>Threshold pace (run)</td><td>Ring 01 or 06</td><td>Chart 05 horizontal</td></tr>
+          <tr><td>Weekly volume / vert</td><td>Ring 02</td><td>Viz 04 heatmap or 05 progress</td></tr>
+          <tr><td>Block “what improved”</td><td>Ring 05 accent (one metric)</td><td>Viz 06 delta tiles</td></tr>
+          <tr><td>TID / zone distribution</td><td>—</td><td>Chart 06 stepped</td></tr>
+          <tr><td>Tri sport balance</td><td>Ring 01 × 3</td><td>Chart 04 radar</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
