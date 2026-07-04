@@ -361,6 +361,49 @@ Wellness body-composition fields are **coaching context only** — not wired int
 
 **Confidence:** Each phase carries `high` / `medium` / `low` confidence — show as border weight or opacity on the phase badge when low.
 
+### Phase Colour Transitions
+
+Phase boundaries in the data are discrete (a phase label changes on a date), but the **visual must not snap** from one colour to the next. Transitions must feel continuous — the athlete is progressing through a cycle, not jumping between unrelated states.
+
+**Rules:**
+
+| Rule | Detail |
+|------|--------|
+| **No hard edges** | Do not use solid adjacent blocks of different phase colours without a blend zone |
+| **Gradient blend zone** | At every phase boundary, interpolate between the outgoing and incoming phase colour over a visible span |
+| **Default blend width** | **5–7 days** at daily resolution, or **~10% of the shorter adjacent block** (whichever is smaller) — long blocks keep a fixed max blend (~7 days) so transitions don't stretch excessively |
+| **Gradient type** | Linear gradient along the time axis (horizontal on timelines, radial on countdown ring segments where phases meet) |
+| **Single-phase blocks** | If a block is shorter than the blend width, use a soft gradient across the entire block rather than a flat fill |
+| **Overreached (red)** | May use a sharper transition than other phases (2–3 day blend) so alarm state remains visually distinct — but still not an instant cut |
+| **Calendar overlay** | Each day inherits a colour from the gradient at that date — not the solid colour of the block it belongs to |
+
+**Implementation (CSS / SVG example):**
+
+```css
+/* Base #2563EB → Build #F97316 over 7 days at boundary */
+background: linear-gradient(
+  to right,
+  #2563EB 0%,
+  #2563EB calc(100% - 7days),
+  #F97316 100%
+);
+```
+
+Use explicit gradient stops per boundary rather than a single fill colour per segment.
+
+**Phase-pair blend reference:**
+
+| From → To | Blend character |
+|-----------|-----------------|
+| Base → Build | Blue warming into orange |
+| Build → Peak | Orange deepening into purple |
+| Peak → Taper | Purple easing into green |
+| Taper → Recovery | Green fading into grey |
+| Build → Deload | Orange cooling into teal |
+| Any → Overreached | Current colour → red over 2–3 days |
+
+**Hexagon phase badge:** the badge fill may use a subtle gradient reflecting recent phase history (e.g. trailing 14 days weighted toward current phase colour) rather than a flat single colour.
+
 ### Block Structure (Issurin Model)
 
 Visualise the macro cycle as linked blocks:
@@ -373,26 +416,32 @@ Accumulation (Base) → Transmutation (Build) → Realisation (Peak) → Taper �
 
 | Chart | Use |
 |-------|-----|
-| **Horizontal block timeline** | Full season as coloured segments; width = duration; current phase highlighted |
-| **Phase swimlane (Gantt)** | One row per mesocycle block; bars show weeks in Base / Build / etc. |
-| **Hexagon phase badge** | Current phase + confidence on dashboard (tap for reason codes) |
-| **Step chart** | Phase transitions over time — horizontal steps at each change point |
-| **Stacked area (volume by phase)** | Weekly hours or TSS coloured by detected phase — shows periodisation shape |
+| **Horizontal block timeline** | Full season as **gradient-blended** segments; width = duration; current position marked with a vertical line or dot |
+| **Phase swimlane (Gantt)** | One row per mesocycle; bar fills use horizontal gradients at block edges — no solid colour rectangles abutting each other |
+| **Hexagon phase badge** | Current phase dominant colour with subtle gradient from prior phase (trailing 14 days) |
+| **Phase transition curve** | Smooth colour strip over time — phase label changes at centre of blend zone, not at colour edge |
+| **Stacked area (volume by phase)** | Weekly hours or TSS with **gradient fill** between phase colours at transitions; area opacity may vary by phase |
 | **Block report card (4–6 weeks)** | Mini PMC + phase label + key metrics for the current block |
 | **Dual-stream indicator** | Two small icons: retrospective (history) vs prospective (plan) — show when streams agree/disagree |
-| **Pyramid / funnel diagram** | Issurin block progression — wide base (volume) narrowing to peak performance |
+| **Pyramid / funnel diagram** | Issurin block progression — sections connected by gradient bands, not hard dividing lines |
 | **Phase comparison slope chart** | This block vs previous block: CTL gain, hours, hard days, grey zone % |
-| **Calendar overlay** | Phase colour as background on training calendar heatmap |
+| **Calendar overlay** | Per-day background colour sampled from phase gradient — smooth shift across week boundaries |
 
 ### Block Chart — Annotated Example
+
+Conceptual layout — **rendered output uses gradients at every boundary**, not the hard segment edges shown here for labelling only:
 
 ```
 2026 Season ──────────────────────────────────────────────►
 
 Jan      Feb      Mar      Apr      May      Jun      Jul
-├─ Base ─┤├──── Build ────┤├── Peak ─┤├ Taper ┤│Rec│
-  4 wk       6 wk              2 wk    2 wk   1w
+[Base~~~~~│~~~Build~~~~~~~~│~~Peak~~│~Taper~│Rec]
+  4 wk  ↑blend  6 wk    ↑blend  2 wk ↑  2 wk
+        5–7d              5–7d       5–7d
                               ★ A-race
+
+Colour:  blue ──gradient──► orange ──gradient──► purple ──gradient──► green ──gradient──► grey
+         (no instant colour jumps at │ markers)
 ```
 
 Overlay on each block segment (optional, on tap):
@@ -605,7 +654,7 @@ Recommended shapes for metrics not covered in sections 1–5:
 | **Season periodisation** | Horizontal block timeline, phase swimlane Gantt |
 | **Block comparison** | Slope chart (this block vs previous) |
 | **Volume by phase** | Stacked area chart coloured by phase state |
-| **Phase transitions** | Step chart with reason-code tooltips |
+| **Phase transitions** | Gradient colour strip; label at centre of blend zone (not at colour edge) |
 
 ### 10.11 Shape Selection Guide
 
