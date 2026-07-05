@@ -2,7 +2,127 @@
 
 **Purpose:** Actionable design rules for the performance dashboard, synthesised from recognised experts in information design, data visualisation, and dashboard UX.  
 **Companion doc:** `visualisation spec.md` (what to show); this document (how to show it well).  
-**Last updated:** 2026-07-04
+**Last updated:** 2026-07-05  
+**Sources:** Expert literature (Tufte, Few, Knaflic, NN/G, FT) + *Endurance Athlete Dashboard* briefing (Gemini, 2026-07-05)
+
+---
+
+## 0. Core Paradigm — Design for Cognitive Fatigue
+
+**Audience:** Elite endurance athletes viewing the dashboard in states of acute physical and neurological exhaustion.
+
+**Goal:** Cognitive load approaches **zero**. Pattern recognition must be immediate; decoration is eliminated.
+
+This paradigm (from the Gemini endurance-dashboard briefing) is **non-negotiable for Tier A views** (see §0.1). It aligns with Tufte (data-ink), Few (linear encoding), and NN/G (operational dashboards).
+
+### 0.1 Two-Tier Dashboard Architecture
+
+| Tier | Views | Rules |
+|------|-------|-------|
+| **Tier A — Primary metric rows** | Today tab, KPI list, glance readiness | Strict: linear encoding, bullet graphs, small multiples, word-size graphics. **Banned elements apply.** |
+| **Tier B — Detail / drill-down** | Session detail, analytical PMC, coach desktop | More chart types permitted (timeline strips, stacked session zones, phase block timeline, scatter). Still no 3D, no chartjunk. |
+
+When `design rules.md` and `visualisation spec.md` conflict on Tier A, **this section wins**.
+
+### 0.2 Banned on Tier A (Non-Negotiable)
+
+Synthesised from Gemini briefing + Few + Tufte + NN/G:
+
+| Banned | Reason | Replace with |
+|--------|--------|--------------|
+| **Circular gauges & donut charts** | Angle/area encoding is inaccurate; wastes space (Few, NN/G) | Horizontal **stacked bar** (zones); **bullet graph** (targets); large **numeric label** (countdown days) |
+| **Multi-line overlays ("spaghetti")** | Five timeframes on one axis = noise | **Small multiples** — one sparkline per horizon, independent Y-scale (Tufte) |
+| **Radar / spider charts** | Arbitrary axes distort profile shape (Few) | Separate **metric rows** (HRV, RHR, sleep, TSB each own row) |
+| **Radial / semi-circle gauges** | Poor lie factor, low accuracy | **Bullet graph** with grayscale bands |
+| **Chartjunk** | Non-data pixels consume exhausted attention | Remove borders, heavy grids, decorative gradients (Tufte) |
+
+**Tier B exceptions:** Session zone timeline strips, phase gradient block timeline, and power-duration curves remain valid in drill-down — they encode time or category, not circular magnitude comparison.
+
+### 0.3 Five Temporal Horizons (Canonical)
+
+All Tier A metric rows expose history across **five horizons** with **independent vertical scaling** per sparkline:
+
+| Horizon | Label | Data source | Display rule |
+|---------|-------|-------------|--------------|
+| **7d** | 7 days | Daily resolution | Raw or 3d rolling avg |
+| **30d** | 30 days | Daily resolution | 7d rolling avg optional |
+| **90d** | 90 days | Daily / weekly | **Rolling average** required |
+| **180d** | 180 days | Weekly aggregates | Rolling average or Z-score vs chronic mean |
+| **365d** | 365 days | Weekly / monthly | **Z-score or rolling avg only** — no raw daily noise |
+
+*Variance Baseline Rule (Guttag & Wiens):* macro horizons (90–365d) plot rolling averages or Z-scores (standard deviations from the athlete's chronic mean), not raw daily points.
+
+### 0.4 Expert Rules Engine (Tier A)
+
+#### Rule A — Word-Size Graphic (Tufte)
+
+Data reads as a **single horizontal sentence**: metric name + current value + target comparison + trend — never separated into disconnected table and chart.
+
+```
+CTL (Fitness)   85 TSS/d   [====|----●---|-------]   /\/\_  /\__  /---  /\_/-  --/--
+               ↑ value      ↑ bullet (target)         ↑ 7d  30d   90d   180d   365d
+```
+
+#### Rule B — Linear Target (Few)
+
+All progress-to-target and zone compliance on Tier A uses **horizontal bullet graphs**:
+
+- Background: three **neutral grayscale** bands — *Under-training* | *Optimal / target* | *Over-training / injury risk*
+- High-contrast **target marker** (vertical line) through optimal zone
+- **Current value** as dot or bar on the scale
+- Do **not** rely on red/green alone (colour-blind accessibility)
+- **Dynamic optimal ranges:** bullet bands ingest `phase_detection` — optimal CTL/TSB/ACWR ranges shift for Base, Build, Taper, Recovery (Gemini briefing)
+
+#### Rule C — Small Multiples (Tufte)
+
+To show 7 / 30 / 90 / 180 / 365d: five micro-sparklines in a **horizontal row**, each with **its own Y-axis scale**. Never overlay five horizons on one grid (Gemini briefing; avoids dual-axis deception — Few, Cairo).
+
+Each sparkline includes a subtle **horizontal baseline** = athlete's chronic mean for that metric and horizon.
+
+#### Rule D — Variance Baseline (Guttag & Wiens)
+
+| Horizon | Plot |
+|---------|------|
+| 7d, 30d | Daily values or short rolling average |
+| 90d, 180d, 365d | Rolling average **or** Z-score vs career/chronic mean |
+
+### 0.5 Tier A Layout Template
+
+```
+[Metric Name]  [Current Value]  [Target Range Compliance]     [Small Multiples — independent Y each]
+                                (Horizontal Bullet Graph)    7d    30d    90d    180d   365d
+────────────────────────────────────────────────────────────────────────────────────────────────
+CTL (Fitness)  85 TSS/d         [====|--●---|-------]        [~]   [~]    [~]    [~]     [~]
+TSB (Form)     +12              [----|---●--|====]          [~]   [~]    [~]    [~]     [~]
+HRV            48 ms            [----|----●-|----]            [~]   [~]    [~]    [~]     [~]
+```
+
+1. **Label & value** — left-aligned, bold sans-serif, tabular figures  
+2. **Bullet graph** — centred; phase-aware optimal band  
+3. **Sparkline row** — five cells; baseline = chronic mean  
+
+### 0.6 Validation & Edge Cases (Gemini Briefing)
+
+| Failure mode | Rule |
+|--------------|------|
+| **Outlier compression** | If one day dominates (e.g. 300 km ride), 7d/30d sparklines **auto-scale** to visible variance — do not flatten remaining days to a flat line |
+| **Null / missing data** | Gap or broken line segment — **never** plot as zero (distorts scale and averages) |
+| **Static target bands** | Bullet optimal zone **must** update from periodisation phase — not fixed year-round |
+| **Lie factor** | Bar charts start at zero; no truncated axes on Tier A |
+
+### 0.7 Comparison — Gemini Briefing vs Prior Docs
+
+| Topic | Prior spec (2026-07-04) | Adopted position (2026-07-05) |
+|-------|-------------------------|-------------------------------|
+| Donut / ring charts | Allowed for zone summary | **Tier A banned**; Tier B session view → stacked bar only |
+| Countdown ring | Primary event widget | **Tier A:** large day number + linear milestone bar; ring removed |
+| TSB gauge | Semi-circle gauge | **Bullet graph** with grayscale bands + optional semantic label |
+| Recovery radar | 6-axis snapshot | **Tier A:** separate metric rows; radar removed |
+| PMC (CTL+ATL+TSB) | Multi-line one chart | **Tier A:** three metric rows; **Tier B drill-down:** combined PMC permitted |
+| Temporal windows | 7d / 28d / 90d | **Canonical: 7, 30, 90, 180, 365d** (28d retained as rolling calc, displayed as 30d label) |
+| Phase colours | Gradient blends | **Retained** — functional encoding, not decoration |
+| Zone colours Z1–Z5 | Blue → red stacked bar | **Retained** — linear stacked bar (Few-approved); not a donut |
+| "Not limited to circles" | Encouraged shape variety | **Refined:** linear shapes on Tier A; richer shapes Tier B only |
 
 ---
 
@@ -120,13 +240,15 @@ Based on Cleveland & McGill (1985), Few, and NN/G preattentive-processing resear
 
 ### Rule 3.2 — Avoid or restrict weak encodings
 
-| Chart type | Rule |
-|------------|------|
-| **Pie / donut** | Avoid for precise comparison; OK for 2–3 categories or one dominant share (NN/G, Knaflic) |
-| **3D charts** | Do not use — distorts length and area (Tufte, NN/G) |
-| **Radial gauges** | Large space, low accuracy — prefer linear bullet or bar (NN/G) |
-| **Treemap** | Poor for at-a-glance magnitude; OK for exploratory drill-down only |
-| **Radar / spider** | Max 5–6 axes; never sole encoding for critical KPIs |
+| Chart type | Tier A | Tier B |
+|------------|--------|--------|
+| **Pie / donut** | **Banned** | Avoid; stacked bar preferred |
+| **3D charts** | **Banned** | **Banned** |
+| **Radial / circular gauges** | **Banned** | Avoid |
+| **Radar / spider** | **Banned** | Avoid |
+| **Multi-line (same axis)** | **Banned** for horizon comparison | PMC drill-down only (≤3 related series) |
+| **Treemap** | **Banned** | Exploratory only |
+| **Dual y-axis (unrelated scales)** | **Banned** | Avoid (Few, Cairo) |
 
 ### Rule 3.3 — Use preattentive attributes deliberately
 
@@ -238,10 +360,11 @@ Show essentials first; reveal detail on tap/expand (NN/G, SaaS dashboard best pr
 
 | Semantic use | Example (this project) |
 |--------------|------------------------|
-| Intensity / zone | Z1 blue → Z5 red (`visualisation spec.md`) |
+| Intensity / zone | Z1 blue → Z5 red on **linear stacked bars** only (`visualisation spec.md`) |
 | Phase | Base blue → Taper green with **gradual blends** at boundaries |
-| Status | Green / amber / red for readiness thresholds |
-| Neutral | Grey for context series, grid, secondary metrics |
+| Target compliance (Tier A) | **Grayscale bullet bands** primary; semantic colour as secondary label only |
+| Status | Pair colour + shape (triangle ▲) — never red/green alone |
+| Neutral | Grey for context series, secondary metrics |
 
 ### Rule 6.2 — Never rely on colour alone (WCAG, NN/G)
 
@@ -325,18 +448,18 @@ Every chart needs four states (Material Design, SaaS dashboard practice):
 
 Based on FT Visual Vocabulary + Few + NN/G. Maps to `visualisation spec.md` metrics.
 
-| Question | First choice | Second choice |
-|----------|--------------|---------------|
-| Trend over time? | Line chart | Sparkline + bullet |
-| Compare categories? | Horizontal bar | Lollipop |
-| Part-to-whole? | Stacked bar | Waffle |
-| Single KPI vs target? | Bullet chart | Gauge (linear, not radial) |
-| Distribution? | Histogram | Box plot |
-| Two variables related? | Scatter | Hex-bin heatmap |
-| Many KPIs at once? | Small multiples (Tufte) | Dashboard card grid |
-| Exact lookup? | Table | — |
-| Phase over season? | Gradient block timeline | Stacked area |
-| Days until event? | Countdown ring | Milestone bar |
+| Question | Tier A (first choice) | Tier B / drill-down |
+|----------|----------------------|---------------------|
+| Trend over time? | Small-multiple sparklines (5 horizons) | Full line chart |
+| Compare categories? | Horizontal stacked bar | Grouped bar |
+| Part-to-whole? | **Stacked horizontal bar** | Waffle (avoid pie) |
+| Single KPI vs target? | **Bullet graph** (grayscale bands) | — |
+| Distribution? | — | Histogram, box plot |
+| Two variables related? | — | Scatter |
+| Many KPIs at once? | **Metric row list** (word-size) | Small multiples grid |
+| Exact lookup? | Inline value in metric row | Table |
+| Phase over season? | Phase label + bullet target shift | Gradient block timeline |
+| Days until event? | **Large numeral + linear milestone bar** | Event timeline |
 
 ---
 
@@ -344,14 +467,18 @@ Based on FT Visual Vocabulary + Few + NN/G. Maps to `visualisation spec.md` metr
 
 | Anti-pattern | Why | Source |
 |--------------|-----|--------|
+| Donut / circular gauge on Tier A | Angle encoding; wastes space | Gemini brief, Few, NN/G |
 | 3D pie chart | Distorts area; unreadable | Tufte, NN/G, Knaflic |
+| Spaghetti graph (5 horizons, 1 axis) | Unreadable | Gemini brief, Knaflic |
+| Radar chart for readiness | Distorts profile | Gemini brief, Few |
 | Rainbow palette | No semantic meaning; colourblind fail | Few, ColorBrewer |
 | Dual y-axis with unrelated scales | Implies false correlation | Few, Cairo |
+| Red/green-only target bands | Colour-blind fail | Gemini brief, WCAG |
+| Plotting null as zero | Breaks scale and averages | Gemini brief, Section 11 |
+| Static bullet targets across phases | Wrong optimal range in taper/base | Gemini brief |
 | Chart without title/takeaway | User must guess the point | Knaflic |
-| Spaghetti graph (10+ unfiltered lines) | Unreadable | Knaflic (Case Study 4) |
 | Truncated bar chart y-axis | Lie factor > 1 | Tufte |
-| Animation for decoration | Distracts; accessibility cost | Material Design |
-| Hard phase colour jumps | Implies discontinuous training | Project rule (`visualisation spec.md`) |
+| Hard phase colour jumps | Implies discontinuous training | Project rule |
 | Sleep score as readiness gate | Double-counts HRV/RHR | Section 11 v11.21 |
 | Mixing sport thresholds on one chart | Cross-sport error | Section 11 |
 
@@ -399,10 +526,11 @@ Adapted from DesiLe SaaS dashboard checklist, Tufte, and NN/G.
 | **`visualisation spec.md`** | Project-specific — which metrics, shapes, colours, and layouts for the performance dashboard |
 | **`SECTION_11.md`** | Data integrity — what the numbers mean; no estimation; coaching logic |
 
-When the two conflict:
+When documents conflict:
 1. **Section 11 data integrity** wins (never lie with data)  
-2. **`visualisation spec.md`** wins on project-specific colour semantics (zones, phases)  
-3. **`design rules.md`** wins on general UX and encoding quality  
+2. **§0 Core Paradigm (Tier A rules)** wins on primary dashboard layout  
+3. **`visualisation spec.md`** wins on project-specific metric and colour semantics  
+4. **`design rules.md` §1–13** wins on general Tier B UX and encoding quality  
 
 ---
 
@@ -424,6 +552,7 @@ When the two conflict:
 - Dykes, B. *Effective Data Storytelling*
 - Few, S. *Show Me the Numbers*; *Information Dashboard Design*; *Now You See It*
 - Financial Times Visual Journalism Team. *Visual Vocabulary*. [github.com/Financial-Times/chart-doctor](https://github.com/Financial-Times/chart-doctor)
+- Guttag, J. & Wiens, J. *Introduction to Computational Thinking and Data Science* — rolling statistics, variance baselines
 - Knaflic, C. *Storytelling with Data*
 - Laubheimer, P. Nielsen Norman Group. Dashboard and chart articles (2019–2024).
 - Schwabish, J. & Ribecca, S. *Graphic Continuum*

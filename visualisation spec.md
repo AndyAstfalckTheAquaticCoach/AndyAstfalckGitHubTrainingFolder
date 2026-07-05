@@ -2,18 +2,54 @@
 
 **Protocol alignment:** Section 11 AI Coach Protocol (Intervals.icu data mirror)  
 **Companion doc:** `design rules.md` — expert-derived rules for how to present data well on screen  
-**Last updated:** 2026-07-04  
+**Last updated:** 2026-07-05  
 **Target platform:** Mobile-first (iPhone); adaptable to desktop
+
+---
+
+## Dashboard Architecture
+
+All views follow the **two-tier model** in `design rules.md` §0:
+
+| Tier | Purpose | Chart constraints |
+|------|---------|-------------------|
+| **Tier A — Primary rows** | Today tab, KPI list, exhausted-athlete glance | Linear only: bullet graphs, stacked bars, small-multiple sparklines, word-size numerics. **No donuts, gauges, radar, or multi-line horizon overlays.** |
+| **Tier B — Detail** | Session detail, analytical drill-down, coach desktop | Timeline strips, phase block charts, PMC combined view, scatter — still no 3D or chartjunk |
+
+### Canonical Metric Row (Tier A)
+
+Every primary metric (CTL, ATL, TSB, HRV, RHR, sleep, BMI, etc.) uses this layout:
+
+```
+[Metric Name]  [Current Value]  [Bullet Graph — phase-aware target]   7d   30d   90d   180d   365d
+                                                                              [sparklines, each own Y-scale]
+```
+
+See `design rules.md` §0.4–0.6 for bullet band rules, variance baselines, null handling, and outlier scaling.
+
+### Five Temporal Horizons
+
+| Horizon | Resolution | Display |
+|---------|------------|---------|
+| 7d | Daily | Raw or 3d rolling avg |
+| 30d | Daily | 7d rolling avg optional |
+| 90d | Daily/weekly | Rolling average |
+| 180d | Weekly | Rolling avg or Z-score vs chronic mean |
+| 365d | Weekly/monthly | Z-score or rolling avg only |
+
+`history.json` tiers map: 90-day daily → 7/30/90d; 180-day weekly → 180d; 1/2/3-year monthly → 365d.
 
 ---
 
 ## Design Principles (All Charts)
 
-- **Not limited to circles** — use bars, stacked segments, timelines, gauges, triangles (markers/alerts), bands, and sparklines as appropriate.
-- **Mobile-first (iPhone):** tap for detail; legend always visible; prefer horizontal layouts.
-- **Trendlines** wherever time-series data exists (7d / 28d / 90d windows from `history.json`).
-- **Null-safe:** if a metric is missing, show "No data" — never interpolate (per Section 11).
+- **Design for cognitive fatigue** — Tier A must be readable in seconds by an exhausted athlete (`design rules.md` §0).
+- **Linear encoding first** — bars, bullets, sparklines, timelines; no circular magnitude charts on Tier A.
+- **Mobile-first (iPhone):** tap for detail; legend on Tier B only; prefer horizontal layouts.
+- **Five horizons** with independent sparkline scaling — never five timeframes on one axis.
+- **Null-safe:** missing data = gap or broken segment — **never zero** (Section 11 + Gemini validation rules).
 - **Per-sport isolation:** cycling thresholds ≠ running ≠ swim — never mix sport families on one threshold chart.
+- **Gradual phase colour transitions** — blend zones at boundaries, not hard cuts (§8).
 
 ---
 
@@ -23,12 +59,12 @@
 
 ### Charts
 
-| Chart | Use |
-|-------|-----|
-| **Stacked horizontal bar** | Single workout — % time per zone |
-| **Donut / ring** | Compact session summary on phone |
-| **Timeline strip** | Full session width; color blocks show zone changes over time |
-| **Weekly stacked bar** | 7-day zone distribution rollup |
+| Chart | Tier | Use |
+|-------|------|-----|
+| **Stacked horizontal bar** | A + B | Single workout — % time per zone (**primary** zone display) |
+| **Timeline strip** | B | Full session width; colour blocks show zone changes over time |
+| **Weekly stacked bar** | A | 7-day zone distribution rollup |
+| ~~Donut / ring~~ | — | **Removed** — circular encoding banned on Tier A (Few, Gemini brief) |
 
 ### Zone Colours (Fixed)
 
@@ -81,12 +117,13 @@ Sample data: Z1 45%, Z2 30%, Z3 15%, Z4 8%, Z5 2%
 
 ### Charts
 
-| Chart | Use |
-|-------|-----|
-| **Dual-threshold ladder** | Vertical or horizontal band: easy \| grey \| hard, with LT1 and LT2 marked as lines |
-| **Gauge / arc** | Current session avg power/pace/HR shown against both thresholds |
-| **Threshold timeline** | LT1/LT2 values over months (from `history.json` FTP timeline + dossier updates) |
-| **Triangle markers** | Flag when session avg crosses LT2 or drift suggests LT1 shift |
+| Chart | Tier | Use |
+|-------|------|-----|
+| **Dual-threshold ladder** | B | Horizontal band: easy \| grey \| hard, with LT1 and LT2 marked |
+| **Bullet graph** | A | Session avg vs LT1/LT2/FTP/CSS — phase-aware optimal band |
+| **Threshold timeline** | B | LT1/LT2 values over months (small multiples per horizon) |
+| **Triangle markers** | A + B | Threshold breach or drift flag |
+| ~~Gauge / arc~~ | — | **Removed** — use bullet graph |
 
 ### Shape Example — Threshold Ladder (Cycling Power)
 
@@ -159,22 +196,25 @@ Pace (sec/100m)  ← faster                    slower →
 
 ### Charts
 
-| Chart | Use |
-|-------|-----|
-| **Performance Management Chart (PMC)** | 42–90d line chart: CTL (blue), ATL (pink/red), TSB (green/yellow bars or line) — **primary load chart** |
-| **TSB gauge** | Current freshness with target bands (+10 to +25 pre-race, negative = fatigued) |
-| **Weekly TSS bars** | Bar chart with 7d/28d average trendline |
-| **Load ratio sparkline** | ACWR or Load-Recovery ratio with amber/red thresholds |
+| Chart | Tier | Use |
+|-------|------|-----|
+| **Metric rows (CTL, ATL, TSB, TSS)** | A | Word-size: value + phase-aware bullet + 5 sparklines each |
+| **Performance Management Chart (PMC)** | B | Combined CTL/ATL/TSB line chart — **drill-down only**, not Today tab |
+| **TSB compliance** | A | Horizontal bullet with grayscale bands; target shifts by phase and race proximity |
+| **Weekly TSS** | A | Bullet or stacked bar vs phase-planned target |
+| ~~TSB gauge / circular~~ | — | **Removed** |
 
-### TSB Colour Bands
+### TSB — Tier A Bullet Bands (Grayscale Primary)
 
-| TSB range | Colour | Label |
-|-----------|--------|--------|
-| > +25 | Deep green | Very fresh |
-| +10 to +25 | Green | Race-ready |
-| −10 to +10 | Yellow | Neutral |
-| −10 to −30 | Orange | Fatigued |
-| < −30 | Red | Very fatigued |
+Bullet background uses **neutral grey bands**; semantic colour only in text label:
+
+| Band | Meaning | Phase note |
+|------|---------|------------|
+| Light grey | Under-target freshness | Wider acceptable band in Build |
+| Mid grey | **Optimal** — shifts with event type | +10 to +25 long A-race taper |
+| Dark grey | Over-fatigued / injury-risk zone | Tighter in Peak |
+
+Optional text label (colour + shape ▲): "Race-ready", "Fatigued", etc. — never colour alone.
 
 ### Data Source
 
@@ -196,12 +236,12 @@ Pace (sec/100m)  ← faster                    slower →
 
 ### Charts
 
-| Chart | Use |
-|-------|-----|
-| **Multi-metric dashboard card** | 4 mini sparklines (BMI, fat%, muscle kg, water) on one screen |
-| **Combined body comp chart** | Dual axis: fat% (line) + muscle kg (line) over 90d — shows recomposition |
-| **Trendline overlay** | 7d moving avg (dashed) + 28d moving avg (solid) on each metric |
-| **Delta badges** | "−0.8 kg fat vs 28d ago", "+0.3 kg muscle" |
+| Chart | Tier | Use |
+|-------|------|-----|
+| **Metric rows** | A | One row each: BMI, fat %, muscle kg, water — bullet + 5 sparklines |
+| **Combined body comp** | B | Dual-line drill-down only (not Tier A — avoids dual-axis deception) |
+| **Trendline overlay** | B | 7d dashed + 30d solid on expanded view |
+| **Delta in metric row** | A | Inline text: "−0.8 kg fat vs 30d ago" |
 
 ### Coaching Note
 
@@ -234,19 +274,14 @@ Wellness body-composition fields are **coaching context only** — not wired int
 
 ### Charts
 
-| Chart | Use |
-|-------|-----|
-| **Sleep duration bar (7 nights)** | Vertical or horizontal bars per night; colour by threshold (green ≥ 7h, amber 5–7h, red < 5h) |
-| **Hypnogram timeline strip** | Nightly sleep stages as coloured horizontal bands (deep / REM / light / awake) |
-| **Dual-line trend (28d)** | HRV (line) + RHR (line) on shared date axis with 7d rolling baseline as dashed reference |
-| **Baseline band chart** | Shaded band = 7d HRV or RHR baseline ± normal range; today's value as dot |
-| **Diverging bar** | HRV or RHR % deviation from baseline (centre = 0) |
-| **Bullet chart** | Last night sleep hours vs 7h target with amber/red background bands |
-| **Calendar heatmap** | Sleep hours by night (same grid pattern as training load heatmap) |
-| **Scatter: sleep → HRV** | Sleep hours (x) vs next-morning HRV (y) — shows personal sleep–recovery relationship |
-| **Recovery radar** | 5–6 axes: HRV, RHR, sleep hours, TSB, feel, soreness — readiness snapshot |
-| **Sparkline trio** | Dashboard card: 3 mini trends (HRV, RHR, sleep) with today's value badge |
-| **Stacked nightly card** | Bedtime → wake timeline + total hours + stage breakdown in one card |
+| Chart | Tier | Use |
+|-------|------|-----|
+| **Metric rows (HRV, RHR, sleep hours)** | A | Word-size row + bullet vs baseline + 5 sparklines |
+| **Sleep duration bar (7 nights)** | B | Drill-down: nightly bars with greyscale + shape for threshold |
+| **Hypnogram timeline strip** | B | Sleep stages — session/drill-down only |
+| **Baseline band chart** | B | Expanded HRV/RHR view |
+| ~~Recovery radar~~ | — | **Removed** — use separate metric rows |
+| ~~Dual-line HRV+RHR overlay~~ | A | **Removed** — separate rows prevent spaghetti |
 
 ### Colour Guidance — Sleep Duration
 
@@ -301,16 +336,14 @@ Wellness body-composition fields are **coaching context only** — not wired int
 
 ### Charts
 
-| Chart | Use |
-|-------|-----|
-| **Circular countdown ring** | Large centre number (days remaining) with arc fill approaching race day; star ★ for RACE_A |
-| **Horizontal countdown bar** | Full 90-day window with milestones marked: taper onset (D-14), race week (D-7), race day (D-0) |
-| **Event card stack** | Scrollable cards — nearest A-race pinned top; B/C races below with smaller countdown |
-| **Multi-event timeline** | 90-day horizontal axis; diamonds ◆ for A-races, circles ● for B, small dots for C |
-| **Race-week Gantt (D-7 → D-0)** | Seven-row swimlane with prescribed load %, zone targets, and purpose per day (from Race-Week Protocol) |
-| **TSB approach chart** | PMC with shaded target band narrowing as race approaches |
-| **Taper progress bullet** | Planned volume reduction (41–60% over 2 weeks) vs actual weekly TSS |
-| **Go/no-go checklist card** | D-0 only: TSB, illness/injury status with green/flag/red rows |
+| Chart | Tier | Use |
+|-------|------|-----|
+| **Large day numeral + linear milestone bar** | A | Primary countdown — e.g. **23** days + 90d horizontal bar with taper/race markers |
+| **Event card stack** | A | A/B/C races as text rows with day count (word-size) |
+| **Multi-event timeline** | B | 90d axis with ★ ◆ ● markers |
+| **Race-week Gantt (D-7 → D-0)** | B | Active race week only |
+| **Taper progress bullet** | A | Planned vs actual volume reduction |
+| **Go/no-go checklist card** | B | D-0 only |
 
 ### Priority Visual Treatment
 
@@ -320,18 +353,15 @@ Wellness body-composition fields are **coaching context only** — not wired int
 | **RACE_B** | Diamond ◆ | Medium | Lighter taper; lower TSB target |
 | **RACE_C** | Circle ● | Small | No taper adjustment; informational only |
 
-### Mobile Layout — Countdown Card (Suggested)
+### Mobile Layout — Countdown (Tier A)
 
 ```
 ┌─────────────────────────────────┐
 │  ★ Ironman Aalborg              │
-│       ┌─────────┐               │
-│       │   23    │  days          │
-│       │  ◔◔◔◔◑  │  countdown ring│
-│       └─────────┘               │
-│  Taper starts in 9 days         │
-│  TSB target: +10 to +25         │
-│  ───●────────────── 90d bar     │
+│       23 days                    │  ← large numeral (word-size)
+│  ───●────────────── 90d bar     │  ← linear milestone (taper D-14, race D-0)
+│  Taper in 9 days · TSB target   │
+│  +10 to +25                      │
 └─────────────────────────────────┘
 ```
 
@@ -471,39 +501,19 @@ When `race_week.active` or `taper_alert.active`:
 
 ```
 ┌─────────────────────────────────────┐
-│  Today                               │
-│  ├─ Event countdown ring (A-race)   │
-│  ├─ Phase hexagon badge             │
-│  ├─ Freshness gauge (TSB)           │
-│  ├─ Recovery sparklines (HRV/RHR/   │
-│  │   sleep)                         │
-│  ├─ Last workout zone bar (Z1–Z5)   │
-│  └─ Wellness sparklines (body comp) │
+│  Today (Tier A — metric rows)        │
+│  ├─ ★ Event: 23 days + milestone bar│
+│  ├─ Phase: Build (text + bullet)    │
+│  ├─ TSB row + bullet + 5 sparklines │
+│  ├─ CTL row + bullet + 5 sparklines │
+│  ├─ HRV / RHR / Sleep rows          │
+│  └─ Last session: zone stacked bar  │
 ├─────────────────────────────────────┤
-│  Training Load                       │
-│  └─ PMC chart (CTL/ATL/TSB)         │
-├─────────────────────────────────────┤
-│  Periodisation                       │
-│  └─ Block timeline (season phases)  │
-├─────────────────────────────────────┤
-│  Recovery & Sleep                    │
-│  ├─ 7-night sleep bars              │
-│  ├─ HRV/RHR baseline chart          │
-│  └─ Hypnogram (when stages avail.)  │
-├─────────────────────────────────────┤
-│  Events                              │
-│  ├─ Countdown cards (A/B/C)         │
-│  └─ Race-week Gantt (when active)   │
-├─────────────────────────────────────┤
-│  Thresholds (per sport tabs)         │
-│  ├─ Cycling: FTP, LTHR, LT1         │
-│  ├─ Running: pace, rFTPw, LTHR       │
-│  └─ Swim: CSS, SR, DPC trends       │
-├─────────────────────────────────────┤
-│  Session Detail                      │
-│  ├─ Zone timeline strip             │
-│  ├─ Threshold ladder                │
-│  └─ Interval breakdown (swim/run)   │
+│  Detail (Tier B — tap to expand)     │
+│  ├─ PMC combined chart              │
+│  ├─ Phase block timeline (gradient) │
+│  ├─ Session zone timeline strip     │
+│  └─ Race-week Gantt                 │
 └─────────────────────────────────────┘
 ```
 
@@ -511,24 +521,26 @@ When `race_week.active` or `taper_alert.active`:
 
 ## 10. Shape Library
 
-Visual components are not limited to circles and pie charts. The performance dashboard should draw from a broad shape vocabulary — choosing the form that best matches the data structure (proportion, trend, comparison, distribution, or sequence).
+Visual components are tiered. **Tier A** = linear shapes only (see `design rules.md` §0). **Tier B** = extended vocabulary for drill-down.
 
-### 10.1 Core Shapes (Already in Use)
+### 10.1 Core Shapes — Tier A (Primary Dashboard)
 
-| Shape | Typical use |
-|-------|-------------|
+| Shape | Use |
+|-------|-----|
+| **Metric row (word-size graphic)** | Canonical layout: label + value + bullet + 5 sparklines |
 | **Horizontal stacked bar** | Zone distribution, weekly load |
-| **Donut / ring** | Compact proportional summaries |
-| **Timeline strip** | Session-level zone or pace over time |
-| **Line + trendline** | CTL/ATL/TSB, wellness metrics, CSS trends |
-| **Gauge / arc** | Current TSB, session intensity vs threshold |
-| **Dual-threshold ladder** | Aerobic / anaerobic band placement |
-| **Scatter plot** | Swim SR vs pace, DPC vs pace |
-| **Triangle marker** | Threshold breach, water retention spike, alert |
-| **Sparkline** | Mini trends on dashboard cards |
-| **Shaded reference bands** | BMI categories, TSB target ranges |
+| **Bullet graph** | TSB, CTL, HRV, sleep, ACWR vs phase-aware target |
+| **Small-multiple sparklines** | 7 / 30 / 90 / 180 / 365d — independent Y each |
+| **Timeline strip** | Session zone changes (Tier B session detail) |
+| **Linear milestone bar** | Event countdown, taper markers |
+| **Triangle marker** | Alert, threshold breach |
+| **Shaded reference bands** | Bullet grayscale zones (not rainbow) |
 
-### 10.2 Proportional & Part-to-Whole Shapes
+### 10.1b Banned on Tier A
+
+Donut, ring, circular gauge, radar/spider, multi-line horizon overlay, semi-circle gauge, treemap.
+
+### 10.2 Proportional & Part-to-Whole Shapes (Tier B preferred)
 
 | Shape | Description | Dashboard use |
 |-------|-------------|---------------|
@@ -536,7 +548,7 @@ Visual components are not limited to circles and pie charts. The performance das
 | **Radial bar / sunburst** | Segments radiating from centre | Multi-sport time split; nested zone breakdown per sport |
 | **Treemap** | Nested rectangles sized by value | Weekly TSS or hours by sport family (cycling / run / swim) |
 | **100% stacked column** | Vertical stacked bars summing to 100% | Compare zone profiles across multiple sessions side by side |
-| **Semi-circle gauge** | Half-arc with coloured segments | Weekly polarisation index or easy-time ratio |
+| **Semi-circle gauge** | ~~Tier A banned~~ | Tier B only if unavoidable — prefer bullet |
 
 ### 10.3 Comparison & Target Shapes
 
@@ -574,7 +586,7 @@ Visual components are not limited to circles and pie charts. The performance das
 
 | Shape | Description | Dashboard use |
 |-------|-------------|---------------|
-| **Radar / spider chart** | Axes radiating from centre | Readiness snapshot: HRV, RHR, sleep, TSB, feel, soreness |
+| **Radar / spider chart** | ~~Tier A banned~~ | Removed from readiness; metric rows instead |
 | **Power-duration curve** | Line through anchor durations (5s–60min) | MMP profile; compare 28d windows (capability metric) |
 | **HR-duration curve** | Same form for sustained HR anchors | HR curve delta across two 28d windows |
 | **Area-under-curve fill** | Line chart with gradient fill below | Fitness (CTL) growth; muscle mass trend |
@@ -610,11 +622,11 @@ Use distinct shapes so alerts and landmarks are scannable without reading labels
 | Rule | Rationale |
 |------|-----------|
 | Prefer **horizontal** bars and strips on iPhone | More readable in portrait; thumb-friendly tap targets |
-| Limit radar charts to **≤6 axes** | Legibility on small screens |
-| Use **sparklines + one number** on dashboard cards | Glanceable; detail on tap |
-| Reserve **Sankey, chord, parallel coords, violin** for desktop or drill-down | Too dense for primary mobile view |
-| **Calendar heatmap** works well on mobile | One cell per day; tap for session list |
-| **Bullet charts** replace full gauges when space is tight | Same information in less height |
+| Limit radar charts | **Banned on Tier A** |
+| Use **metric rows + sparklines** on Tier A | Glanceable; exhausted-athlete readable |
+| Reserve **Sankey, chord, parallel coords, violin** for Tier B / desktop | Too dense for primary view |
+| **Calendar heatmap** | Tier B — tap for session list |
+| **Bullet charts** replace all gauges on Tier A | Few + Gemini brief |
 | Animate **timeline strips** on session open only | Avoid motion on dashboard scroll |
 
 ### 10.10 Shape-to-Metric Mapping (Extended)
@@ -624,7 +636,7 @@ Recommended shapes for metrics not covered in sections 1–5:
 | Metric | Recommended shape(s) |
 |--------|---------------------|
 | **Seiler TID classification** | Waffle or 100% stacked bar (Z1 / Z2 / Z3 easy-grey-hard) |
-| **Polarisation index (Treff PI)** | Semi-circle gauge with PI scale |
+| **Polarisation index (Treff PI)** | Bullet chart vs target (not semi-circle gauge) |
 | **Easy time ratio** | Bullet chart vs 0.75–0.9 target band |
 | **Grey zone %** | Single diverging bar from 5% target |
 | **Hard days per week** | Row of 7 squares (filled = hard day) |
@@ -645,9 +657,9 @@ Recommended shapes for metrics not covered in sections 1–5:
 | **Sleep stages** | Hypnogram timeline strip |
 | **HRV vs baseline** | Baseline band chart, diverging bar, sparkline |
 | **RHR vs baseline** | Baseline band chart, diverging bar, sparkline |
-| **Recovery snapshot** | Radar chart (HRV, RHR, sleep, TSB, feel) |
-| **Sleep → HRV relationship** | Scatter plot |
-| **Event countdown** | Circular countdown ring, horizontal milestone bar |
+| **Recovery snapshot** | Metric rows (HRV, RHR, sleep, TSB) — not radar |
+| **Sleep → HRV relationship** | Scatter plot (Tier B) |
+| **Event countdown** | Large numeral + linear milestone bar (Tier A) |
 | **Race calendar (90d)** | Multi-event timeline with priority shapes |
 | **Race week (D-7 → D-0)** | Gantt swimlane with daily load/zone rows |
 | **Taper progress** | Bullet chart (planned vs actual volume reduction) |
@@ -681,16 +693,12 @@ Choose shape by the question the athlete is asking:
 
 If building incrementally:
 
-1. **Zone stacked bar** (Z1 blue → Z5 red) — highest value per session
-2. **PMC chart** (CTL / ATL / TSB) — load management
-3. **Event countdown ring** — motivational anchor; links to taper/race week
-4. **Recovery sparklines** (HRV, RHR, sleep hours) — daily readiness glance
-5. **Phase block timeline** — season context
-6. **Wellness trendlines** (BMI, fat%, muscle, water)
-7. **Sleep duration bars + baseline band chart** — deeper recovery view
-8. **Threshold ladder** per sport
-9. **Swim-specific** (CSS reference + SR/DPC scatter)
-10. **Race-week Gantt + full shape variety** (see §10)
+1. **Canonical metric row** (word-size + bullet + 5 sparklines) — all primary KPIs
+2. **Zone stacked bar** (Z1 blue → Z5 red) — last session summary
+3. **Phase-aware bullet targets** — dynamic optimal bands from `phase_detection`
+4. **Event milestone bar** — linear countdown
+5. **Tier B drill-down** — PMC, phase timeline, session strips
+6. **Variance baselines** on 90/180/365d sparklines
 
 ---
 
