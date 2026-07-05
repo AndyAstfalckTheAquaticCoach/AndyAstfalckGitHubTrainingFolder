@@ -5,7 +5,8 @@
 **Date:** 2026-07-03  
 **Status:** Draft for review  
 **Scope:** Commercial endurance coaching platform (Intervals.icu → sync pipeline → athlete data mirror → AI coaching layer)  
-**Primary standards basis:** GDPR (EU 2016/679) + **ISO/IEC 27701:2019** (PIMS) on **ISO/IEC 27001:2022** (ISMS)
+**Primary standards basis:** GDPR (EU 2016/679) + **ISO/IEC 27701:2019** (PIMS) on **ISO/IEC 27001:2022** (ISMS)  
+**Agent briefing (operational extract):** [`AGENT_BRIEFING.md`](AGENT_BRIEFING.md)
 
 ---
 
@@ -642,9 +643,10 @@ Maintain continuous evidence:
 
 1. **Review this proposal** — confirm company legal name, DPO appointment, and LLM vendor.
 2. **Approve Phase 0 scope** — block commercial onboarding until complete.
-3. **Open implementation epic** — sync.py privacy module (§6) + SECTION_11 v12.0 (§11).
-4. **Commission DPIA** — use ISO 29134 template; reference §9 of this document.
-5. **Schedule internal audit** — ISO 27701 checklist self-assessment at end of Phase 1.
+3. **Deploy agent briefing** — load [`AGENT_BRIEFING.md`](AGENT_BRIEFING.md) into pipeline system instructions for all coaching agents.
+4. **Open implementation epic** — sync.py privacy module (§6) + SECTION_11 v12.0 (§11).
+5. **Commission DPIA** — use ISO 29134 template; reference §9 of this document.
+6. **Schedule internal audit** — ISO 27701 checklist self-assessment at end of Phase 1.
 
 ---
 
